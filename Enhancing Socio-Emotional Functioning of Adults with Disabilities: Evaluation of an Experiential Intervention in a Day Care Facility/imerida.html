@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Αφίσα Ημερίδας - Κήπος της Λυσούς</title>
+    <style>
+        @page {
+            size: A3 portrait;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            width: 297mm;
+            height: 420mm;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .poster {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header με gradient */
+        .header {
+            background: linear-gradient(135deg, #2c5f8d 0%, #1e4d73 100%);
+            color: white;
+            padding: 40px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .event-type {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .title {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            line-height: 1.4;
+            opacity: 0.95;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            gap: 40px;
+        }
+        
+        .left-column {
+            flex: 1.2;
+        }
+        
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* Ερευνητικά ευρήματα */
+        .research-highlight {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-left: 6px solid #2c5f8d;
+        }
+        
+        .research-highlight h2 {
+            color: #2c5f8d;
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .key-finding {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0ea5e9;
+        }
+        
+        .finding-label {
+            font-size: 14px;
+            color: #0369a1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .finding-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e4d73;
+            margin-bottom: 8px;
+        }
+        
+        .finding-desc {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .stat-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: #2c5f8d;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        /* Μεθοδολογία */
+        .methodology {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .methodology h3 {
+            color: #2c5f8d;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .method-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .method-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2c5f8d 0%, #1e4d73 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .method-text {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.4;
+        }
+        
+        /* Πρακτικές πληροφορίες */
+        .event-details {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 3px solid #f59e0b;
+        }
+        
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .detail-text {
+            flex: 1;
+        }
+        
+        .detail-label {
+            font-size: 13px;
+            color: #92400e;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .detail-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e4d73;
+            margin-top: 3px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .contact-info strong {
+            color: #fbbf24;
+        }
+        
+        .qr-section {
+            text-align: center;
+        }
+        
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+        
+        .qr-text {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        
+        /* Decorative elements */
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: #2c5f8d;
+            top: 20%;
+            left: -100px;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: #f59e0b;
+            bottom: 15%;
+            right: -50px;
+        }
+        
+        @media print {
+            body {
+                width: 297mm;
+                height: 420mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="accent-circle circle-1"></div>
+        <div class="accent-circle circle-2"></div>
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="logos">
+                <div class="logo-container">
+                    <img src="/mnt/user-data/uploads/Logo__1_.png" alt="Κήπος της Λυσούς">
+                </div>
+                <div class="logo-container">
+                    <div style="font-size: 18px; font-weight: 700; color: #2c5f8d;">
+                        Πανεπιστήμιο<br>Πελοποννήσου
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-type">Ημερίδα Παρουσίασης Ερευνητικών Αποτελεσμάτων</div>
+            
+            <h1 class="title">Κοινωνικο-Συναισθηματική<br>Ενδυνάμωση ΑμεΑ</h1>
+            
+            <p class="subtitle">Αποτελέσματα βιωματικής παρέμβασης στο ΚΔΗΦ<br>«Ο Κήπος της Λυσούς»</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <div class="research-highlight">
+                    <h2>🎯 Κύρια Ευρήματα Έρευνας</h2>
+                    
+                    <div class="key-finding">
+                        <div class="finding-label">Στατιστικά Σημαντική Βελτίωση</div>
+                        <div class="finding-value">p < .001</div>
+                        <div class="finding-desc">Και στις τρεις πηγές αξιολόγησης (ωφελούμενοι, εκπαιδευτές, παρατηρητής)</div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-number">d=2.45</span>
+                            <span class="stat-label">Effect Size<br>Ωφελούμενοι</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">n=30</span>
+                            <span class="stat-label">Συμμετέχοντες<br>(complete cases)</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Φάσεις<br>Αξιολόγησης</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">11</span>
+                            <span class="stat-label">Δείκτες<br>Μέτρησης</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 20px; background: #f0fdf4; border-radius: 12px; border-left: 4px solid #10b981;">
+                        <div style="font-size: 14px; color: #047857; font-weight: 700; margin-bottom: 8px;">
+                            ΒΕΛΤΙΩΣΗ ΜΕΣΩΝ ΤΙΜΩΝ (Φάση Α → Φάση Γ)
+                        </div>
+                        <div style="font-size: 15px; color: #065f46; line-height: 1.6;">
+                            <strong>Ωφελούμενοι:</strong> 3.24 → 4.75<br>
+                            <strong>Εκπαιδευτές:</strong> 2.94 → 3.56<br>
+                            <strong>Παρατηρητής:</strong> 2.17 → 2.60
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="methodology">
+                    <h3>🔬 Μεθοδολογία</h3>
+                    
+                    <div class="method-item">
+                        <div class="method-icon">✓</div>
+                        <div class="method-text"><strong>Τριπλή αξιολόγηση:</strong> Ωφελούμενοι, Εκπαιδευτές, Ανεξάρτητος Παρατηρητής</div>
+                    </div>
+                    
+                    <div class="method-item">
+                        <div class="method-icon">✓</div>
+                        <div class="method-text"><strong>Στατιστική ανάλυση:</strong> Paired t-tests, Cohen's d, Friedman, Bonferroni</div>
+                    </div>
+                    
+                    <div class="method-item">
+                        <div class="method-icon">✓</div>
+                        <div class="method-text"><strong>Εσωτερική συνοχή:</strong> Cronbach's α > .85 σε όλες τις φάσεις</div>
+                    </div>
+                    
+                    <div class="method-item">
+                        <div class="method-icon">✓</div>
+                        <div class="method-text"><strong>Κλίμακα:</strong> Ερωτηματολόγιο 11 δεικτών, Likert 1–5</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="event-details">
+                    <div class="detail-row">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-text">
+                            <div class="detail-label">Ημερομηνία</div>
+                            <div class="detail-value">Σάββατο 7 Ιουνίου 2026</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-icon">🕐</div>
+                        <div class="detail-text">
+                            <div class="detail-label">Ώρα</div>
+                            <div class="detail-value">09:00 – 14:00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-icon">📍</div>
+                        <div class="detail-text">
+                            <div class="detail-label">Τοποθεσία</div>
+                            <div class="detail-value">Πνευματικό Κέντρο<br>Καλαμάτας</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 20px; background: white; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 16px; color: #92400e; font-weight: 700; margin-bottom: 10px;">
+                            ΕΛΕΥΘΕΡΗ ΕΙΣΟΔΟΣ
+                        </div>
+                        <div style="font-size: 14px; color: #78716c;">
+                            Απαιτείται εγγραφή μέσω QR code
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
+                    <h3 style="color: #2c5f8d; font-size: 22px; margin-bottom: 20px; font-weight: 700;">
+                        📋 Περιεχόμενο Ημερίδας
+                    </h3>
+                    
+                    <div style="font-size: 15px; color: #334155; line-height: 2;">
+                        ✓ Παρουσίαση ερευνητικών αποτελεσμάτων<br>
+                        ✓ Μεθοδολογία & στατιστική ανάλυση<br>
+                        ✓ Βιωματική διάσταση (μαρτυρίες)<br>
+                        ✓ Πολιτικές & προοπτικές ενσωμάτωσης<br>
+                        ✓ Στρογγυλή τράπεζα & διάλογος
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 20px; padding: 25px; border: 2px solid #3b82f6;">
+                    <div style="font-size: 15px; color: #1e40af; font-weight: 700; margin-bottom: 12px; text-align: center;">
+                        ΟΜΙΛΗΤΕΣ
+                    </div>
+                    <div style="font-size: 14px; color: #1e3a8a; line-height: 1.8; text-align: center;">
+                        Καθ. Θ. Κοτσιλιέρης (Επιβλέπων)<br>
+                        Ερευνητική Ομάδα Παν/μιου<br>
+                        Διεύθυνση ΚΔΗΦ<br>
+                        Εκπρόσωποι Τοπικής Αυτοδιοίκησης<br>
+                        Εκπρόσωποι Υπουργείου
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="contact-info">
+                <strong>Επικοινωνία & Εγγραφές:</strong><br>
+                📧 kipos.lysous@example.gr<br>
+                📱 +30 27210 XXXXX<br>
+                🌐 www.kipos-lysous.gr
+            </div>
+            
+            <div class="qr-section">
+                <div class="qr-placeholder">
+                    QR CODE<br>ΕΓΓΡΑΦΗΣ
+                </div>
+                <div class="qr-text">#ΚήποςΛυσούς2026</div>
+            </div>
+            
+            <div style="text-align: right; font-size: 14px; line-height: 1.8;">
+                <strong style="color: #fbbf24;">Υπό την Αιγίδα:</strong><br>
+                Δήμος Καλαμάτας<br>
+                Πανεπιστήμιο Πελοποννήσου<br>
+                Υπουργείο Εργασίας & Κοινων. Υποθέσεων
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-print on load (optional)
+        // window.onload = () => window.print();
+    </script>
+</body>
+</html>
