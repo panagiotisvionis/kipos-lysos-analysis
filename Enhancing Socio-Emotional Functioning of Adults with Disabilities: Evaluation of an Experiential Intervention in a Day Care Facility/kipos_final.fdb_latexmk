@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex kipos_final"] 1777391648.58599 "kipos_final.aux" "kipos_final.bbl" "kipos_final" 1777404557.86226 0
-  "./references.bib" 1777391647.45503 13027 8ac653f186d9c81339c93cc906e2776e ""
+["bibtex kipos_final"] 1779176228.52117 "kipos_final.aux" "kipos_final.bbl" "kipos_final" 1779176230.26601 0
+  "./references.bib" 1779175629.27571 13544 88e5ffc6063ee0e6babff2cdd804d0f3 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "kipos_final.aux" 1777404557.20815 6449 3b2af299a38245fa9eb71704bd815077 "pdflatex"
+  "kipos_final.aux" 1779176229.90288 6513 11ee7c5c0a81c08f5d34c0d180df2759 "pdflatex"
   (generated)
   "kipos_final.bbl"
   "kipos_final.blg"
   (rewritten before read)
-["pdflatex"] 1777404555.00148 "/home/lysos/Desktop/Panagiotis/kipos/Έρευνα/Enhancing Socio-Emotional Functioning of Adults with Disabilities: Evaluation of an Experiential Intervention in a Day Care Facility/kipos_final.tex" "kipos_final.pdf" "kipos_final" 1777404557.86262 0
+["pdflatex"] 1779176228.68987 "/home/lysos/Desktop/Panagiotis/kipos/Έρευνα/Enhancing Socio-Emotional Functioning of Adults with Disabilities: Evaluation of an Experiential Intervention in a Day Care Facility/kipos_final.tex" "kipos_final.pdf" "kipos_final" 1779176230.26622 0
   "/etc/texmf/web2c/texmf.cnf" 1773950572.01578 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/lysos/Desktop/Panagiotis/kipos/Έρευνα/Enhancing Socio-Emotional Functioning of Adults with Disabilities: Evaluation of an Experiential Intervention in a Day Care Facility/kipos_final.tex" 1777404553.42224 51304 dcadd833d6a4a6d678e2896e61a94eb5 ""
+  "/home/lysos/Desktop/Panagiotis/kipos/Έρευνα/Enhancing Socio-Emotional Functioning of Adults with Disabilities: Evaluation of an Experiential Intervention in a Day Care Facility/kipos_final.tex" 1779176213.59357 55138 e3962d56ae9710c62afb6005ed44302b ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc" 1698694482 3136 bbe665bd0bb471a2da1e8fd326cff9fa ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1698694482 2914 fdbc4a54b9bc76f4551b5303f2737d33 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
@@ -127,9 +127,9 @@
   "figures/forest_effects.png" 1777297726 70716 a2dd457fc2263ed214909a14e0ad4d02 ""
   "figures/trajectory_scores.png" 1777297726 114403 61438194d09da910421c1dce5de3f857 ""
   "figures/violin_scores.png" 1777297726 89876 453dc4ec04fdfe118039c9e7be97d8ec ""
-  "kipos_final.aux" 1777404557.20815 6449 3b2af299a38245fa9eb71704bd815077 "pdflatex"
-  "kipos_final.bbl" 1777391648.72872 10178 38389b4ff1f80c1264c395a546e98bdf "bibtex kipos_final"
-  "kipos_final.tex" 1777404553.42224 51304 dcadd833d6a4a6d678e2896e61a94eb5 ""
+  "kipos_final.aux" 1779176229.90288 6513 11ee7c5c0a81c08f5d34c0d180df2759 "pdflatex"
+  "kipos_final.bbl" 1779176228.68513 10135 390468f53769f56877c03155f31af448 "bibtex kipos_final"
+  "kipos_final.tex" 1779176213.59357 55138 e3962d56ae9710c62afb6005ed44302b ""
   (generated)
   "kipos_final.aux"
   "kipos_final.log"

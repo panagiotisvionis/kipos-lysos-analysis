@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.19)  28 APR 2026 22:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.19)  19 MAY 2026 10:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -605,148 +605,151 @@ Package pdftex.def Info: figures/conceptual_model.jpg  used on input line 75.
 [2]
 Underfull \vbox (badness 5302) has occurred while \output is active []
 
+
+Underfull \vbox (badness 1571) has occurred while \output is active []
+
  [3 <./figures/conceptual_model.jpg>] [4
 
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 8.0pt on input line 162.
+(Font)              scaled to size 8.0pt on input line 175.
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Participatory in-clu-sion
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 162--162
+Underfull \hbox (badness 6173) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 No pri-mary data; het-ero-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Semi-structured
  []
 
 
-Underfull \hbox (badness 7777) in paragraph at lines 162--162
+Underfull \hbox (badness 7777) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Behavioral and so-cial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Heterogeneous mea-sures;
  []
 
 
-Underfull \hbox (badness 3590) in paragraph at lines 162--162
+Underfull \hbox (badness 3590) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 lack of uni-fied the-o-ret-i-cal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 frame-work; lim-ited adult
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Emotional com-pe-ten-cies
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Pre--post as-sess-ment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 (quan-ti-ta-tive and
  []
 
 
-Underfull \hbox (badness 4060) in paragraph at lines 162--162
+Underfull \hbox (badness 4060) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 gen-er-al-iz-abil-ity; no con-trol
  []
 
 
-Underfull \hbox (badness 6364) in paragraph at lines 162--162
+Underfull \hbox (badness 6364) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 No pri-mary sam-ple; lack
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 of com-pa-ra-ble eval-u-a-tions
  []
 
 
-Underfull \hbox (badness 6477) in paragraph at lines 162--162
+Underfull \hbox (badness 6477) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 McNaughton et al.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Social par-tic-i-pa-tion and
  []
 
 
-Underfull \hbox (badness 4013) in paragraph at lines 162--162
+Underfull \hbox (badness 4013) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Adults with ID; neu-
  []
 
 
-Underfull \hbox (badness 8189) in paragraph at lines 162--162
+Underfull \hbox (badness 8189) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 ropsy-cho-log-i-cal as-sess-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Socio-emotional
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Phenomenological
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 162--162
+Underfull \hbox (badness 2753) in paragraph at lines 175--175
 []$\OML/ntxmi/m/it/9 n \U/ntxmia/m/it/9 = \OT1/minntx/m/n/9 30$ \T1/ntxtlf/m/n/9 adults with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 in-tel-lec-tual and
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 162--162
+Underfull \hbox (badness 1810) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 in a DCC (mean age
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 162--162
+Underfull \hbox (badness 2173) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 not re-ported; com-plete
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 SEL, EI, Vy-got-sky,
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 162--162
+Underfull \hbox (badness 1565) in paragraph at lines 175--175
 []\T1/ntxtlf/m/n/9 Three-source eval-u-a-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 (self-report, ed-u-ca-tors,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
 \T1/ntxtlf/m/n/9 in-de-pen-dent ob-server)
  []
 
 
-Overfull \hbox (36.72285pt too wide) in paragraph at lines 162--162
+Overfull \hbox (36.72285pt too wide) in paragraph at lines 175--175
  [][] 
  []
 
@@ -759,41 +762,53 @@ Overfull \hbox (876.0pt too wide) has occurred while \output is active
 
 
 
-] [6
+]
+Underfull \hbox (badness 2057) in paragraph at lines 229--248
+[]\T1/ntxtlf/m/n/10 The as-sess-ment in-stru-ment was de-vel-oped specif-i-cally
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 229--248
+\T1/ntxtlf/m/n/10 for this study by the lead re-searcher and psychologist-
+ []
+
+[6
 
 
 ]
 <figures/boxplot_scores.png, id=32, 999.735pt x 427.8384pt>
 File: figures/boxplot_scores.png Graphic file (type png)
 <use figures/boxplot_scores.png>
-Package pdftex.def Info: figures/boxplot_scores.png  used on input line 264.
+Package pdftex.def Info: figures/boxplot_scores.png  used on input line 297.
 (pdftex.def)             Requested size: 516.0pt x 220.8321pt.
 <figures/violin_scores.png, id=34, 994.4352pt x 427.8384pt>
 File: figures/violin_scores.png Graphic file (type png)
 <use figures/violin_scores.png>
-Package pdftex.def Info: figures/violin_scores.png  used on input line 273.
+Package pdftex.def Info: figures/violin_scores.png  used on input line 306.
 (pdftex.def)             Requested size: 516.0pt x 222.0072pt.
 <figures/forest_effects.png, id=35, 714.9912pt x 353.1594pt>
 File: figures/forest_effects.png Graphic file (type png)
 <use figures/forest_effects.png>
-Package pdftex.def Info: figures/forest_effects.png  used on input line 301.
+Package pdftex.def Info: figures/forest_effects.png  used on input line 334.
 (pdftex.def)             Requested size: 516.0pt x 254.88887pt.
  [7]
-<figures/trajectory_scores.png, id=40, 640.3122pt x 424.4658pt>
-File: figures/trajectory_scores.png Graphic file (type png)
-<use figures/trajectory_scores.png>
-Package pdftex.def Info: figures/trajectory_scores.png  used on input line 318.
-(pdftex.def)             Requested size: 516.0pt x 342.08609pt.
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./figures/boxplot_scores.png> <./figures/violin_scores.png>]
-Underfull \vbox (badness 2772) has occurred while \output is active []
+<figures/trajectory_scores.png, id=45, 640.3122pt x 424.4658pt>
+File: figures/trajectory_scores.png Graphic file (type png)
+<use figures/trajectory_scores.png>
+Package pdftex.def Info: figures/trajectory_scores.png  used on input line 366.
+(pdftex.def)             Requested size: 516.0pt x 342.08609pt.
+ [9 <./figures/forest_effects.png>] [10 <./figures/trajectory_scores.png>]
+Underfull \vbox (badness 1895) has occurred while \output is active []
 
- [9 <./figures/forest_effects.png>] [10 <./figures/trajectory_scores.png>] (./kipos_final.bbl [11]) [12] (./kipos_final.aux)
+ [11] (./kipos_final.bbl [12]) [13
+
+] (./kipos_final.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -801,17 +816,17 @@ L3 programming layer <2020/03/25>
  ) 
 Here is how much of TeX's memory you used:
  8676 strings out of 474222
- 128971 string characters out of 5748733
- 1952975 words of memory out of 5000000
+ 128974 string characters out of 5748733
+ 1954975 words of memory out of 5000000
  30768 multiletter control sequences out of 15000+600000
  740259 words of font info for 192 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,11n,93p,1700b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on kipos_final.pdf (12 pages, 551074 bytes).
+Output written on kipos_final.pdf (13 pages, 555227 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
