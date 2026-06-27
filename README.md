@@ -1,30 +1,79 @@
-# Statistical Analysis — ΚΔΗΦ «Ο Κήπος της Λυσούς»
+# Statistical Analysis — Lyso's Garden Day Care Center
 
-**Κοινωνικο-Συναισθηματική Ενδυνάμωση Ενηλίκων με Αναπηρίες**
+**Enhancing Socio-Emotional Functioning of Adults with Disabilities**
 
-Κώδικας ανάλυσης για το paper:
-> *Κοινωνικο-Συναισθηματική Ενδυνάμωση Ενηλίκων με Αναπηρίες σε ΚΔΗΦ — «Ο Κήπος της Λυσούς»*
+Analysis code and manuscript files for the paper submitted to *Journal of Applied Research in Intellectual Disabilities* (JARID, Wiley):
 
----
-
-## Περιγραφή
-
-Το repository περιέχει τον κώδικα Python για την πλήρη στατιστική ανάλυση και τη δημιουργία γραφημάτων που χρησιμοποιήθηκαν στη μελέτη. Η ανάλυση αφορά την αξιολόγηση βιωματικού προγράμματος κοινωνικο-συναισθηματικής ενδυνάμωσης σε τριπλή πηγή αξιολόγησης (ωφελούμενοι, εκπαιδευτές, ανεξάρτητος παρατηρητής) σε τρεις χρονικές φάσεις.
+> Vionis, P., Christidou, E., Christidou, S., & Kotsilieris, T. (submitted). *Enhancing Socio-Emotional Functioning of Adults with Disabilities: Evaluation of an Experiential Intervention in a Day Care Facility.*
 
 ---
 
-## Αρχεία
+## Repository Contents
 
-| Αρχείο | Περιγραφή |
-|--------|-----------|
-| `statistical_analysis.py` | Πλήρης στατιστική ανάλυση (Cronbach's α, paired t-tests, Cohen's d, Wilcoxon, Friedman, Bonferroni) |
-| `figures_generation.py` | Δημιουργία 7 γραφημάτων (boxplot, violin, trajectory, forest plot, Q-Q plots, heatmap, pairwise effects) |
-
-> **Σημείωση:** Τα δεδομένα δεν συμπεριλαμβάνονται λόγω προστασίας προσωπικών δεδομένων (GDPR).
+```
+├── manuscript/
+│   ├── kipos_jarid.tex              # Main manuscript (JARID submission)
+│   ├── kipos_jarid_titlepage.tex    # Title page (authors, ORCIDs, statements)
+│   ├── kipos_jarid_coverletter.tex  # Cover letter
+│   ├── kipos_final.tex              # Full version (with author details)
+│   ├── references.bib               # BibTeX bibliography
+│   └── figures/                     # All manuscript figures (English)
+│       ├── conceptual_model.jpg
+│       ├── boxplot_scores.png
+│       ├── violin_scores.png
+│       ├── forest_effects.png
+│       ├── trajectory_scores.png
+│       ├── qqplot_normality.png
+│       └── greek/                   # Greek-language figure versions
+├── scripts/
+│   ├── statistical_analysis.py      # Full statistical pipeline
+│   ├── figures_generation_en.py     # English figure generation
+│   └── figures_generation.py        # Greek figure generation
+└── data/
+    └── action_responses.xlsx        # Dataset (anonymised)
+```
 
 ---
 
-## Απαιτήσεις
+## Study Overview
+
+A three-phase longitudinal evaluation of an arts-based socio-emotional empowerment program ("The Universe Within Us") implemented over three months at a Day Care Center (DCC) serving adults with intellectual and psychosocial disabilities.
+
+**Design:** Three measurement phases (A, B, C) × three evaluator sources (beneficiary self-reports, trainer/educator assessments, independent observer ratings).
+
+**Sample:** n = 30 adults (complete longitudinal sample); mean age 36.8 years (SD = 10.0).
+
+**Program:** Theatre, music, movement, ceramics, narrative dialogue; grounded in Social and Emotional Learning (SEL), emotional intelligence theory, Vygotsky's socio-cultural theory, and Yalom's group therapeutic factors.
+
+---
+
+## Key Results
+
+| Evaluator | Phase A Mean | Phase C Mean | Cohen's *d* | 95% CI | *p* |
+|---|---|---|---|---|---|
+| Beneficiaries (self-report) | 3.24 | 4.75 | 2.45 | [1.73, 3.16] | < .001 |
+| Trainers / Educators | 2.85 | 3.56 | 1.35 | [0.86, 1.85] | < .001 |
+| Independent Observer | 2.17 | 2.60 | 1.65 | [1.10, 2.20] | < .001 |
+
+Friedman tests confirmed significant progressive change across all three phases (all χ² > 40, p < .001). Bonferroni-corrected pairwise comparisons showed significant differences between every consecutive phase pair (all p < .003).
+
+---
+
+## Statistical Methods
+
+| Test | Purpose |
+|---|---|
+| Cronbach's α | Internal consistency per evaluator category (0.84–0.95) |
+| Shapiro–Wilk | Normality of difference scores |
+| Paired *t*-test | Phase A vs Phase C comparison |
+| Cohen's *d* + 95% CI | Effect size estimation |
+| Wilcoxon signed-rank | Non-parametric confirmatory test (where normality not met) |
+| Friedman test | Longitudinal change across three phases |
+| Bonferroni pairwise *t*-tests | Phase A–B, B–C, A–C comparisons (α_adj = .017) |
+
+---
+
+## Requirements
 
 ```
 Python 3.9+
@@ -35,85 +84,45 @@ numpy
 openpyxl
 ```
 
-Εγκατάσταση:
+Install dependencies:
+
 ```bash
-pip install pandas scipy matplotlib openpyxl
+pip install pandas scipy matplotlib numpy openpyxl
 ```
 
 ---
 
-## Χρήση
+## Usage
 
-1. Τοποθέτησε το αρχείο δεδομένων (`action_1_responses_30complete.xlsx`) στον ίδιο φάκελο με τα scripts.
-
-2. Τρέξε την ανάλυση:
 ```bash
-python statistical_analysis.py
+# Run full statistical analysis
+python scripts/statistical_analysis.py
+
+# Generate English figures
+python scripts/figures_generation_en.py
+
+# Generate Greek figures
+python scripts/figures_generation.py
 ```
 
-3. Δημιούργησε τα γραφήματα:
-```bash
-python figures_generation.py
-```
-Τα γραφήματα αποθηκεύονται αυτόματα στον φάκελο `figures/`.
+Figures are saved automatically to `manuscript/figures/`.
 
 ---
 
-## Μεθοδολογία
+## Data Availability
 
-### Δείγμα
-- **Ωφελούμενοι:** n = 30 (complete cases, και στις 3 φάσεις)
-- **Εκπαιδευτές:** n = 23 (complete cases, μέσος όρος 2 εκπαιδευτών ανά ωφελούμενο)
-- **Παρατηρητής:** n = 26 (complete cases)
-
-### Κλίμακα
-Ερωτηματολόγιο 11 δεικτών, κλίμακα Likert 1–5 (στο αρχείο αποθηκεύεται ως 0–4, μετατρέπεται αυτόματα).
-
-### Στατιστικοί έλεγχοι
-| Έλεγχος | Σκοπός |
-|---------|--------|
-| Cronbach's α | Εσωτερική συνοχή ανά αξιολογητή και φάση |
-| Shapiro-Wilk | Έλεγχος κανονικότητας διαφορών (Φάση Γ − Φάση Α) |
-| Paired t-test | Σύγκριση Φάση Α vs Φάση Γ |
-| Cohen's d + 95% CI | Μέγεθος επίδρασης (delta method) |
-| Wilcoxon signed-rank | Non-parametric backup (όπου Shapiro-Wilk p < .05) |
-| Friedman test | Διαχρονική μεταβολή (3 φάσεις) |
-| Bonferroni pairwise | Ζευγαρωτές συγκρίσεις (α_adj = .017) |
+The anonymised dataset (`data/action_responses.xlsx`) is included in this repository. Raw individual-level data are available from the corresponding author upon reasonable request.
 
 ---
 
-## Γραφήματα
+## License
 
-| Αρχείο | Περιγραφή |
-|--------|-----------|
-| `fig1_boxplot.png` | Boxplots ανά αξιολογητή και φάση |
-| `fig2_violin.png` | Violin plots ανά αξιολογητή και φάση |
-| `fig3_trajectory.png` | Εξελικτική πορεία M ± 95% CI |
-| `fig4_forest.png` | Forest plot Cohen's d (Φάση Α→Γ) |
-| `fig5_qqplot.png` | Q-Q plots κανονικότητας |
-| `fig6_heatmap.png` | Heatmap ανά ερώτηση (Ωφελούμενοι) |
-| `fig7_pairwise_effects.png` | Effect sizes για όλους τους συνδυασμούς φάσεων |
+MIT License — Free to use with attribution.
 
 ---
 
-## Αποτελέσματα (σύνοψη)
+## Contact
 
-| Αξιολογητής | M_A | M_G | t | d | 95% CI |
-|-------------|-----|-----|---|---|--------|
-| Ωφελούμενοι (n=30) | 3.24 | 4.75 | −13.41*** | 2.45 | [1.73, 3.16] |
-| Εκπαιδευτές (n=23) | 2.94 | 3.56 | −6.04*** | 1.26 | [0.71, 1.81] |
-| Παρατηρητής (n=26) | 2.17 | 2.60 | −7.83*** | 1.53 | [0.97, 2.10] |
-
-**** p < .001
-
----
-
-## Άδεια Χρήσης
-
-MIT License — Ελεύθερη χρήση με αναφορά στην πηγή.
-
----
-
-## Επικοινωνία
-
-Για ερωτήσεις σχετικά με τη μεθοδολογία, επικοινωνήστε με τους συγγραφείς μέσω GitHub Issues.
+Panagiotis Vionis  
+Department of Business and Organization Administration, University of Peloponnese  
+panagiotisvionis@gmail.com
