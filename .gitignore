@@ -8,5 +8,8 @@ venv_drasi/
 .DS_Store
 Thumbs.db
 
+# Compiled PDF output — not tracked
+*.pdf
+
 # Allow data files
 !data/action_responses.xlsx
