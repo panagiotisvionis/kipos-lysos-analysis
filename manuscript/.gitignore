@@ -21,9 +21,8 @@
 # Converted intermediate files
 *.odt
 
-# Word files (generated from PDF)
-*.docx
-
-# Override parent .gitignore to include Excel data files
-!files/action_responses.xlsx
-!files/action_1_responses_n30_imputed.xlsx
+# Word files (generated from PDF - keep only existing archive)
+kipos_jarid*.docx
+kipos_final*.docx
+kipos_jarid_titlepage*.docx
+kipos_jarid_coverletter*.docx

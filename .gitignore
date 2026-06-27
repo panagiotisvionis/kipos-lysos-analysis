@@ -1,10 +1,12 @@
 *.xlsx
 *.xls
 *.csv
-figures/
 __pycache__/
 *.pyc
 venv_drasi/
 .venv/
 .DS_Store
 Thumbs.db
+
+# Allow data files
+!data/action_responses.xlsx
