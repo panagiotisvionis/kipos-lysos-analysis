@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.dvi
+*.idv
+*.lg
+*.tmp
+*.xref
+*.4ct
+*.4tc
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+
+# LibreOffice lock files
+.~lock.*
+
+# Converted intermediate files
+*.odt
+
+# Word files (generated from PDF)
+*.docx
+
+# Override parent .gitignore to include Excel data files
+!files/action_responses.xlsx
+!files/action_1_responses_n30_imputed.xlsx
