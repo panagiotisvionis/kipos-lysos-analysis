@@ -306,3 +306,17 @@ Cover letter προετοιμάστηκε από την αρχή για RDD κα
 
 ### Σειρά εκτέλεσης αν εγκριθούν όλα
 A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελευταίο, γιατί αγγίζει πολλές γραμμές) → compile → commit.
+
+## Εκτέλεση εγκεκριμένων διορθώσεων — Claude, 2026-10-14 13:55
+
+Εφαρμόστηκαν ακριβώς τα εγκεκριμένα, τίποτα άλλο:
+- **A1** Vanutelli (2023): παράγραφος §2 ξαναγράφτηκε ώστε να περιγράφει τη σωστή μελέτη (8 ενήλικες με ID, emotional skills training, COVID-19). Συμφωνεί πλέον με Table 1 και .bib.
+- **A2** §3.3: αφαιρέθηκε «Each month corresponded to one evaluation phase»· διατυπώθηκε A=baseline, B=τέλος 1ου μήνα, C=τέλος 3ου μήνα.
+- **A3(α)** §3.1: η παράγραφος δεδομένων δηλώνει πλήρη self-reports, item-wise averaging δύο εκπαιδευτών (μία βαθμολογία όπου απάντησε ένας), 2/4/4 ελλείπουσες observer εγγραφές A/B/C (3.7%) αντικατεστημένες με phase-level item means, n=30 σε κάθε κατηγορία. Δεδομένα/scripts/αριθμοί ΑΜΕΤΑΒΛΗΤΑ.
+- **CRediT** στο title page, με τους ίδιους ρόλους όπως εγκρίθηκαν· διατηρήθηκε η πρόταση ότι κανένας συγγραφέας δεν έδωσε ratings.
+- **Fig. 1** ξαναφτιάχτηκε ως vector: πηγή `figures/conceptual_model.tex` (TikZ standalone), έξοδος `figures/conceptual_model.pdf`. Ίδιο περιεχόμενο, ίδια τοπολογία (κεντρικός κόμβος, 4 θέματα, 14 υπο-στοιχεία, ίδιες συνδέσεις). Το TeX φορτώνει το PDF. Το παλιό .jpg παραμένει στον φάκελο ως αναφορά.
+- **APA 7**: `natbib/apalike` → `biblatex` (`style=apa`, `backend=biber`), `\citep`→`\parencite` (34), `\citet`→`\textcite` (22), `\bibliography`→`\printbibliography`, προστέθηκε `csquotes`. Citation keys και βιβλιογραφικά στοιχεία αμετάβλητα· μόνο `casel2020`: `howpublished`→`url` (ίδια τιμή, σωστό πεδίο για biblatex).
+
+**Compile:** το sandbox του Claude ΔΕΝ διαθέτει biblatex/biber (δεν εγκαθίστανται). Έγινε δομικό compile με τα biblatex macros σε stub: **0 errors, 0 undefined cross-references, 28 σελίδες, 0 raster εικόνες** (όλα τα figures vector). **Η πλήρης compile με biber και η επιβεβαίωση 0 undefined citations ΕΚΚΡΕΜΕΙ — να γίνει από το ChatGPT** (που έχει πλήρες TeX Live): `pdflatex → biber kipos_rdd → pdflatex → pdflatex`.
+
+Σειρά compile για όλους εφεξής: `pdflatex kipos_rdd && biber kipos_rdd && pdflatex kipos_rdd && pdflatex kipos_rdd`. Το `latexmk -pdf kipos_rdd` το κάνει αυτόματα.
