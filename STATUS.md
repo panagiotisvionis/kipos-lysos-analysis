@@ -133,3 +133,44 @@ Shapiro–Wilk: 0.945/.121 · 0.950/.172 · 0.904/.011 — Friedman χ²: 44.86 
 
 ## Διόρθωση — Claude, 2026-10-14 13:20
 Το κανονικό αρχείο είχε αγνοηθεί από το `.gitignore` (`*.xlsx`) και δεν μπήκε στο commit 57f57b4. Διορθώθηκε το `.gitignore` και ανέβηκε το `data/action_responses_pseudonymized.xlsx`. Επαληθεύτηκε ξανά ότι `scripts/statistical_analysis.py` τρέχει από τον φάκελο `scripts/` και δίνει τους Σταθερούς αριθμούς.
+
+
+## Επαλήθευση ChatGPT — 2026-10-14 (739be32)
+
+Εκτελέστηκε αυτούσιο το `scripts/statistical_analysis.py` από τον φάκελο `scripts/` στο commit `739be32ecf25f1715d04c3a5c96776ed03089ca0`, με το κανονικό `data/action_responses_pseudonymized.xlsx`. Όλοι οι Σταθεροί αριθμοί συμφωνούν στην αναφερόμενη ακρίβεια.
+
+| Source | n | M_A | M_C | t(29) | d | 95% CI |
+|---|---|---|---|---|---|---|
+| Beneficiaries | 30 | 3.24 | 4.75 | −13.41 | 2.45 | [1.73, 3.16] |
+| Trainers | 30 | 2.85 | 3.56 | −7.40 | 1.35 | [0.86, 1.85] |
+| Observer | 30 | 2.17 | 2.60 | −9.05 | 1.65 | [1.10, 2.20] |
+
+Shapiro–Wilk W/p: .945/.121, .950/.172, .904/.011. Friedman χ²(2): 44.864, 44.667, 40.265 (44.86, 44.67, 40.27), όλα p<.001. Wilcoxon W: 0, 7, 0, όλα p<.001.
+
+Cronbach α ανά A/B/C: Beneficiaries .898/.945/.687; Trainers .956/.957/.935; Observer .897/.905/.852. Ο αριθμητικός μέσος των τριών α, με την ίδια συνάρτηση του script και χωρίς αλλαγή του, είναι .843520/.949415/.884669 → .84/.95/.88. Επιβεβαιώνονται ως μέσοι όροι ανά source, όχι ως ενιαίο pooled α.
+
+Δεν διαβάστηκε το legacy dataset. Δεν άλλαξαν manuscript, scripts ή data.
+
+## Έλεγχος προετοιμασίας RDD — ChatGPT, 2026-10-14
+
+**Περιορισμός επαλήθευσης:** Η επίσημη journal-specific Guide for Authors επέστρεψε HTTP 403 τόσο στο ScienceDirect όσο και στο παλιό Elsevier URL. Δεν δηλώνεται πλήρης συμμόρφωση RDD. Δεν υιοθετήθηκαν αντικρουόμενα όρια λέξεων από τρίτες ιστοσελίδες.
+
+Επίσημος οδηγός που πρέπει να ελεγχθεί:
+https://www.sciencedirect.com/journal/research-in-developmental-disabilities/publish/guide-for-authors
+
+| Έλεγχος | Εύρημα / εκκρεμότητα |
+|---|---|
+| Word limit | Το ακριβές τρέχον όριο RDD και τι περιλαμβάνει παραμένουν ανεπιβεβαίωτα. Το title page δηλώνει περίπου 5,500 χωρίς references/tables/captions· απαιτείται τελική καταμέτρηση με τον κανόνα του επίσημου οδηγού. |
+| Structured abstract | Υπάρχει Background/Method/Results/Conclusions. Το απαιτούμενο όριο και οι ακριβείς επικεφαλίδες RDD δεν επαληθεύτηκαν. |
+| Highlights | Δεν υπάρχει χωριστό αρχείο Highlights. Το Lay Summary μέσα στο manuscript δεν είναι χωριστό Highlights source file. Η γενική επίσημη οδηγία Elsevier προβλέπει 3–5 σημεία, έως 85 χαρακτήρες το καθένα με κενά, σε χωριστό επεξεργάσιμο αρχείο. Η υποχρεωτικότητα/χρονική απαίτηση για RDD μένει προς επιβεβαίωση. |
+| Declarations | Υπάρχουν ethics/consent, COI, funding, data availability και author contributions στο title page. Η data availability δήλωση “dataset available upon reasonable request” δεν περιγράφει ότι το ψευδωνυμοποιημένο analysis dataset είναι ήδη δημόσιο στο repo. Καταγράφεται για απόφαση συγγραφέα, χωρίς αλλαγή. Χρειάζεται έλεγχος της τρέχουσας απαίτησης για δήλωση χρήσης generative AI και της πραγματικής χρήσης στη συγγραφή. |
+| Figures | Τα τέσσερα χρησιμοποιούμενα PNG έχουν περίπου 150 dpi metadata: boxplot 2075×888, violin 2064×888, forest 1484×733, trajectory 1329×881. Το conceptual_model.jpg είναι 800×464 χωρίς DPI metadata. Στο πλάτος 16 cm του TeX οι πραγματικές αναλύσεις είναι περίπου 329/328/236/211/127 dpi αντίστοιχα. Η δήλωση STATUS “5 figures, 300 DPI” δεν τεκμηριώνεται για όλα τα αρχεία. |
+| Figure format/resolution | Οι γενικές επίσημες οδηγίες Elsevier συνιστούν EPS/PDF για vector και TIFF/JPEG για raster· 300 dpi halftones, 500 dpi combination art, 1000 dpi bitmap line art στην τελική διάσταση. Τα διαγράμματα χρειάζονται κατάλληλο export από τις αρχικές πηγές, κατά προτίμηση vector PDF, όχι απλή αλλαγή DPI metadata ή upsampling. Η ειδική αποδοχή PNG από το τρέχον RDD guide παραμένει ανεπιβεβαίωτη. |
+| Method reporting | Παραμένουν οι ήδη καταγεγραμμένες διευκρινίσεις για observer imputation 2/4/4, trainer averaging και μέσο α τριών φάσεων. Καμία αλλαγή χωρίς έγκριση. |
+
+Επίσημες πηγές Elsevier που ήταν προσβάσιμες:
+- https://www.elsevier.support/publishing/answer/how-do-i-include-highlights-with-my-manuscript
+- https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-sizing
+- https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview
+
+Το cover letter δόθηκε στον χρήστη ως draft, χωρίς δημιουργία ή commit αρχείου.
