@@ -34,7 +34,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ─── ΠΑΡΑΜΕΤΡΟΙ — ΑΛΛΑΞΕ ΕΔΩ ΑΝ ΧΡΕΙΑΣΤΕΙ ────────────────────────────────────
-DATA_FILE  = 'action_1_responses_30complete.xlsx'  # path αρχείου δεδομένων
+DATA_FILE = '../data/action_responses_pseudonymized.xlsx'  # path αρχείου δεδομένων
 OUTPUT_DIR = 'figures'                              # φάκελος εξόδου γραφημάτων
 
 # ─── ΣΤΑΘΕΡΕΣ ──────────────────────────────────────────────────────────────────

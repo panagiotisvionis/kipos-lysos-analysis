@@ -13,3 +13,7 @@ Thumbs.db
 
 # Allow data files
 !data/action_responses.xlsx
+
+# Private: participant identity mapping
+*PRIVATE*
+*_mapping*.csv

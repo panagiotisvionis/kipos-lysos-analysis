@@ -32,7 +32,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ── PARAMETERS — EDIT HERE IF NEEDED ─────────────────────────────────────────
-DATA_FILE  = 'action_1_responses_30complete.xlsx'  # path to data file
+DATA_FILE = '../data/action_responses_pseudonymized.xlsx'  # path to data file
 OUTPUT_DIR = 'figures'                                # output folder
 
 # ── CONSTANTS ─────────────────────────────────────────────────────────────────

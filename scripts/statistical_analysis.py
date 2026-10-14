@@ -33,7 +33,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ─── ΠΑΡΑΜΕΤΡΟΙ — ΑΛΛΑΞΕ ΕΔΩ ΑΝ ΧΡΕΙΑΣΤΕΙ ────────────────────────────────────
-DATA_FILE = 'action_1_responses_30complete.xlsx'   # path του αρχείου δεδομένων
+DATA_FILE = '../data/action_responses_pseudonymized.xlsx'   # path του αρχείου δεδομένων
 
 # ─── ΣΤΑΘΕΡΕΣ ──────────────────────────────────────────────────────────────────
 Q_COLS   = [f'Q{i}' for i in range(1, 12)]
