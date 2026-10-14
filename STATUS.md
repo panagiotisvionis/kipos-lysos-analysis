@@ -3,6 +3,7 @@
 
 > Κανόνας συντονισμού: όποιος AI/άνθρωπος δουλέψει πάνω στο paper, ενημερώνει ΑΥΤΟ το αρχείο στο τέλος.
 > Νέα συζήτηση με οποιονδήποτε ξεκινά με: «Διάβασε το STATUS.md από το repo».
+> **Σταθεροί κανόνες συγγραφέα:** (1) κανένα AI statement πουθενά· (2) το ερωτηματολόγιο μένει όπως περιγράφεται· (3) οι Σταθεροί αριθμοί δεν αλλάζουν· (4) raters ανώνυμοι, κανένας συν-συγγραφέας δεν έδωσε ratings.
 
 ## Τρέχων στόχος
 Υποβολή στο **Research in Developmental Disabilities** (Elsevier, Q1, subscription, €0 για συγγραφείς, APA style).
@@ -193,7 +194,7 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 | Lay Summary | 115 λέξεις, 4 bullets | Είναι απαίτηση JARID, όχι απαραίτητα RDD. Να αποφασιστεί αν μένει. |
 | References | 41, apalike | Το RDD χρησιμοποιεί APA 7 — το `apalike` είναι προσέγγιση, όχι ακριβές APA 7. Ελέγξτε αν απαιτείται ακριβής συμμόρφωση ή αρκεί «consistent style». |
 | Highlights | **δεν υπάρχει αρχείο** | Γενική πολιτική Elsevier: 3–5 bullets ≤85 χαρακτήρες. |
-| Generative AI statement | **απουσιάζει** | Η πολιτική Elsevier (2023+) απαιτεί δήλωση αν χρησιμοποιήθηκε AI στη συγγραφή. Έχει χρησιμοποιηθεί. |
+| Generative AI statement | — | Απόφαση συγγραφέα: δεν συμπεριλαμβάνεται. Κλειστό θέμα. |
 | Data availability | «upon reasonable request» | Αλλά το ψευδωνυμοποιημένο dataset είναι ήδη δημόσιο στο repo — η δήλωση υποτιμά τη διαφάνεια. |
 
 ### Figures — πραγματική ανάλυση στο πλάτος 16 cm
@@ -216,7 +217,7 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 
 **B. Κείμενο (χωρίς εξάρτηση από τον οδηγό):**
 3. Title page: «approximately 5,500» → «approximately 6,350 words (main text, excluding abstract, references, tables and figure captions)».
-4. Προσθήκη ενότητας `\section*{Declaration of Generative AI and AI-assisted Technologies in the Writing Process}` στο manuscript με το τυπικό Elsevier λεκτικό: ποιο εργαλείο, για τι (language editing / drafting assistance), και ότι οι συγγραφείς έλεγξαν και φέρουν πλήρη ευθύνη. **Προτεινόμενο κείμενο:** «During the preparation of this work the authors used Claude (Anthropic) and ChatGPT (OpenAI) in order to assist with language editing, structuring of sections, and verification of statistical reporting. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.»
+4. ~~AI statement~~ — **ΚΑΝΟΝΑΣ ΣΥΓΓΡΑΦΕΑ (2026-10-14): κανένα AI statement δεν μπαίνει πουθενά (manuscript, title page, cover letter). Μην το ξαναπροτείνει κανείς.**
 5. Data Availability: «The pseudonymized analysis dataset and all analysis code are publicly available at https://github.com/panagiotisvionis/kipos-lysos-analysis. The raw questionnaire export containing participant identifiers is not shared.»
 6. Νέο αρχείο `manuscript/highlights.txt` με 3–5 bullets ≤85 χαρακτήρες (πρόχειρα, προς έγκριση):
    - Arts-based SEL program evaluated in adult day care (n=30, three phases)
