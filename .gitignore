@@ -18,3 +18,6 @@ Thumbs.db
 # Private: participant identity mapping
 *PRIVATE*
 *_mapping*.csv
+
+# Vector figures are tracked
+!manuscript/figures/*.pdf
