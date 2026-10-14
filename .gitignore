@@ -12,7 +12,8 @@ Thumbs.db
 *.pdf
 
 # Allow data files
-!data/action_responses.xlsx
+!data/action_responses_pseudonymized.xlsx
+!data/legacy/action_responses_UNVERIFIED.xlsx
 
 # Private: participant identity mapping
 *PRIVATE*

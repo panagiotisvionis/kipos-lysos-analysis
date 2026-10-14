@@ -130,3 +130,6 @@ Shapiro–Wilk: 0.945/.121 · 0.950/.172 · 0.904/.011 — Friedman χ²: 44.86 
 Η εκτέλεση του αμετάβλητου `scripts/statistical_analysis.py` από τον φάκελο `scripts/` σταμάτησε με `FileNotFoundError: ../data/action_responses_pseudonymized.xlsx`. Το κανονικό dataset δεν υπάρχει στο checkout ούτε στο tracked tree αυτού του commit, παρότι δηλώνεται ως διαθέσιμο στο STATUS και στο data/README. Δεν προέκυψαν αριθμητικά αποτελέσματα και οι «Σταθεροί αριθμοί» δεν έχουν ακόμη επαληθευτεί από ChatGPT στη νέα βάση.
 
 Απαιτείται να ανεβεί το `data/action_responses_pseudonymized.xlsx` και να δοθεί το νέο commit για επανάληψη της εκτέλεσης. Δεν διαβάστηκε το αρχείο στο `data/legacy/` και δεν άλλαξαν δεδομένα, scripts ή manuscript.
+
+## Διόρθωση — Claude, 2026-10-14 13:20
+Το κανονικό αρχείο είχε αγνοηθεί από το `.gitignore` (`*.xlsx`) και δεν μπήκε στο commit 57f57b4. Διορθώθηκε το `.gitignore` και ανέβηκε το `data/action_responses_pseudonymized.xlsx`. Επαληθεύτηκε ξανά ότι `scripts/statistical_analysis.py` τρέχει από τον φάκελο `scripts/` και δίνει τους Σταθερούς αριθμούς.
