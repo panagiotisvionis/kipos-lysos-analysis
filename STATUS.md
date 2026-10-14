@@ -121,3 +121,12 @@ Shapiro–Wilk: 0.945/.121 · 0.950/.172 · 0.904/.011 — Friedman χ²: 44.86 
 - [ ] Ρητή δήλωση στο manuscript: «Complete data were available» είναι ΑΝΑΚΡΙΒΕΣ — να γραφτεί το mean imputation (2/4/4 observer records) και το averaging των 2 εκπαιδευτών
 - [ ] Ρητή δήλωση ότι τα α είναι μέσοι όροι τριών φάσεων
 - [ ] Φύλο 20Α/10Γ, ρόλοι συγγραφέων, έγγραφο έγκρισης, cover letter RDD
+
+
+## Επαλήθευση ChatGPT — 2026-10-14
+
+Ελέγχθηκε από καθαρό checkout το commit `49c5a172f7b80d7ebd509af24376160d66af5a20`. Διαβάστηκαν, με τη ζητούμενη σειρά, τα `STATUS.md`, `data/README.md` και `manuscript/kipos_rdd.tex`.
+
+Η εκτέλεση του αμετάβλητου `scripts/statistical_analysis.py` από τον φάκελο `scripts/` σταμάτησε με `FileNotFoundError: ../data/action_responses_pseudonymized.xlsx`. Το κανονικό dataset δεν υπάρχει στο checkout ούτε στο tracked tree αυτού του commit, παρότι δηλώνεται ως διαθέσιμο στο STATUS και στο data/README. Δεν προέκυψαν αριθμητικά αποτελέσματα και οι «Σταθεροί αριθμοί» δεν έχουν ακόμη επαληθευτεί από ChatGPT στη νέα βάση.
+
+Απαιτείται να ανεβεί το `data/action_responses_pseudonymized.xlsx` και να δοθεί το νέο commit για επανάληψη της εκτέλεσης. Δεν διαβάστηκε το αρχείο στο `data/legacy/` και δεν άλλαξαν δεδομένα, scripts ή manuscript.
