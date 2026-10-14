@@ -276,3 +276,33 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 - Competing interests: ο οδηγός ζητά ολοκλήρωση declarations tool και upload του παραγόμενου .doc/.docx. Η δήλωση μέσα στο manuscript/title page δεν υποκαθιστά αυτή τη διαδικασία υποβολής.
 
 Cover letter προετοιμάστηκε από την αρχή για RDD και παραδόθηκε μόνο ως κείμενο στον συγγραφέα· κανένα αρχείο ή commit cover letter.
+
+## Προτεινόμενες διορθώσεις — Claude, 2026-10-14 13:45 (ΓΙΑ ΕΓΚΡΙΣΗ, τίποτα δεν εφαρμόστηκε)
+
+### Α. Οι 3 ασυνέπειες γεγονότων (όλες επιβεβαιώθηκαν)
+
+**A1 — §2 Vanutelli et al. (2023): το κείμενο περιγράφει λάθος μελέτη.** Η παράγραφος (γραμμή 111) μιλά για DBT και δείγμα εφήβων — αυτή ήταν η περιγραφή της ανύπαρκτης αναφοράς «Behavioral Sciences» που διορθώθηκε τον Απρίλιο στο .bib, αλλά το κείμενο δεν ενημερώθηκε. Ο Πίνακας 1 και το .bib είναι σωστά (8 ενήλικες με ID, emotional skills training, COVID-19). **Πρόταση — αντικατάσταση ολόκληρης της παραγράφου:**
+> In intervention research, Vanutelli et al. (2023) conducted a pilot study of an emotional skills training program for eight adults with intellectual disability, delivered during the COVID-19 period, and reported gains in emotion recognition and expression on pre–post assessment. Their work supports the feasibility of structured, experiential emotional training with adults with intellectual disability. Its primary limitations are the very small sample, the absence of a control condition, and reliance on a single evaluator perspective, which restrict generalizability and preclude triangulation across sources.
+
+**A2 — §3.3 Research Design: «Each month corresponded to one evaluation phase» αντιφάσκει με το χρονοδιάγραμμα.** **Πρόταση — διαγραφή της πρότασης** και ελαφρά αναδιατύπωση:
+> The study followed a three-phase longitudinal design over a period of three months. Phase A was conducted at the beginning of the program (baseline), Phase B at the end of the first month of implementation, and Phase C after the completion of the intervention at the end of the third month. These three consecutive measurements enabled…
+
+**A3 — §3.1 «Complete data were available…» έναντι data/README (imputation).** Δύο επιλογές, εσύ αποφασίζεις:
+- **(α) Ευθυγράμμιση manuscript με τα δεδομένα** — αντικατάσταση της πρότασης: *«Self-report data were complete for all 30 participants across the three phases. Trainer ratings were obtained from two educators and averaged item-wise per participant and phase. Observer ratings were missing for 2, 4, and 4 participant-phase records in Phases A, B, and C respectively (3.7% of observer records); these were replaced by the phase-level item mean prior to analysis.»* Το repo (README + build_dataset.py) μένει ως έχει.
+- **(β) Διατήρηση της πρότασης του manuscript** — τότε πρέπει να αλλάξουν data/README.md και build_dataset.py ώστε να μη δηλώνουν imputation. Σημείωση χωρίς σχόλιο: ο κώδικας που αναπαράγει τους Σταθερούς αριθμούς περιέχει το βήμα αυτό.
+
+### Β. Συμμόρφωση με τον οδηγό RDD (από τα στοιχεία που έδωσε ο συγγραφέας)
+
+| Απαίτηση | Κατάσταση | Ενέργεια |
+|---|---|---|
+| Full article ≤8,000 λέξεις | 6,350 ✅ | καμία |
+| Structured abstract ≤250 | 161 ✅ | καμία |
+| Highlights 3–5 × ≤85 χαρ., χωριστό αρχείο | highlights.txt, 4 bullets ✅ | καμία· υποβάλλεται ως χωριστό αρχείο |
+| Double anonymized | manuscript blinded + χωριστό title page ✅ | καμία |
+| Figures vector PDF | 4/5 ✅ | **Fig. 1 conceptual model: 127 dpi ❌** — πρόταση: ξαναφτιάχνεται σε TikZ μέσα στο TeX (vector, χωρίς εξωτερικό αρχείο). Χρειάζεται έγκριση. |
+| References APA 7 | `apalike` ❌ (είναι προσέγγιση, όχι APA 7: λείπουν DOI, «&» αντί «and», διαφορές σε κεφαλαία τίτλων) | Πρόταση: μετάβαση σε `biblatex` με `style=apa` (biblatex-apa, standard σε TeX Live). Αλλάζει preamble + `\citep/\citet` → `\parencite/\textcite` (αυτόματα με sed). Χρειάζεται έγκριση — μέτρια δουλειά, ελέγξιμη με compile. |
+| CRediT author contributions | narrative ❌ | Πρόταση αντιστοίχισης (title page): **P.V.:** Conceptualization, Methodology, Data curation, Formal analysis, Software, Visualization, Writing – original draft, Writing – review & editing. **E.C.:** Investigation, Project administration, Resources, Writing – review & editing. **S.C.:** Conceptualization, Investigation, Methodology, Resources, Writing – original draft. **T.K.:** Supervision, Validation, Writing – review & editing. Χρειάζεται έγκριση ρόλων. |
+| Declarations tool (.docx) | — | Γίνεται στο σύστημα υποβολής από τον συγγραφέα· δεν αφορά το repo. |
+
+### Σειρά εκτέλεσης αν εγκριθούν όλα
+A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελευταίο, γιατί αγγίζει πολλές γραμμές) → compile → commit.
