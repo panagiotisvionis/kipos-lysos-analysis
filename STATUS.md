@@ -57,9 +57,9 @@ Shapiro–Wilk: 0.945/.121 · 0.950/.172 · 0.904/.011 — Friedman χ²: 44.86 
 - Independent observer: εξωτερικός ειδικός παιδαγωγός.
 
 ## Εκκρεμότητες πριν την υποβολή
-- [ ] Επιβεβαίωση φύλου 20Α/10Γ
+- [x] Φύλο 20Α/10Γ — εγκρίθηκε από συγγραφέα 2026-10-14
 - [ ] Επιβεβαίωση ρόλων Ε.Χ./Σ.Χ. στο Author Contributions
-- [ ] Έγγραφο έγκρισης από διοίκηση ΚΔΗΦ (PDF, υπογεγραμμένο) — το Elsevier μπορεί να το ζητήσει
+- [x] Έγγραφο έγκρισης: απόφαση συγγραφέα — δεν υποβάλλεται προληπτικά· αποστέλλεται μόνο αν ζητηθεί
 - [ ] Compile τοπικά (χρειάζεται `newtxtext`/`newtxmath`)
 - [ ] Cover letter για RDD (προσαρμογή του `kipos_jarid_coverletter.tex`)
 - [ ] Έλεγχος RDD author guidelines (word limit, highlights, ορισμένα απαιτούν «Highlights» 3–5 bullets)
@@ -241,4 +241,4 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 - **Data Availability** (manuscript + title page): δηλώνει το δημόσιο ψευδωνυμοποιημένο dataset και κώδικα· raw export δεν κοινοποιείται.
 - **`manuscript/highlights.txt`** δημιουργήθηκε (4 bullets, 56–73 χαρακτήρες).
 
-Υπόλοιπα εκκρεμή: τα 6 στοιχεία του επίσημου οδηγού RDD (από τον συγγραφέα), conceptual model σε υψηλή ανάλυση, cover letter, φύλο 20Α/10Γ, έγγραφο έγκρισης.
+Υπόλοιπα εκκρεμή: τα 6 στοιχεία του επίσημου οδηγού RDD (από τον συγγραφέα), conceptual model σε υψηλή ανάλυση, cover letter.
