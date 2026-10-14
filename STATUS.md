@@ -174,3 +174,60 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 - https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview
 
 Το cover letter δόθηκε στον χρήστη ως draft, χωρίς δημιουργία ή commit αρχείου.
+
+## Έλεγχος RDD guidelines & προετοιμασίας — Claude, 2026-10-14 13:40
+
+### Πρόσβαση στον επίσημο οδηγό: ΔΕΝ ΕΠΙΤΕΥΧΘΗΚΕ
+Και τα δύο επίσημα URL απορρίπτουν αυτοματοποιημένη ανάγνωση (robots.txt):
+- https://www.sciencedirect.com/journal/research-in-developmental-disabilities/publish/guide-for-authors
+- https://www.elsevier.com/journals/research-in-developmental-disabilities/08914222/guide-for-authors
+
+Συνεπώς **δεν επιβεβαιώνονται**: word limit, όριο/επικεφαλίδες structured abstract, υποχρεωτικότητα Highlights, αποδοχή PNG, απαίτηση δήλωσης generative AI, μορφή review (single/double-anonymised). Δεν υιοθετήθηκαν τιμές από τρίτες πηγές. **Ο συγγραφέας πρέπει να ανοίξει τον οδηγό σε browser και να καταγράψει εδώ τα 6 αυτά στοιχεία** — είναι 10 λεπτά δουλειά και ξεμπλοκάρει όλα τα παρακάτω.
+
+### Τι ΕΠΑΛΗΘΕΥΤΗΚΕ τοπικά (commit 739be32, compiled PDF)
+
+| Στοιχείο | Μέτρηση | Σχόλιο |
+|---|---|---|
+| Body text (Intro→Conclusion, χωρίς πίνακες/captions) | **≈6,350 λέξεις** | Το title page λέει «approximately 5,500» — **ανακριβές**, πρέπει να διορθωθεί. Αν το όριο RDD είναι ≤6,000 χρειάζεται περικοπή. |
+| Abstract | 161 λέξεις, 4 επικεφαλίδες (Background/Method/Results/Conclusions) | Όριο/επικεφαλίδες RDD ανεπιβεβαίωτα. |
+| Lay Summary | 115 λέξεις, 4 bullets | Είναι απαίτηση JARID, όχι απαραίτητα RDD. Να αποφασιστεί αν μένει. |
+| References | 41, apalike | Το RDD χρησιμοποιεί APA 7 — το `apalike` είναι προσέγγιση, όχι ακριβές APA 7. Ελέγξτε αν απαιτείται ακριβής συμμόρφωση ή αρκεί «consistent style». |
+| Highlights | **δεν υπάρχει αρχείο** | Γενική πολιτική Elsevier: 3–5 bullets ≤85 χαρακτήρες. |
+| Generative AI statement | **απουσιάζει** | Η πολιτική Elsevier (2023+) απαιτεί δήλωση αν χρησιμοποιήθηκε AI στη συγγραφή. Έχει χρησιμοποιηθεί. |
+| Data availability | «upon reasonable request» | Αλλά το ψευδωνυμοποιημένο dataset είναι ήδη δημόσιο στο repo — η δήλωση υποτιμά τη διαφάνεια. |
+
+### Figures — πραγματική ανάλυση στο πλάτος 16 cm
+
+| Αρχείο | Pixels | Effective DPI @16cm | ≥300; |
+|---|---|---|---|
+| boxplot_scores.png | 2075×888 | 329 | ✅ |
+| violin_scores.png | 2064×888 | 328 | ✅ |
+| forest_effects.png | 1484×733 | 236 | ❌ |
+| trajectory_scores.png | 1329×881 | 211 | ❌ |
+| conceptual_model.jpg | 800×464 | 127 | ❌ |
+
+Τα PNG στο repo είναι τα **150-DPI** exports του `figures_generation_en.py` (DPI=150 στη γραμμή 46). Η σημείωση «5 figures, 300 DPI» στο STATUS ήταν λάθος — αφορούσε αρχεία που δεν ανέβηκαν ποτέ στο repo. Το `conceptual_model.jpg` είναι χαμηλής ανάλυσης raster χωρίς πηγή.
+
+### Προτεινόμενες ενέργειες — ΓΙΑ ΕΓΚΡΙΣΗ (τίποτα δεν έγινε)
+
+**A. Figures (χωρίς εξάρτηση από τον οδηγό — πάντα σωστό):**
+1. Στο `figures_generation_en.py` αλλαγή `DPI = 150` → `DPI = 300` **και** προσθήκη εξαγωγής PDF (vector) δίπλα σε κάθε PNG: `plt.savefig(f'{OUTPUT_DIR}/x.pdf')`. Ξανατρέξιμο. Το TeX να φορτώνει τα PDF.
+2. Το `conceptual_model.jpg` να ξαναφτιαχτεί σε vector (SVG/PDF) ή τουλάχιστον ≥1900 px πλάτος. Χρειάζεται την αρχική πηγή από τον συγγραφέα.
+
+**B. Κείμενο (χωρίς εξάρτηση από τον οδηγό):**
+3. Title page: «approximately 5,500» → «approximately 6,350 words (main text, excluding abstract, references, tables and figure captions)».
+4. Προσθήκη ενότητας `\section*{Declaration of Generative AI and AI-assisted Technologies in the Writing Process}` στο manuscript με το τυπικό Elsevier λεκτικό: ποιο εργαλείο, για τι (language editing / drafting assistance), και ότι οι συγγραφείς έλεγξαν και φέρουν πλήρη ευθύνη. **Προτεινόμενο κείμενο:** «During the preparation of this work the authors used Claude (Anthropic) and ChatGPT (OpenAI) in order to assist with language editing, structuring of sections, and verification of statistical reporting. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.»
+5. Data Availability: «The pseudonymized analysis dataset and all analysis code are publicly available at https://github.com/panagiotisvionis/kipos-lysos-analysis. The raw questionnaire export containing participant identifiers is not shared.»
+6. Νέο αρχείο `manuscript/highlights.txt` με 3–5 bullets ≤85 χαρακτήρες (πρόχειρα, προς έγκριση):
+   - Arts-based SEL program evaluated in adult day care (n=30, three phases)
+   - Gains confirmed by self-report, trainers, and an independent observer
+   - Large effects (d = 1.35–2.45) but no control group; interpret cautiously
+   - Replicable model for community-based disability services
+
+**C. Εξαρτώμενα από τον οδηγό (μετά το βήμα του συγγραφέα):**
+7. Αν word limit < 6,350: περικοπή κυρίως στο Discussion (θεωρητικές ερμηνείες Mezirow/Vygotsky/Social Cure μπορούν να συμπτυχθούν ~400 λέξεις).
+8. Αν δεν απαιτείται Lay Summary: αφαίρεση.
+9. Αν απαιτείται ακριβές APA 7: αλλαγή σε `apa7` bibliographystyle (biblatex) — μεγαλύτερη δουλειά.
+10. Αν single-anonymised: το όνομα της δομής μπορεί να μπει στο manuscript.
+
+### Δεν αλλάχθηκε τίποτα εκτός του STATUS.md.
