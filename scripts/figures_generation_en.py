@@ -33,7 +33,7 @@ warnings.filterwarnings('ignore')
 
 # ── PARAMETERS — EDIT HERE IF NEEDED ─────────────────────────────────────────
 DATA_FILE = '../data/action_responses_pseudonymized.xlsx'  # path to data file
-OUTPUT_DIR = 'figures'                                # output folder
+OUTPUT_DIR = '../manuscript/figures'                                # output folder
 
 # ── CONSTANTS ─────────────────────────────────────────────────────────────────
 Q_COLS    = [f'Q{i}' for i in range(1, 12)]
@@ -43,7 +43,7 @@ PHASE_LBL = ['Phase A\n(baseline)',
              'Phase B\n(during intervention)',
              'Phase C\n(post-intervention)']
 COLORS    = ['#2196F3', '#4CAF50', '#FF5722']
-DPI       = 150
+DPI       = 300
 
 PHASE_MAP = {
     'Φάση Α · Πριν (baseline)':              'A',
@@ -127,6 +127,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
 
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/boxplot_scores.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/boxplot_scores.pdf', bbox_inches='tight')
 plt.close()
 print("✓ Fig 1: Boxplot")
 
@@ -153,6 +154,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
 
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/violin_scores.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/violin_scores.pdf', bbox_inches='tight')
 plt.close()
 print("✓ Fig 2: Violin")
 
@@ -185,6 +187,7 @@ ax.yaxis.grid(True, alpha=0.4); ax.set_axisbelow(True)
 
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/trajectory_scores.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/trajectory_scores.pdf', bbox_inches='tight')
 plt.close()
 print("✓ Fig 3: Trajectory")
 
@@ -218,6 +221,7 @@ ax.xaxis.grid(True, alpha=0.4); ax.set_axisbelow(True)
 
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/forest_effects.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/forest_effects.pdf', bbox_inches='tight')
 plt.close()
 print("✓ Fig 4: Forest plot")
 
@@ -244,6 +248,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
 
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/qqplot_normality.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/qqplot_normality.pdf', bbox_inches='tight')
 plt.close()
 print("✓ Fig 5: Q-Q plots")
 

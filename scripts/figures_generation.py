@@ -43,7 +43,7 @@ RATERS    = ['Ωφελούμενοι', 'Εκπαιδευτές', 'Παρατηρ
 PHASES    = ['Α', 'Β', 'Γ']
 PHASE_LBL = ['Φάση Α\n(baseline)', 'Φάση Β\n(κατά τη διάρκεια)', 'Φάση Γ\n(τέλος)']
 COLORS    = ['#2196F3', '#4CAF50', '#FF5722']
-DPI       = 150
+DPI       = 300
 
 PHASE_MAP = {
     'Φάση Α · Πριν (baseline)':              'Α',
@@ -121,6 +121,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
         ax.text(i, 0.65, f'n={len(d)}', ha='center', fontsize=8.5, color='gray')
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig1_boxplot.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig1_boxplot.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 1: Boxplot")
 
 # ─── FIG 2: VIOLIN ─────────────────────────────────────────────────────────────
@@ -142,6 +143,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
         ax.text(i, 0.65, f'n={len(d)}', ha='center', fontsize=8.5, color='gray')
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig2_violin.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig2_violin.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 2: Violin")
 
 # ─── FIG 3: TRAJECTORY ─────────────────────────────────────────────────────────
@@ -168,6 +170,7 @@ ax.legend(fontsize=10, loc='upper left')
 ax.yaxis.grid(True, alpha=0.4); ax.set_axisbelow(True)
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig3_trajectory.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig3_trajectory.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 3: Trajectory")
 
 # ─── FIG 4: FOREST PLOT ────────────────────────────────────────────────────────
@@ -194,6 +197,7 @@ ax.set_xlim(-0.4, max_hi + 1.8); ax.set_ylim(-0.5, 2.7)
 ax.xaxis.grid(True, alpha=0.4); ax.set_axisbelow(True)
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig4_forest.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig4_forest.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 4: Forest plot")
 
 # ─── FIG 5: Q-Q PLOTS ──────────────────────────────────────────────────────────
@@ -215,6 +219,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
     ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig5_qqplot.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig5_qqplot.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 5: Q-Q plots")
 
 # ─── FIG 6: HEATMAP ────────────────────────────────────────────────────────────
@@ -235,6 +240,7 @@ for ax, phase, lbl in zip(axes, PHASES, PHASE_LBL):
 plt.colorbar(im, ax=axes, shrink=0.7, label='Μέση Βαθμολογία (1–5)')
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig6_heatmap.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig6_heatmap.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 6: Heatmap")
 
 # ─── FIG 7: PAIRWISE EFFECT SIZES ─────────────────────────────────────────────
@@ -262,6 +268,7 @@ for ax, rater, color in zip(axes, RATERS, COLORS):
     ax.set_xlim(-0.3, 3.8)
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/fig7_pairwise_effects.png', dpi=DPI, bbox_inches='tight')
+plt.savefig(f'{OUTPUT_DIR}/fig7_pairwise_effects.pdf', bbox_inches='tight')
 plt.close(); print("✓ Fig 7: Pairwise effects")
 
 print(f"\nΌλα τα γραφήματα αποθηκεύτηκαν στον φάκελο '{OUTPUT_DIR}/'")

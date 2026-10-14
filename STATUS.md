@@ -232,3 +232,13 @@ https://www.sciencedirect.com/journal/research-in-developmental-disabilities/pub
 10. Αν single-anonymised: το όνομα της δομής μπορεί να μπει στο manuscript.
 
 ### Δεν αλλάχθηκε τίποτα εκτός του STATUS.md.
+
+## Εκτέλεση εγκεκριμένων ενεργειών — Claude, 2026-10-14 13:30
+Εγκρίθηκαν από τον συγγραφέα («όλα») και έγιναν:
+- **Figures:** `figures_generation_en.py` → DPI=300 + vector PDF export· ξανατρέξιμο από το κανονικό dataset. Τα 4 στατιστικά figures (boxplot, violin, forest, trajectory) είναι τώρα `.pdf` (vector) στο TeX. Compile καθαρό. Το qqplot δεν χρησιμοποιείται στο manuscript.
+- **conceptual_model.jpg** παραμένει 800×464 raster (127 dpi @16cm) — **ΕΚΚΡΕΜΕΙ** η αρχική πηγή από τον συγγραφέα (ή ξαναφτιάχνεται ως SVG/TikZ).
+- **Title page:** word count διορθώθηκε σε ≈6,350 (main text).
+- **Data Availability** (manuscript + title page): δηλώνει το δημόσιο ψευδωνυμοποιημένο dataset και κώδικα· raw export δεν κοινοποιείται.
+- **`manuscript/highlights.txt`** δημιουργήθηκε (4 bullets, 56–73 χαρακτήρες).
+
+Υπόλοιπα εκκρεμή: τα 6 στοιχεία του επίσημου οδηγού RDD (από τον συγγραφέα), conceptual model σε υψηλή ανάλυση, cover letter, φύλο 20Α/10Γ, έγγραφο έγκρισης.
