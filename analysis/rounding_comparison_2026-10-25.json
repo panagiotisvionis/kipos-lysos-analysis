@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-25",
+  "purpose": "Exploratory comparison of post hoc rounding; not recovery of missing observations or a final primary analysis",
+  "source_commit": "87b1a075fc5d5b8f22ce9ef7b986d1476816ec67",
+  "canonical_dataset": "data/action_responses_pseudonymized.xlsx",
+  "derived_dataset": "data/derived/action_responses_rounded.xlsx",
+  "canonical_sha256": "a8df760827a6991519891752ef6e46475681892d2e5d947f327f6efceefe01a1",
+  "rounded_sha256": "6526d9afd49c3f314daf611ee1266929d13eff03f4194837a3d4e7ae2bd71d65",
+  "audit": {
+    "rows": 270,
+    "participants": 30,
+    "changed_item_values": 567,
+    "changed_rows": 85,
+    "duplicate_participant_source_phase_keys": 0,
+    "blank_item_values": 0,
+    "equivalence": "rounded Q = floor(canonical Q + 0.5), all 2970 item cells; metadata and order unchanged"
+  },
+  "method": {
+    "scale": "Q1–Q11 remain on 0–4 export scale; analysis score is row mean + 1",
+    "pairing": "participant ID within evaluator, phases A/C",
+    "t_test": "paired t, A minus C",
+    "effect": "d_z = mean(C-A)/SD(C-A), ddof=1",
+    "effect_ci": "same approximate delta-method interval as existing script: d_z ±1.96*sqrt(1/n+d_z^2/(2*n)); does not account for uncertainty due to prior single imputation",
+    "alpha": "per phase, plus arithmetic mean of three phase-specific alphas, not pooled alpha",
+    "caution": "Rounding neither recovers original ratings nor removes existing imputation. No inference about why records were missing is possible from this comparison."
+  },
+  "results": {
+    "canonical": {
+      "Beneficiaries": {
+        "n": 30,
+        "means": {
+          "A": 3.239393939393939,
+          "B": 3.70909090909091,
+          "C": 4.754545454545453
+        },
+        "t": -13.406056837881364,
+        "p": 5.865002990427236e-14,
+        "dz": 2.4475999124346663,
+        "ci_dz": [
+          1.7323231913339576,
+          3.162876633535375
+        ],
+        "shapiro_w": 0.9446424482935045,
+        "shapiro_p": 0.1213311041658438,
+        "friedman": 44.864406779661024,
+        "friedman_p": 1.8105805507311324e-10,
+        "alpha_ABC": [
+          0.8984513659300505,
+          0.9451382737919496,
+          0.6869694271297123
+        ],
+        "alpha_mean": 0.8435196889505708
+      },
+      "Trainers": {
+        "n": 30,
+        "means": {
+          "A": 2.854545454545455,
+          "B": 3.2964426877470347,
+          "C": 3.5625
+        },
+        "t": -7.402763484161899,
+        "p": 3.7132395553886916e-8,
+        "dz": 1.3515535160503367,
+        "ci_dz": [
+          0.856568013956871,
+          1.8465390181438024
+        ],
+        "shapiro_w": 0.9503073469869076,
+        "shapiro_p": 0.1722946358379348,
+        "friedman": 44.66666666666668,
+        "friedman_p": 1.9987412283871287e-10,
+        "alpha_ABC": [
+          0.9561991545326446,
+          0.9566231837946761,
+          0.9354215575923246
+        ],
+        "alpha_mean": 0.9494146319732151
+      },
+      "Observer": {
+        "n": 30,
+        "means": {
+          "A": 2.1748251748251746,
+          "B": 2.4720279720279725,
+          "C": 2.5979020979020975
+        },
+        "t": -9.053503935735005,
+        "p": 5.990529595635123e-10,
+        "dz": 1.652936110021288,
+        "ci_dz": [
+          1.1024936969525916,
+          2.2033785230899845
+        ],
+        "shapiro_w": 0.9043592340599008,
+        "shapiro_p": 0.010753730274231318,
+        "friedman": 40.265486725663735,
+        "friedman_p": 1.8049311989163833e-9,
+        "alpha_ABC": [
+          0.8974059662775616,
+          0.9047663442489222,
+          0.8518345042935207
+        ],
+        "alpha_mean": 0.8846689382733347
+      }
+    },
+    "rounded": {
+      "Beneficiaries": {
+        "n": 30,
+        "means": {
+          "A": 3.239393939393939,
+          "B": 3.70909090909091,
+          "C": 4.754545454545453
+        },
+        "t": -13.406056837881364,
+        "p": 5.865002990427236e-14,
+        "dz": 2.4475999124346663,
+        "ci_dz": [
+          1.7323231913339576,
+          3.162876633535375
+        ],
+        "shapiro_w": 0.9446424482935045,
+        "shapiro_p": 0.1213311041658438,
+        "friedman": 44.864406779661024,
+        "friedman_p": 1.8105805507311324e-10,
+        "alpha_ABC": [
+          0.8984513659300505,
+          0.9451382737919496,
+          0.6869694271297123
+        ],
+        "alpha_mean": 0.8435196889505708
+      },
+      "Trainers": {
+        "n": 30,
+        "means": {
+          "A": 2.96969696969697,
+          "B": 3.4484848484848474,
+          "C": 3.681818181818182
+        },
+        "t": -7.410301372573696,
+        "p": 3.6410697361767474e-8,
+        "dz": 1.3529297398900357,
+        "ci_dz": [
+          0.8577035765135979,
+          1.8481559032664736
+        ],
+        "shapiro_w": 0.9520954537858437,
+        "shapiro_p": 0.19232472108895332,
+        "friedman": 41.75652173913042,
+        "friedman_p": 8.564194316348308e-10,
+        "alpha_ABC": [
+          0.948479064039409,
+          0.9291974279590378,
+          0.8964389959136019
+        ],
+        "alpha_mean": 0.9247051626373496
+      },
+      "Observer": {
+        "n": 30,
+        "means": {
+          "A": 2.1999999999999997,
+          "B": 2.4696969696969697,
+          "C": 2.5909090909090913
+        },
+        "t": -7.953438034153183,
+        "p": 9.01563623565646e-9,
+        "dz": 1.4520924736750807,
+        "ci_dz": [
+          0.9392004721100661,
+          1.9649844752400951
+        ],
+        "shapiro_w": 0.8968605129906887,
+        "shapiro_p": 0.007043579070332192,
+        "friedman": 40.265486725663735,
+        "friedman_p": 1.8049311989163833e-9,
+        "alpha_ABC": [
+          0.8935275080906151,
+          0.901100454316002,
+          0.8426666666666668
+        ],
+        "alpha_mean": 0.8790982096910946
+      }
+    }
+  }
+}
