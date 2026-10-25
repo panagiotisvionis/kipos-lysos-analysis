@@ -324,7 +324,7 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 ## Cover letter & τελικά — Claude, 2026-10-25
 
 - **VS Code (τοπικό) επιβεβαίωσε την πλήρη biber compile στο 9036185:** 0 errors, 0 warnings, 0 undefined citations, 41 αναφορές σε APA 7, 32 σελίδες. Η τελευταία τεχνική εκκρεμότητα έκλεισε.
-- **Cover letter για RDD:** `manuscript/kipos_rdd_coverletter.tex` (νέο, 2 σελίδες). Περιλαμβάνει ειλικρινή δήλωση της προηγούμενης υποβολής στο JARID και πώς απαντήθηκαν οι δύο λόγοι απόρριψης — οι editors συχνά το ρωτούν ρητά. Το παλιό `coverletter.docx` (JARID) μετονομάστηκε σε `legacy_jarid_coverletter.docx`.
+- **Cover letter για RDD:** `manuscript/kipos_rdd_coverletter.tex` (νέο, 2 σελίδες). Απόφαση συγγραφέα (2026-10-25): **χωρίς** αναφορά στην προηγούμενη υποβολή στο JARID — η παράγραφος «Transparency» αφαιρέθηκε. Το παλιό `coverletter.docx` (JARID) μετονομάστηκε σε `legacy_jarid_coverletter.docx`.
 - **`manuscript/arxiv/`:** απόφαση συγγραφέα — σβήνεται (untracked, τοπικά· το κάνει το VS Code).
 - **Σταθεροί κανόνες** παραμένουν (κορυφή αρχείου).
 
