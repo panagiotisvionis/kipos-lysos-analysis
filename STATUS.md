@@ -430,3 +430,13 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 - Βιβλιογραφική επαλήθευση ≠ επαλήθευση περιεχομένου για όσες πηγές δεν ήταν δυνατή η πρόσβαση στο πλήρες κείμενο.
 
 Compile (natbib fallback): 0 errors, 0 undefined citations, 33 σελ. Biber compile τοπικά: εκκρεμεί (VS Code).
+
+## Εφαρμογή Δ1 + Δ2 — Claude, 2026-10-25 13:05
+Εγκρίθηκαν 1 και 2· το 3 (Shogren) μένει ως έχει με απόφαση συγγραφέα.
+- Δ1α §1: «report positive outcomes» → «document both its importance and its persistent limitations» (hall2009, verdonschot2009).
+- Δ1β §5: η παραπομπή για «stable, safe, structured group activities may enhance…» κρατά μόνο `hall2009`.
+- Δ1γ §5: «small-to-moderate effects are more common» → παραπομπή `giummarra2022` (umbrella review παρεμβάσεων).
+- Δ2 §1: «strong predictor» → «consistent, moderate predictor» (burlingame2011, r = .25).
+`verdonschot2009` παραμένει σε χρήση (Δ1α). Compile: 0 errors, 0 undefined citations, 33 σελ.
+
+**Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ.** Biber compile τοπικά → τελικά PDF.
