@@ -362,3 +362,22 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 Δεδομένα, scripts, αριθμοί, άλλες διατυπώσεις: αμετάβλητα. Compile (Claude sandbox, natbib fallback): manuscript 0 errors / 0 undefined citations / 33 σελ.· cover letter 0 errors / 2 σελ. Η biber compile τοπικά θα δώσει 32 σελ. όπως πριν.
 
 **Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ** (αμετάβλητο).
+
+## Διορθώσεις μετά τον τελικό έλεγχο ChatGPT — Claude, 2026-10-25 12:45
+
+Ο έλεγχος του ChatGPT στο 99690bb εντόπισε 4 σφάλματα γεγονότων + 2 υπερβολικές διατυπώσεις. Όλα επαληθεύτηκαν και διορθώθηκαν:
+
+| # | Εύρημα | Διόρθωση |
+|---|---|---|
+| 1 | §3.1 «3.7% of observer records» — λάθος παρονομαστής (270 αντί 90) | → «10 of 90 observer records, 11.1%» |
+| 2 | Captions Fig. 2 & 3 έλεγαν «Phases A and C», τα διαγράμματα δείχνουν και B | → «Phases A, B, and C» |
+| 3 | **shogren2017**: το DOI 10.1111/jir.12256 είναι Simões & Santos 2016 (QoL)· ο τίτλος/JIDR 61(1) δεν υπάρχει | → Πραγματική πηγή ίδιων 6 συγγραφέων: Shogren et al. (**2015**), *Causal Agency Theory: Reconceptualizing a Functional Model of Self-Determination*, Education and Training in Autism and Developmental Disabilities, 50(3), 251–263, doi:10.1177/215416471505000302. Κλειδί `shogren2017` κρατήθηκε (η παραπομπή στο κείμενο στηρίζει την ίδια θέση). |
+| 4 | **oberle2019**: έτος και DOI λάθος | → Oberle et al. (**2016**), Cambridge J. of Education, **46**(3), 277–297, doi:10.1080/0305764X.2015.1125450. Κλειδί κρατήθηκε. |
+| 5 | Discussion §5 ¶1 «the program substantially enhanced skills…» (causal) | → «ratings … rose markedly over the course of the program; whether this change is attributable to the program itself cannot be established with the present design» |
+| 6 | Discussion §5 «generate synergistic effects» (μηχανισμός που δεν μετρήθηκε) | → «One possible interpretation, which the present design cannot test, is that … act jointly …; alternative explanations … remain equally plausible» |
+
+Οι αριθμητικές αλλαγές (#1) είναι περιγραφικές· t, d, p, α, Friedman **αμετάβλητα**. Compile: 0 errors, 0 undefined citations, 33 σελ. (natbib fallback)· οι δύο διορθωμένες αναφορές εμφανίζονται σωστά στη βιβλιογραφία.
+
+**Σημείωση για το μέλλον:** τα #3–4 είναι υπολείμματα της αρχικής βιβλιογραφίας (Απρίλιος) που δεν πιάστηκαν στον έλεγχο της 14/10, όπου ελέγχθηκαν μόνο οι 9 μελέτες του Table 1. Οι υπόλοιπες ~30 αναφορές (βιβλία κυρίως, + Durlak, Taylor, Hall, Verdonschot, Bigby, Burlingame, Goldstein) **δεν έχουν επαληθευτεί DOI-προς-DOI**. Προτείνεται έλεγχος πριν την υποβολή.
+
+**Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ, υπό την επιφύλαξη του ελέγχου των υπολοίπων αναφορών.**
