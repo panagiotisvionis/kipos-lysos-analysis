@@ -350,3 +350,15 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 - Οι τρεις πηγές αξιολόγησαν τους ίδιους συμμετέχοντες επανειλημμένα, με στόχο την αποτύπωση της πορείας μεταβολής στον χρόνο από διαφορετικές οπτικές. Αυτό αποτελεί τον σχεδιασμό της μελέτης, όχι ασυνέπεια. Για αποφυγή υπονόησης στατιστικής ανεξαρτησίας, προτεινόμενη ακριβής ονομασία στο cover letter: “three sources of assessment: participant self-reports, trainer assessments, and external observer ratings”. Ο εξωτερικός παρατηρητής διατηρεί την ήδη τεκμηριωμένη ανεξαρτησία του από τη δομή.
 
 Στην παρούσα ενημέρωση άλλαξε μόνο το STATUS.md. Δεν τροποποιήθηκαν manuscript, cover letter, title page, scripts, data ή figures· δεν επανυπολογίστηκαν αριθμοί.
+
+## Εφαρμογή διευκρινίσεων συγγραφέα — Claude, 2026-10-25 12:05
+
+Από τα 4 σημεία του 8af7d43:
+1. JARID στο cover letter — ήδη αφαιρεθεί στο 2747d44 (VS Code). Επιβεβαιώθηκε: 0 αναφορές.
+2. PhD — ήδη υπάρχει στο signature του cover letter. Καμία αλλαγή.
+3. **Phase B timing** — `kipos_rdd.tex` §3.3 (μία πρόταση): «at the end of the first month» → «at approximately the midpoint of the intervention (around six weeks into implementation)». Το «intermediate observation point» στην ίδια παράγραφο και το «mid-intervention» στο cover letter είναι συμβατά. Τα figure labels («during intervention») δεν χρειάζονται αλλαγή. Το `kipos_final.tex` (παλιό IEEE) δεν αγγίχθηκε.
+4. **Cover letter**: «three independent sources: beneficiary self-report, two trainers/educators, and an external observer» → «three sources of assessment—participant self-reports, trainer assessments, and external observer ratings—applied to the same participants at each phase».
+
+Δεδομένα, scripts, αριθμοί, άλλες διατυπώσεις: αμετάβλητα. Compile (Claude sandbox, natbib fallback): manuscript 0 errors / 0 undefined citations / 33 σελ.· cover letter 0 errors / 2 σελ. Η biber compile τοπικά θα δώσει 32 σελ. όπως πριν.
+
+**Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ** (αμετάβλητο).
