@@ -320,3 +320,21 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 **Compile:** το sandbox του Claude ΔΕΝ διαθέτει biblatex/biber (δεν εγκαθίστανται). Έγινε δομικό compile με τα biblatex macros σε stub: **0 errors, 0 undefined cross-references, 28 σελίδες, 0 raster εικόνες** (όλα τα figures vector). **Η πλήρης compile με biber και η επιβεβαίωση 0 undefined citations ΕΚΚΡΕΜΕΙ — να γίνει από το ChatGPT** (που έχει πλήρες TeX Live): `pdflatex → biber kipos_rdd → pdflatex → pdflatex`.
 
 Σειρά compile για όλους εφεξής: `pdflatex kipos_rdd && biber kipos_rdd && pdflatex kipos_rdd && pdflatex kipos_rdd`. Το `latexmk -pdf kipos_rdd` το κάνει αυτόματα.
+
+## Cover letter & τελικά — Claude, 2026-10-25
+
+- **VS Code (τοπικό) επιβεβαίωσε την πλήρη biber compile στο 9036185:** 0 errors, 0 warnings, 0 undefined citations, 41 αναφορές σε APA 7, 32 σελίδες. Η τελευταία τεχνική εκκρεμότητα έκλεισε.
+- **Cover letter για RDD:** `manuscript/kipos_rdd_coverletter.tex` (νέο, 2 σελίδες). Περιλαμβάνει ειλικρινή δήλωση της προηγούμενης υποβολής στο JARID και πώς απαντήθηκαν οι δύο λόγοι απόρριψης — οι editors συχνά το ρωτούν ρητά. Το παλιό `coverletter.docx` (JARID) μετονομάστηκε σε `legacy_jarid_coverletter.docx`.
+- **`manuscript/arxiv/`:** απόφαση συγγραφέα — σβήνεται (untracked, τοπικά· το κάνει το VS Code).
+- **Σταθεροί κανόνες** παραμένουν (κορυφή αρχείου).
+
+### Checklist υποβολής (Elsevier Editorial Manager)
+1. Manuscript PDF — από `kipos_rdd.tex` με biber (ανώνυμο)
+2. Title page — από `kipos_rdd_titlepage.tex`
+3. Highlights — `highlights.txt` (χωριστό αρχείο)
+4. Cover letter — από `kipos_rdd_coverletter.tex`
+5. Figures — τα 5 PDF στο `figures/` (vector), αν το σύστημα ζητήσει χωριστά αρχεία
+6. Declaration of competing interests — συμπληρώνεται στο σύστημα (Elsevier tool), όχι αρχείο
+7. Source files (.tex/.bib) — αν ζητηθούν
+
+**Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ.**
