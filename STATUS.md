@@ -381,3 +381,52 @@ A1 → A2 → A3(α ή β) → CRediT → Fig.1 TikZ → biblatex-apa (τελε�
 **Σημείωση για το μέλλον:** τα #3–4 είναι υπολείμματα της αρχικής βιβλιογραφίας (Απρίλιος) που δεν πιάστηκαν στον έλεγχο της 14/10, όπου ελέγχθηκαν μόνο οι 9 μελέτες του Table 1. Οι υπόλοιπες ~30 αναφορές (βιβλία κυρίως, + Durlak, Taylor, Hall, Verdonschot, Bigby, Burlingame, Goldstein) **δεν έχουν επαληθευτεί DOI-προς-DOI**. Προτείνεται έλεγχος πριν την υποβολή.
 
 **Κατάσταση: ΕΤΟΙΜΟ ΓΙΑ ΥΠΟΒΟΛΗ, υπό την επιφύλαξη του ελέγχου των υπολοίπων αναφορών.**
+
+## Έλεγχος 7 αναφορών + συνάφεια Shogren — Claude, 2026-10-25 13:15
+
+Σημείωση μεθόδου: το CrossRef API και οι σελίδες εκδοτών (Wiley, SAGE, PubMed) δεν είναι προσβάσιμες από το sandbox του Claude. Επαλήθευση έγινε μέσω δευτερογενών αλλά αξιόπιστων αποθετηρίων (ιδρυματικά repositories, KTDRR registry, OJP/NCJRS, CASEL) που αναπαράγουν τα metadata του εκδότη. Οι πηγές ανά αναφορά παρακάτω.
+
+### Α. Βιβλιογραφικά στοιχεία — ΔΙΟΡΘΩΘΗΚΑΝ (μόνο `references.bib`, κλειδιά αμετάβλητα)
+
+| Κλειδί | Εύρημα | Διόρθωση | Πηγή επαλήθευσης |
+|---|---|---|---|
+| `hall2009` | DOI λάθος· συγγραφέας ελλιπής | DOI → **10.1080/15367100903200452**· author → **Hall, Allison Cohen; Kramer, John** | UMass Boston ICI repository (collaborate.umb.edu) |
+| `goldstein2017` | Λείπει 3ος συγγραφέας | + **Winner, Ellen** | Drexel Research Discovery |
+| `bigby2015` | Τίτλος ανακριβής | «…Encounters Between People **with and without** Intellectual Disability» | The Learning Disabilities Elf (NationalElf) με link στο DOI |
+| `taylor2017` | Τίτλος ελλιπής | + «**: A Meta-Analysis of Follow-Up Effects**» | CASEL 2017 meta-analysis summary |
+| `burlingame2011` | Αρχικά μόνο | Πλήρη ονόματα: McClendon, Debra Theobald; Alonso, Jennifer | PubPeer metadata |
+
+### Β. Επιβεβαιώθηκαν σωστά (καμία αλλαγή)
+- `durlak2011` — OJP/NCJRS abstract: Child Dev 82(1), 405–432, 2011. ✅
+- `verdonschot2009` — KTDRR Registry of Systematic Reviews: JIDR 53, 303–318, 2009, DOI ✅
+- `shogren2017` (νέα, 2015 ETADD) — SAGE landing page: 50(3), 251–263, DOI ✅
+
+### Γ. Χρήση στο manuscript
+- `taylor2017` **δεν παραπέμπεται πουθενά** — είναι ορφανή εγγραφή (biblatex δεν την τυπώνει· άκακο, αλλά μπορεί να διαγραφεί).
+- Όλες οι άλλες παραπέμπονται.
+
+### Δ. ΣΥΝΑΦΕΙΑ — ΑΠΑΙΤΕΙΤΑΙ ΕΓΚΡΙΣΗ (δεν άλλαξε κείμενο)
+
+**Δ1. `hall2009` + `verdonschot2009` — τρεις παραπομπές, δύο προβληματικές.**
+- Hall & Kramer: ποιοτική μελέτη (συνεντεύξεις) για κοινωνικό κεφάλαιο σε χώρους εργασίας. Verdonschot: systematic review 23 μελετών για *επίπεδα* συμμετοχής (δίκτυο ~3.1 άτομα, 3–4× λιγότερη απασχόληση)· συμπέρασμα «evidence inconclusive».
+- Παραπομπή 1 (§1): «Existing studies … report positive outcomes» — **αδύναμη**: καμία από τις δύο δεν αναφέρει intervention outcomes.
+- Παραπομπή 2 (§5): «participation in stable, safe, structured group activities may enhance self-perception, confidence, social engagement» — **μερικώς**: Hall το στηρίζει (εργασιακά περιβάλλοντα → κοινωνικό κεφάλαιο)· Verdonschot όχι.
+- Παραπομπή 3 (§5): «where small-to-moderate effects are more common» — **δεν στηρίζεται**: καμία δεν αναφέρει effect sizes.
+- **Πρόταση:** (α) §1 → «Existing studies on community participation among adults with intellectual disabilities document both its importance and its persistent limitations \parencite{hall2009,verdonschot2009}; however…» (β) §5 ¶2 → κράτα μόνο `hall2009`. (γ) §5 ¶ magnitude → αφαίρεση των παραπομπών και αναδιατύπωση: «appears larger than is typical in the intervention literature on social skills in adults with disabilities» χωρίς παραπομπή — ή με `giummarra2022` που είναι umbrella review παρεμβάσεων και ΤΟ στηρίζει. **Προτείνω `giummarra2022`.**
+
+**Δ2. `burlingame2011` — «group cohesion is a strong predictor of positive therapeutic outcomes».**
+Η μετα-ανάλυση (40 μελέτες, 3.323 συμμετέχοντες) δίνει r = .25 — μέτρια συσχέτιση. **Πρόταση:** «strong predictor» → «a consistent, moderate predictor».
+
+**Δ3. `shogren2017` (Causal Agency Theory, 2015) — «socio-emotional development is strongly influenced by participation in safe and supportive social environments».**
+Το άρθρο αφορά **αυτοδιάθεση** (self-determination) σε νέους, και υποστηρίζει ότι αναπτύσσεται μέσα από υποστηρικτικά πλαίσια και ευκαιρίες για agentic action «across diverse social-contextual contexts». Στηρίζει τη θέση **έμμεσα** (αυτοδιάθεση ≠ κοινωνικο-συναισθηματική ανάπτυξη· νέοι ≠ ενήλικες). **Πρόταση:** αναδιατύπωση ώστε η παραπομπή να στηρίζει ακριβώς αυτό που λέει: «These principles are especially relevant for adults with disabilities: self-determination and agentic action develop through access to supportive contexts and opportunities \parencite{shogren2017}, and socio-emotional functioning is embedded in the same relational environments.» Εναλλακτικά, αφαίρεση της παραπομπής — η πρόταση στέκεται και χωρίς αυτήν, στηριζόμενη στα Vygotsky/Yalom που προηγούνται.
+
+**Δ4. `durlak2011` + `oberle2019`** — στηρίζουν «most studies focus on children in school contexts». ✅ Σωστή χρήση.
+**Δ5. `bigby2015`** — «supported participation … key pathway to inclusion» — το άρθρο δείχνει ότι οι support workers *διαμεσολαβούν* (θετικά ή αρνητικά). ✅ Αποδεκτό.
+**Δ6. `goldstein2017`** — «principles of arts-based interventions» — το άρθρο επιχειρηματολογεί για τις τέχνες ως πεδίο developmental science. ✅ Αποδεκτό (χαλαρά).
+
+### Ε. Παραμένει ανεπιβεβαίωτο
+- Burlingame: τόμος/τεύχος/σελίδες (48(1), 34–42) δεν βρέθηκαν σε προσβάσιμη πηγή· διατηρούνται ως έχουν (συμφωνούν με APA PsycNet όπως τα γνωρίζω, αλλά όχι επαληθευμένα σήμερα).
+- Τα ~22 βιβλία (@book) δεν ελέγχθηκαν — χαμηλός κίνδυνος, αλλά όχι μηδενικός.
+- Βιβλιογραφική επαλήθευση ≠ επαλήθευση περιεχομένου για όσες πηγές δεν ήταν δυνατή η πρόσβαση στο πλήρες κείμενο.
+
+Compile (natbib fallback): 0 errors, 0 undefined citations, 33 σελ. Biber compile τοπικά: εκκρεμεί (VS Code).
