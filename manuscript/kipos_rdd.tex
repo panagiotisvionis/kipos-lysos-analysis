@@ -308,7 +308,7 @@ The statistical analysis combined descriptive and inferential techniques. First,
 
 The longitudinal trajectory of scores across the three phases was examined graphically and statistically. Boxplots and violin plots were used to visualize the distribution of values before and after the intervention, while a trajectory plot was used to illustrate the evolution of mean scores across phases.
 
-All analyses were conducted using Python 3.12, with the pandas, SciPy, and Matplotlib libraries. The level of statistical significance was set at $\alpha=.05$. Prior to the application of parametric tests, the normality of the difference scores was examined using the Shapiro--Wilk test, and the Wilcoxon signed-rank test was additionally applied to each evaluator category as a confirmatory non-parametric test.
+All analyses were conducted using Python 3.12, with the pandas, SciPy, and Matplotlib libraries. The level of statistical significance was set at $\alpha=.05$. Prior to the application of parametric tests, the distribution of the Phase C $-$ Phase A difference scores was examined using the Shapiro--Wilk test. Because a non-significant Shapiro--Wilk test does not establish normality, particularly with $n = 30$, the Wilcoxon signed-rank test was additionally applied to each evaluator category as a non-parametric check.
 
 For the extended analysis of change across the three phases, the Friedman test was used. Pairwise comparisons between Phase A--Phase B, Phase B--Phase C, and Phase A--Phase C were conducted using Bonferroni-corrected paired $t$-tests, with an adjusted significance threshold of $\alpha_{\mathrm{adj}}=.017$. Given the sample size and the applied nature of the study, these tests were preferred over more complex mixed-effects models, which require larger samples for reliable estimation.
 
@@ -391,7 +391,7 @@ The corresponding forest plot is presented in Figure~\ref{fig:forest}. All effec
 \label{fig:forest}
 \end{figure}
 
-Prior to the application of parametric tests, the normality of difference scores between Phase C and Phase A was examined using the Shapiro--Wilk test. The assumption of normality was supported for all three evaluator categories: beneficiaries ($W=0.945$, $p=.121$), trainers/educators ($W=0.946$, $p=.134$), and the independent observer ($W=0.953$, $p=.201$). Wilcoxon signed-rank tests, applied as a non-parametric confirmation, corroborated the significance of the change in all three categories (all $p<.001$).
+The Shapiro--Wilk test did not indicate a departure from normality of the Phase C $-$ Phase A difference scores for any evaluator category: beneficiaries ($W=0.945$, $p=.121$), trainers/educators ($W=0.946$, $p=.134$), and the independent observer ($W=0.953$, $p=.201$). Wilcoxon signed-rank tests, which do not rely on this assumption, led to the same conclusion in all three categories (all $p<.001$).
 
 The Friedman test indicated statistically significant longitudinal change across the three phases for all evaluator categories: beneficiaries, $\chi^2(2)=44.86$, $p<.001$; trainers/educators, $\chi^2(2)=36.22$, $p<.001$; and independent observer, $\chi^2(2)=31.65$, $p<.001$. Pairwise comparisons using Bonferroni-corrected paired $t$-tests, with an adjusted threshold of $\alpha_{\mathrm{adj}}=.017$, showed that each phase differed significantly from the next for all evaluator categories, with all $p \leq .004$.
 

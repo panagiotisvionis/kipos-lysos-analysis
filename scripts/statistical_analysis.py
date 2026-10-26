@@ -104,15 +104,40 @@ def cronbach_alpha(items: pd.DataFrame) -> float:
     return (k / (k - 1)) * (1 - item_var / total_var)
 
 
-def icc21(x: np.ndarray) -> float:
-    """ICC(2,1): two-way random effects, single rater, absolute agreement (Shrout & Fleiss)."""
+def icc_oneway(x: np.ndarray, alpha: float = ALPHA) -> dict:
+    """ICC(1,1) και ICC(1,k): one-way random effects (Shrout & Fleiss 1979, Case 1) με ακριβή F-based CI.
+    Κατάλληλο όταν οι αξιολογητές ΔΕΝ είναι ταυτοποιήσιμοι σε όλα τα κελιά (βλ. build_dataset.py)."""
+    n, k = x.shape
+    grand = x.mean()
+    msb = k * ((x.mean(axis=1) - grand) ** 2).sum() / (n - 1)
+    msw = ((x - x.mean(axis=1, keepdims=True)) ** 2).sum() / (n * (k - 1))
+    F  = msb / msw
+    Fu = stats.f.ppf(1 - alpha / 2, n - 1, n * (k - 1))
+    Fl = stats.f.ppf(alpha / 2,     n - 1, n * (k - 1))
+    return {'n': int(n), 'k': int(k),
+            'icc_single': (msb - msw) / (msb + (k - 1) * msw),
+            'icc_single_ci': [(F / Fu - 1) / (F / Fu + k - 1), (F / Fl - 1) / (F / Fl + k - 1)],
+            'icc_average': (msb - msw) / msb,
+            'icc_average_ci': [1 - Fu / F, 1 - Fl / F]}
+
+
+def icc_twoway_agreement(x: np.ndarray, alpha: float = ALPHA) -> dict:
+    """ICC(2,1) = ICC(A,1): two-way random effects, absolute agreement, single rating,
+    με CI κατά McGraw & Wong (1996). Απαιτεί σταθερή ταυτότητα αξιολογητή ανά στήλη."""
     n, k = x.shape
     grand = x.mean()
     msr = k * ((x.mean(axis=1) - grand) ** 2).sum() / (n - 1)
     msc = n * ((x.mean(axis=0) - grand) ** 2).sum() / (k - 1)
-    sse = ((x - grand) ** 2).sum() - msr * (n - 1) - msc * (k - 1)
-    mse = sse / ((n - 1) * (k - 1))
-    return (msr - mse) / (msr + (k - 1) * mse + k * (msc - mse) / n)
+    mse = (((x - grand) ** 2).sum() - msr * (n - 1) - msc * (k - 1)) / ((n - 1) * (k - 1))
+    icc = (msr - mse) / (msr + (k - 1) * mse + k * (msc - mse) / n)
+    a = k * icc / (n * (1 - icc)); b = 1 + k * icc * (n - 1) / (n * (1 - icc))
+    v = (a * msc + b * mse) ** 2 / ((a * msc) ** 2 / (k - 1) + (b * mse) ** 2 / ((n - 1) * (k - 1)))
+    Fs  = stats.f.ppf(1 - alpha / 2, n - 1, v)
+    Fss = stats.f.ppf(1 - alpha / 2, v, n - 1)
+    lo = n * (msr - Fs * mse) / (Fs * (k * msc + (k * n - k - n) * mse) + n * msr)
+    hi = n * (Fss * msr - mse) / (k * msc + (k * n - k - n) * mse + n * Fss * msr)
+    return {'n': int(n), 'icc_single': icc, 'icc_single_ci': [lo, hi],
+            'rater_mean_diff': float((x[:, 0] - x[:, 1]).mean())}
 
 
 def pfmt(p: float) -> str:
@@ -150,7 +175,8 @@ for rater in RATERS:
 print(f"\n{sep}\nSHAPIRO-WILK (διαφορές Γ − Α)\n{sep}")
 for rater in RATERS:
     w = wide(rater); W, p = stats.shapiro(w['Γ'] - w['Α'])
-    results['sources'][rater]['shapiro'] = {'W': W, 'p': p, 'normal_at_05': bool(p > ALPHA)}
+    results['sources'][rater]['shapiro'] = {'W': W, 'p': p, 'nonsignificant_at_05': bool(p > ALPHA),
+                                            'note': 'test of the Phase C − Phase A difference scores; a non-significant result does not establish normality'}
     print(f"  {rater:<12} W = {W:.3f}, p {pfmt(p)}  {'κανονική' if p > ALPHA else 'ΜΗ κανονική'}")
 
 print(f"\n{sep}\nPAIRED t-TESTS (Α vs Γ) + COHEN'S d_z\n{sep}")
@@ -192,15 +218,31 @@ if os.path.exists(RATINGS_FILE):
     r['score'] = r[Q_COLS].mean(axis=1) + 1
     r['phase'] = r['Φάση'].map(PHASE_MAP)
     both = r.pivot_table(index=['Ωφελούμενος', 'phase'], columns='rater', values='score').dropna()
-    icc_all = icc21(both[['T1', 'T2']].values)
-    results['trainer_icc21'] = {'overall': {'icc': icc_all, 'cells': int(len(both))},
-                                'by_phase': {ph: {'icc': icc21(both.xs(ph, level='phase')[['T1', 'T2']].values),
-                                                  'cells': int(len(both.xs(ph, level='phase')))} for ph in PHASES},
-                                'note': 'T1/T2 of supplementary rows are not linked to the named trainers of the export'}
-    print(f"\n{sep}\nICC(2,1) ΜΕΤΑΞΥ ΤΩΝ ΔΥΟ ΕΚΠΑΙΔΕΥΤΩΝ (composite score, κελιά με 2 αξιολογήσεις)\n{sep}")
-    print(f"  συνολικά: ICC = {icc_all:.3f} ({len(both)} κελιά)")
-    for ph, v in results['trainer_icc21']['by_phase'].items():
-        print(f"  Φάση {ph}: ICC = {v['icc']:.3f} ({v['cells']} κελιά)")
+    origin = r.pivot_table(index=['Ωφελούμενος', 'phase'], columns='rater', values='origin', aggfunc='first').loc[both.index]
+    # Σε κελιά όπου ΚΑΙ οι δύο αξιολογήσεις προέρχονται από το συμπληρωματικό αρχείο, οι ετικέτες T1/T2
+    # είναι αυθαίρετες (δεν συνδέονται με τους ονομαστικούς εκπαιδευτές του export). Γι' αυτό το κύριο
+    # μοντέλο είναι one-way (αξιολογητές μη ταυτοποιήσιμοι) και υπολογίζεται ΑΝΑ ΦΑΣΗ (ανεξάρτητα άτομα).
+    identified = ~((origin['T1'] == 'supplementary') & (origin['T2'] == 'supplementary'))
+    icc = {'model_primary': 'one-way random effects (ICC(1,1) single rating; ICC(1,2) = reliability of the mean of the two '
+                            'trainer ratings actually analysed), per phase, exact F-based 95% CI (Shrout & Fleiss 1979)',
+           'unit': 'composite score (mean of 11 items, 1–5) per participant; participants with both trainer ratings in that phase',
+           'why_not_pooled': 'the 88 two-rater participant-phase cells are repeated measures of 30 participants; a pooled '
+                             'single-level ICC treats them as independent and its CI is invalid',
+           'why_not_two_way_primary': f'T1/T2 labels are arbitrary in {int((~identified).sum())} cells where both ratings come '
+                                      f'from the supplementary file; two-way estimates are given only as a sensitivity '
+                                      f'analysis on the {int(identified.sum())} cells with identified raters',
+           'by_phase': {}, 'sensitivity_two_way_identified_cells': {}}
+    print(f"\n{sep}\nΣΥΜΦΩΝΙΑ ΤΩΝ ΔΥΟ ΕΚΠΑΙΔΕΥΤΩΝ (composite score· κελιά με 2 αξιολογήσεις: {len(both)}, "
+          f"με ταυτοποιημένους αξιολογητές: {int(identified.sum())})\n{sep}")
+    for ph in PHASES:
+        x = both.xs(ph, level='phase')[['T1', 'T2']].values
+        ow = icc_oneway(x); icc['by_phase'][ph] = ow
+        xi = both.xs(ph, level='phase')[identified.xs(ph, level='phase')][['T1', 'T2']].values
+        tw = icc_twoway_agreement(xi); icc['sensitivity_two_way_identified_cells'][ph] = tw
+        print(f"  Φάση {ph} (n = {ow['n']}): ICC(1,1) = {ow['icc_single']:.2f} [{ow['icc_single_ci'][0]:.2f}, {ow['icc_single_ci'][1]:.2f}]"
+              f"   ICC(1,2) = {ow['icc_average']:.2f} [{ow['icc_average_ci'][0]:.2f}, {ow['icc_average_ci'][1]:.2f}]"
+              f"   | two-way ICC(2,1) σε {tw['n']} ταυτοποιημένα κελιά = {tw['icc_single']:.2f} [{tw['icc_single_ci'][0]:.2f}, {tw['icc_single_ci'][1]:.2f}], T1−T2 = {tw['rater_mean_diff']:+.2f}")
+    results['trainer_interrater_agreement'] = icc
 
 # ─── KEY NUMBERS + JSON ─────────────────────────────────────────────────────────
 print(f"\n{sep}\nKEY NUMBERS FOR TEXT\n{sep}")

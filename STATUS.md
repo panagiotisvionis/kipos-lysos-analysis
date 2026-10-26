@@ -518,9 +518,9 @@ Compile (natbib fallback): 0 errors, 0 undefined citations, 33 σελ. Biber com
 |---|---|---|---|---|---|---|---|
 | Ωφελούμενοι | 3.24 → 3.24 | 4.75 → 4.75 | −13.41 → −13.41 | 2.45 → **2.45** [1.73, 3.16] | .945/.121 → ίδιο | 44.86 → 44.86 | .84 (μέσος) → .90/.95/.69 |
 | Εκπαιδευτές | 2.85 → **2.68** | 3.56 → **3.30** | −7.40 → **−8.88** | 1.35 → **1.62** [1.08, 2.16] | .950/.172 → .946/.134 | 44.67 → **36.22** | .95 → .95/.96/.95 |
-| Παρατηρητής | 2.17 → **2.18** | 2.60 → **2.58** | −9.05 → **−7.69** | 1.65 → **1.40** [0.90, 1.91] | .904/**.011** → .953/**.201** (κανονική πλέον) | 40.27 → **31.65** | .88 → .82/.87/.79 |
+| Παρατηρητής | 2.17 → **2.18** | 2.60 → **2.58** | −9.05 → **−7.69** | 1.65 → **1.40** [0.90, 1.91] | .904/**.011** → .953/**.201** (μη σημαντικό πλέον) | 40.27 → **31.65** | .88 → .82/.87/.79 |
 
-Wilcoxon W: 0 / 7 / 3.5, όλα p<.001. Bonferroni pairwise: όλα σημαντικά, max p = .0037 (παρατηρητής B→Γ). **Η σειρά των effect sizes άλλαξε:** ωφελούμενοι > εκπαιδευτές > παρατηρητής. **Νέο:** ICC(2,1) εκπαιδευτών στο composite (88 κελιά) = **.38** (A .39, B .32, Γ .23) — χαμηλή συμφωνία· ΔΕΝ μπήκε στο manuscript (βλ. εκκρεμότητες).
+Wilcoxon W: 0 / 7 / 3.5, όλα p<.001. Bonferroni pairwise: όλα σημαντικά, max p = .0037 (παρατηρητής B→Γ). **Η σειρά των effect sizes άλλαξε:** ωφελούμενοι > εκπαιδευτές > παρατηρητής. **Νέο:** συμφωνία εκπαιδευτών — το αρχικά υπολογισμένο pooled ICC(2,1)=.38 **αποσύρθηκε ως μη έγκυρο** (βλ. ενότητα review 2026-10-26 παρακάτω)· ΔΕΝ μπήκε στο manuscript.
 
 ### Αλλαγές στο manuscript (`kipos_rdd.tex`) — μόνο ό,τι επηρεάζεται
 - Abstract: σειρά/τιμές d (2.45, 1.62, 1.40).
@@ -542,9 +542,48 @@ Wilcoxon W: 0 / 7 / 3.5, όλα p<.001. Bonferroni pairwise: όλα σημαντ
 - Dataset/ratings: μόνο ψευδώνυμα και κωδικοί SELF/T1/T2/OBS — κανένα όνομα.
 
 ### Εκκρεμότητες / αποφάσεις συγγραφέα
-- [ ] **ICC εκπαιδευτών = .38** είναι πλέον δημόσιο στο `analysis/results.json` του repo που παραπέμπει το Data Availability. Το Limitations λέει «inter-rater reliability … was not formally assessed». Πρόταση: να προστεθεί στο Results + Limitations (1–2 προτάσεις) για συνέπεια· εναλλακτικά να αφαιρεθεί το ICC από το JSON. Χρειάζεται απόφαση.
+- [ ] ~~ICC εκπαιδευτών = .38~~ → αντικαταστάθηκε από το διορθωμένο ICC ανά φάση (βλ. ενότητα review 2026-10-26). Απόφαση συγγραφέα για ένταξη στο manuscript εκκρεμεί.
 - [ ] Push στο GitHub (έγινε μόνο commit).
 - [ ] Ανεξάρτητη επαλήθευση (ChatGPT) από καθαρό checkout: `cd scripts && python statistical_analysis.py` → σύγκριση με `analysis/results.json`.
 - [ ] `data/README.md` ξαναγράφτηκε· `data/derived/README.md` σημειώθηκε SUPERSEDED.
 
 **Κατάσταση: ΕΠΑΝΑΛΥΣΗ ΟΛΟΚΛΗΡΩΘΗΚΕ — προς έλεγχο συγγραφέα πριν την υποβολή. Δεν έγινε υποβολή.**
+
+## Review της επανάλυσης — Claude (VS Code), 2026-10-26, branch `review/reanalysis-2026-10-26`
+
+### 1. Έλεγχος ICC — το .38 ΔΕΝ είναι έγκυρο τελικό εύρημα
+Τι είχε υπολογιστεί: ICC(2,1) Shrout & Fleiss (two-way random, absolute agreement, **single rating**), τύπος (MSR−MSE)/(MSR+(k−1)MSE+k(MSC−MSE)/n), στο composite score (μέσος 11 items, 1–5), **συγκεντρωτικά σε 88 κελιά** ωφελούμενος×φάση με 2 αξιολογήσεις, **χωρίς CI**. Τέσσερα προβλήματα:
+1. **Ταυτότητα αξιολογητών.** Στο export οι T1/T2 είναι ονομαστικά πρόσωπα. Στο `PRIVATE.xlsx` οι ετικέτες είναι «Εκπαιδευτής 1/2» χωρίς σύνδεση με τα πρόσωπα → σε **18 κελιά** (και οι δύο αξιολογήσεις συμπληρωματικές) η ανάθεση T1/T2 είναι αυθαίρετη. Στα 15 «Προαιρετικά» η ταυτότητα προκύπτει ως συμπλήρωμα του υπάρχοντος αξιολογητή (ταυτοποιημένη). Άρα two-way μοντέλο (που εκτιμά σταθερό rater effect) δεν είναι υπερασπίσιμο σε όλα τα κελιά → **one-way μοντέλο** (αξιολογητές μη ταυτοποιήσιμοι).
+2. **Επαναλαμβανόμενες μετρήσεις.** Τα 88 κελιά είναι 30 άτομα × 3 φάσεις· pooled ICC τα αντιμετωπίζει ως ανεξάρτητα → άκυρο CI. Υπολογίζεται **ανά φάση** (n = 28/30/30 ανεξάρτητα άτομα).
+3. **Single vs average.** Η ανάλυση χρησιμοποιεί τον μέσο των δύο → η σχετική αξιοπιστία είναι **ICC(1,2)**, όχι single-rating.
+4. **Κανένα CI.** Προστέθηκαν ακριβή F-based CI (one-way) και McGraw–Wong CI (two-way sensitivity).
+
+**Διορθωμένα αποτελέσματα** (`analysis/results.json → trainer_interrater_agreement`, script `statistical_analysis.py`):
+| Φάση | n | ICC(1,1) [95% CI] | **ICC(1,2)** [95% CI] | Sensitivity: ICC(2,1), ταυτοποιημένα κελιά | T1−T2 μέση διαφορά |
+|---|---|---|---|---|---|
+| Α | 28 | .34 [−.02, .63] | **.51 [−.05, .77]** | .33 [−.04, .64] (n=23) | −0.44 |
+| Β | 30 | .20 [−.17, .51] | **.33 [−.40, .68]** | .22 [−.10, .56] (n=23) | −0.83 |
+| Γ | 30 | −.02 [−.36, .34] | **−.03 [−1.15, .51]** | .06 [−.08, .29] (n=24) | −0.88 |
+
+Pooled Pearson r μεταξύ των δύο (consistency, 88 κελιά): .53 — μέρος της χαμηλής absolute-agreement οφείλεται στο ότι ο ένας εκπαιδευτής βαθμολογεί συστηματικά υψηλότερα (0.4–0.9 μονάδες), αλλά στη φάση Γ η συμφωνία είναι ουσιαστικά μηδενική. Pooled cluster-bootstrap (ανά άτομο) ICC(1,2) = .44 [.04, .68] — μόνο ενδεικτικά.
+
+**Πρόταση αναφοράς (ΔΕΝ εφαρμόστηκε — απόφαση συγγραφέα):**
+- Results, τέλος §4.2 ή §3.1: «Agreement between the two trainers/educators was low. One-way random-effects intraclass correlations for the mean of the two ratings, ICC(1,2), were .51 (95% CI [−.05, .77]), .33 [−.40, .68], and −.03 [−1.15, .51] in Phases A, B, and C, respectively ($n$ = 28, 30, 30); one educator rated participants systematically higher than the other (mean difference 0.4–0.9 scale points).»
+- Limitations, αντικατάσταση του «Fifth»: «Fifth, agreement between the two trainers/educators was low (ICC(1,2) ≤ .51, with all 95\% confidence intervals including zero) and one educator rated systematically higher than the other. The trainer-based composite should therefore be regarded as a low-reliability indicator and the corresponding effect size interpreted with particular caution. A one-way model was used because the two educators could not be identified consistently in all records.»
+- Αν ο συγγραφέας ΔΕΝ θέλει ICC στο paper: το «was not formally assessed» του Limitations πρέπει να γίνει «is not reported», και το JSON παραμένει δημόσιο στο repo.
+
+### 2. Κανονικότητα — διορθώθηκε η διατύπωση
+§3.5 και §4.2: αναφέρονται ρητά στις **διαφορές Φάση Γ − Φάση Α**· «did not indicate a departure from normality» αντί «assumption supported»· δηλώνεται ότι μη σημαντικό Shapiro–Wilk δεν αποδεικνύει κανονικότητα και γι' αυτό εφαρμόστηκε Wilcoxon σε όλες τις πηγές. JSON key `normal_at_05` → `nonsignificant_at_05` + σημείωση.
+
+### 3. Προέλευση συμπληρωματικών εγγραφών — επιβεβαιώθηκε
+Build με `--supp PRIVATE.xlsx` (sha256 `94671c54…`, = `PRIVATE_missing_ratings_filled.xlsx` κατά περιεχόμενο). Έλεγχος κελί-προς-κελί: τα 63 supplementary rows του `ratings_pseudonymized.xlsx` ταυτίζονται με το PRIVATE.xlsx σε **33/33 κελιά** και με το πρότυπο `_to_fill` (τυχαίες τιμές, sha `9e7172cd…`) σε **0/33**. Η καταγραφή προέλευσης (αρχείο συγγραφέα 26/10/2026, χωρίς τεκμηρίωση αρχικής καταγραφής) διατηρείται σε README/manuscript.
+
+### 4. Έλεγχος commits για προσωπικά δεδομένα — καθαρά
+Commits `cb73d20`, `5d0c672` (+ το παρόν): κανένα αρχείο `*PRIVATE*`/`*mapping*`/raw export στο tree ή στο ιστορικό τους. Αναζήτηση όλων των tokens (≥4 χαρ.) από τα 30 ονόματα συμμετεχόντων + 4 αξιολογητών μέσα στο text diff και στα 3 committed xlsx: **μόνο η γενική λέξη «Ωφελούμενος/η»** (με την οποία ξεκινούν 4 ετικέτες συμμετεχόντων στο export και η οποία είναι και τιμή της στήλης Τύπος). Κανένα όνομα.
+
+### 5. Branch
+Η επανάλυση ανέβηκε στο branch **`review/reanalysis-2026-10-26`** (χωρίς force push, χωρίς merge στο master· το master στο GitHub μένει στο `0cf3557`). Περιέχει: ψευδωνυμοποιημένα δεδομένα (270 + 358 γραμμές), scripts, `analysis/results.json`, manuscript/cover letter/highlights/title page, figures, README/STATUS.
+
+**Για ChatGPT:** καθαρό checkout του branch → `cd scripts && python statistical_analysis.py` → σύγκριση με `analysis/results.json`· έλεγχος της ενότητας ICC (μοντέλο, CI, n) και της διατύπωσης κανονικότητας στο `kipos_rdd.tex` §3.5/§4.2.
+
+**Κατάσταση: ΣΕ ΑΝΕΞΑΡΤΗΤΟ REVIEW. Καμία υποβολή.**

@@ -59,7 +59,8 @@
    "shapiro": {
     "W": 0.944642,
     "p": 0.121331,
-    "normal_at_05": true
+    "nonsignificant_at_05": true,
+    "note": "test of the Phase C − Phase A difference scores; a non-significant result does not establish normality"
    },
    "paired_t_AC": {
     "n": 30,
@@ -149,7 +150,8 @@
    "shapiro": {
     "W": 0.946233,
     "p": 0.133914,
-    "normal_at_05": true
+    "nonsignificant_at_05": true,
+    "note": "test of the Phase C − Phase A difference scores; a non-significant result does not establish normality"
    },
    "paired_t_AC": {
     "n": 30,
@@ -239,7 +241,8 @@
    "shapiro": {
     "W": 0.952806,
     "p": 0.200884,
-    "normal_at_05": true
+    "nonsignificant_at_05": true,
+    "note": "test of the Phase C − Phase A difference scores; a non-significant result does not establish normality"
    },
    "paired_t_AC": {
     "n": 30,
@@ -287,25 +290,83 @@
    "pairwise_max_p": 0.003705
   }
  },
- "trainer_icc21": {
-  "overall": {
-   "icc": 0.382603,
-   "cells": 88
-  },
+ "trainer_interrater_agreement": {
+  "model_primary": "one-way random effects (ICC(1,1) single rating; ICC(1,2) = reliability of the mean of the two trainer ratings actually analysed), per phase, exact F-based 95% CI (Shrout & Fleiss 1979)",
+  "unit": "composite score (mean of 11 items, 1–5) per participant; participants with both trainer ratings in that phase",
+  "why_not_pooled": "the 88 two-rater participant-phase cells are repeated measures of 30 participants; a pooled single-level ICC treats them as independent and its CI is invalid",
+  "why_not_two_way_primary": "T1/T2 labels are arbitrary in 18 cells where both ratings come from the supplementary file; two-way estimates are given only as a sensitivity analysis on the 70 cells with identified raters",
   "by_phase": {
    "Α": {
-    "icc": 0.390914,
-    "cells": 28
+    "n": 28,
+    "k": 2,
+    "icc_single": 0.343474,
+    "icc_single_ci": [
+     -0.022311,
+     0.629769
+    ],
+    "icc_average": 0.511322,
+    "icc_average_ci": [
+     -0.045641,
+     0.772832
+    ]
    },
    "Β": {
-    "icc": 0.320224,
-    "cells": 30
+    "n": 30,
+    "k": 2,
+    "icc_single": 0.195029,
+    "icc_single_ci": [
+     -0.167665,
+     0.512929
+    ],
+    "icc_average": 0.326401,
+    "icc_average_ci": [
+     -0.402879,
+     0.67806
+    ]
    },
    "Γ": {
-    "icc": 0.229407,
-    "cells": 30
+    "n": 30,
+    "k": 2,
+    "icc_single": -0.015769,
+    "icc_single_ci": [
+     -0.364958,
+     0.339357
+    ],
+    "icc_average": -0.032043,
+    "icc_average_ci": [
+     -1.149396,
+     0.506746
+    ]
    }
   },
-  "note": "T1/T2 of supplementary rows are not linked to the named trainers of the export"
+  "sensitivity_two_way_identified_cells": {
+   "Α": {
+    "n": 23,
+    "icc_single": 0.329195,
+    "icc_single_ci": [
+     -0.040246,
+     0.635199
+    ],
+    "rater_mean_diff": -0.438735
+   },
+   "Β": {
+    "n": 23,
+    "icc_single": 0.223484,
+    "icc_single_ci": [
+     -0.104971,
+     0.564017
+    ],
+    "rater_mean_diff": -0.83004
+   },
+   "Γ": {
+    "n": 24,
+    "icc_single": 0.064818,
+    "icc_single_ci": [
+     -0.07876,
+     0.286747
+    ],
+    "rater_mean_diff": -0.882576
+   }
+  }
  }
 }
