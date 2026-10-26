@@ -683,4 +683,4 @@ Limitations «Fifth»: «63 of the 358 individual ratings (17.6\%; 23.5\% of the
 ## Απόφαση συγγραφέα — 2026-10-26
 Οι προτεινόμενες παράγραφοι **Ε1–Ε4 (συμφωνία εκπαιδευτών, sensitivity) ΔΕΝ μπαίνουν στο manuscript.** Οι υπολογισμοί παραμένουν στο `analysis/results.json` και στο `data/README.md` του repo. Μην τις ξαναπροτείνει κανείς.
 
-**Ανοιχτό σημείο συνέπειας:** το Limitations «Fifth» γράφει «inter-rater reliability between the two trainers/educators was not formally assessed», ενώ ο υπολογισμός υπάρχει δημόσια στο repo που παραπέμπει το Data Availability. Εκκρεμεί απόφαση συγγραφέα για ελάχιστη αναδιατύπωση.
+**Σημείο συνέπειας — ΚΛΕΙΣΤΗΚΕ (επιλογή α):** Limitations «Fifth» → «inter-rater reliability … is not reported in this article. The mean of their scores was used as a composite rating, and the precision of the trainer-based evaluation component should therefore be regarded as uncertain.» Αφαιρέθηκε και η φράση «absence of an intraclass correlation coefficient», που επίσης δεν ίσχυε.
