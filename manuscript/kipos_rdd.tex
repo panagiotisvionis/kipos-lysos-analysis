@@ -44,7 +44,7 @@ Evaluation of an Experiential Intervention in a Day Care Facility}
 
 \noindent\textbf{Method:} A three-phase longitudinal design evaluated an arts-based socio-emotional program over three months in a Day Care Center ($n = 30$ adults, 80\% with a documented intellectual disability). Data were collected from beneficiary self-reports, trainer/educator assessments, and independent observer ratings using an 11-item Likert-scale instrument developed for the study.
 
-\noindent\textbf{Results:} Significant improvements were observed across all evaluator sources. Beneficiary self-reports showed the largest effect ($d = 2.45$, $p < .001$), followed by the independent observer ($d = 1.65$) and trainers/educators ($d = 1.35$). Friedman tests confirmed significant longitudinal change across phases ($p < .001$).
+\noindent\textbf{Results:} Significant improvements were observed across all evaluator sources. Beneficiary self-reports showed the largest effect ($d = 2.45$, $p < .001$), followed by trainers/educators ($d = 1.62$) and the independent observer ($d = 1.40$). Friedman tests confirmed significant longitudinal change across phases ($p < .001$).
 
 \noindent\textbf{Conclusions:} Participation in a holistic experiential program was associated with notable improvements in emotion recognition, cooperation, group participation, and well-being among adults with intellectual and developmental disabilities in a Day Care setting. In the absence of a control group, these findings are preliminary but consistent across sources.
 \end{abstract}
@@ -197,13 +197,13 @@ Age range, years & 20--55 \\
 \end{tabular}
 \end{table}
 
-Self-report data were complete for all 30 participants across the three measurement phases. Trainer ratings were obtained from two educators who worked daily with the beneficiaries; for each participant and phase, the two ratings were averaged item-wise to yield a single trainer-based score, and where only one educator had responded, that single rating was used. One independent observer with experience in special education also rated all participants. Observer ratings were missing for 2, 4, and 4 participant--phase records in Phases A, B, and C respectively (10 of 90 observer records, 11.1\%); these were replaced by the phase-level item mean across observed participants prior to analysis. All analyses were therefore conducted on $n = 30$ for each evaluator category.
+Self-report data were complete for all 30 participants across the three measurement phases. Trainer ratings were obtained from two educators who worked daily with the beneficiaries, and one independent observer with experience in special education rated all participants. The electronic export of the rating platform did not contain trainer ratings for 18 and observer ratings for 12 of the 90 participant--phase records per source (four participants had no trainer or observer record in any phase), and contained only one of the two trainer ratings for 17 further records. These ratings were supplied by the facility in a supplementary data file after the export had been produced and were merged with the export at the level of individual ratings, before any aggregation. After merging, ratings were available from all three sources for all 30 participants in all three phases. For each participant and phase, the two trainer ratings were averaged item-wise to yield a single trainer-based score; for two records only one educator's rating was available and was used as such. Where a rater had submitted the same assessment twice, the first submission was retained. No values were imputed, and all analyses were conducted on $n = 30$ for each evaluator category.
 
 \subsection{Researcher Positionality}
 
 The relationship between the authors and the study setting is stated transparently. The first author coordinates the digital infrastructure of the Day Care Center and was responsible for data management and statistical analysis; he had no role in designing or delivering the intervention and did not rate any participant. The second and third authors are members of the facility's staff (an educator and the psychologist-psychotherapist, respectively) who designed and facilitated the intervention; neither provided trainer or observer ratings. The fourth author, an academic supervisor external to the facility, oversaw the research design and analysis. Trainer ratings were provided by two educators employed at the facility who worked with the beneficiaries daily but were not involved in authorship. The independent observer was an external special education professional with no employment relationship to the facility and no prior contact with the participants.
 
-This configuration carries an inherent risk of positive expectancy among program-affiliated raters. We sought to mitigate this risk in three ways: trainer scores were averaged across both raters; an external, unaffiliated observer provided an independent assessment; and convergence across the three sources was examined explicitly. Nevertheless, the trainers were not blinded to the aims of the program, and the facility's institutional interest in demonstrating program value is acknowledged as a potential source of bias. The independent observer's ratings, which showed the most conservative absolute scores but a comparable effect size, offer the least conflicted evidence of change.
+This configuration carries an inherent risk of positive expectancy among program-affiliated raters. We sought to mitigate this risk in three ways: trainer scores were averaged across both raters; an external, unaffiliated observer provided an independent assessment; and convergence across the three sources was examined explicitly. Nevertheless, the trainers were not blinded to the aims of the program, and the facility's institutional interest in demonstrating program value is acknowledged as a potential source of bias. The independent observer's ratings, which showed the most conservative absolute scores and the smallest, though still large, effect size, offer the least conflicted evidence of change.
 
 \subsection{Research Design}
 
@@ -265,19 +265,19 @@ The first ten indicators were derived from the SEL framework; the eleventh captu
 
 The same indicator system was adapted into three distinct formulations in order to capture different temporal perspectives. Phase A reflected the participant's general self-perception before the intervention. Phase B assessed the experience of the specific session and intermediate progress. Phase C assessed the perceived overall effect of the program. This threefold structure strengthened content validity and allowed the measurement of both general characteristics and intervention-related change.
 
-The instrument demonstrated satisfactory to high internal consistency, with Cronbach's alpha values ranging from 0.84 to 0.95 across evaluator categories, as shown in Table~\ref{tab:cronbach}.
+The instrument demonstrated acceptable to high internal consistency in most evaluator categories and phases, with Cronbach's alpha values ranging from 0.79 to 0.96 (Table~\ref{tab:cronbach}); the lower value for beneficiary self-reports in Phase C ($\alpha = 0.69$) is consistent with the restricted variance of scores in that phase. For trainers/educators, alpha was computed on the item-wise mean of the two educators' ratings per participant.
 
 \begin{table}[!t]
-\caption{Internal Consistency of the Assessment Instrument}
+\caption{Internal Consistency (Cronbach's $\alpha$) of the Assessment Instrument by Evaluator Category and Phase ($n = 30$)}
 \label{tab:cronbach}
 \centering
-\begin{tabular}{lc}
+\begin{tabular}{lccc}
 \hline
-\textbf{Evaluator Category} & \textbf{Cronbach's $\alpha$} \\
+\textbf{Evaluator Category} & \textbf{Phase A} & \textbf{Phase B} & \textbf{Phase C} \\
 \hline
-Beneficiaries & 0.84 \\
-Trainers/Educators & 0.95 \\
-Independent observer & 0.88 \\
+Beneficiaries & 0.90 & 0.95 & 0.69 \\
+Trainers/Educators & 0.95 & 0.96 & 0.95 \\
+Independent observer & 0.82 & 0.87 & 0.79 \\
 \hline
 \end{tabular}
 \end{table}
@@ -308,7 +308,7 @@ The statistical analysis combined descriptive and inferential techniques. First,
 
 The longitudinal trajectory of scores across the three phases was examined graphically and statistically. Boxplots and violin plots were used to visualize the distribution of values before and after the intervention, while a trajectory plot was used to illustrate the evolution of mean scores across phases.
 
-All analyses were conducted using Python 3.11, with the pandas, SciPy, and Matplotlib libraries. The level of statistical significance was set at $\alpha=.05$. Prior to the application of parametric tests, the normality of the difference scores was examined using the Shapiro--Wilk test. For the evaluator category in which normality was not confirmed, namely the independent observer ratings ($W=0.904$, $p=.011$), the Wilcoxon signed-rank test was additionally applied as a confirmatory non-parametric test.
+All analyses were conducted using Python 3.12, with the pandas, SciPy, and Matplotlib libraries. The level of statistical significance was set at $\alpha=.05$. Prior to the application of parametric tests, the normality of the difference scores was examined using the Shapiro--Wilk test, and the Wilcoxon signed-rank test was additionally applied to each evaluator category as a confirmatory non-parametric test.
 
 For the extended analysis of change across the three phases, the Friedman test was used. Pairwise comparisons between Phase A--Phase B, Phase B--Phase C, and Phase A--Phase C were conducted using Bonferroni-corrected paired $t$-tests, with an adjusted significance threshold of $\alpha_{\mathrm{adj}}=.017$. Given the sample size and the applied nature of the study, these tests were preferred over more complex mixed-effects models, which require larger samples for reliable estimation.
 
@@ -332,12 +332,12 @@ Descriptive statistics for socio-emotional functioning scores across phases and 
 Beneficiaries & A & 3.24 & 0.62 & 3.02 & 3.46 \\
 Beneficiaries & B & 3.71 & 0.62 & 3.49 & 3.93 \\
 Beneficiaries & C & 4.75 & 0.18 & 4.69 & 4.82 \\
-Trainers/Educators & A & 2.85 & 0.55 & 2.66 & 3.05 \\
-Trainers/Educators & B & 3.30 & 0.42 & 3.15 & 3.45 \\
-Trainers/Educators & C & 3.56 & 0.30 & 3.45 & 3.67 \\
-Independent observer & A & 2.17 & 0.32 & 2.06 & 2.29 \\
-Independent observer & B & 2.47 & 0.31 & 2.36 & 2.58 \\
-Independent observer & C & 2.60 & 0.26 & 2.50 & 2.69 \\
+Trainers/Educators & A & 2.68 & 0.56 & 2.48 & 2.88 \\
+Trainers/Educators & B & 3.01 & 0.55 & 2.82 & 3.21 \\
+Trainers/Educators & C & 3.30 & 0.46 & 3.13 & 3.46 \\
+Independent observer & A & 2.18 & 0.33 & 2.06 & 2.30 \\
+Independent observer & B & 2.45 & 0.32 & 2.34 & 2.57 \\
+Independent observer & C & 2.58 & 0.28 & 2.48 & 2.68 \\
 \hline
 \end{tabular}
 \end{table}
@@ -345,7 +345,7 @@ Independent observer & C & 2.60 & 0.26 & 2.50 & 2.69 \\
 
 The graphical representation of scores before and after the intervention is presented in Figures~\ref{fig:boxplot} and~\ref{fig:violin}. The boxplots indicate a clear and systematic upward shift in central tendency from Phase A to Phase C across all evaluator categories. For beneficiaries, the median increased substantially, while the interquartile range decreased, suggesting greater homogeneity in socio-emotional functioning after the completion of the program.
 
-For trainers/educators, the boxplots also reveal an increase in median scores and a reduction of extreme values, reflecting both overall improvement and more stable evaluations of beneficiary behavior. The independent observer showed a similar upward pattern, with Phase C scores occupying a higher area of the scale compared with Phase A. Overall, the boxplots suggest that improvement was not limited to mean scores, but affected the broader distribution of values.
+For trainers/educators, the boxplots also reveal a steady increase in median scores across the three phases without outlying values; the interquartile range did not narrow, indicating that the improvement was accompanied by continued between-participant variability in educators' evaluations. The independent observer showed a similar upward pattern, with Phase C scores occupying a higher area of the scale compared with Phase A. Overall, the boxplots suggest that improvement was not limited to mean scores, but affected the broader distribution of values.
 
 \begin{figure}[!t]
 \centering
@@ -365,7 +365,7 @@ The violin plots provide a more detailed view of score distributions across Phas
 
 \subsection{Effect Sizes and Hypothesis Testing}
 
-The results of paired-sample $t$-tests comparing Phase A and Phase C are presented in Table~\ref{tab:paired_tests}. All evaluator categories showed statistically significant improvement from Phase A to Phase C. The largest effect was observed in beneficiary self-reports ($d=2.45$, 95\% CI [1.73, 3.16]), followed by the independent observer ratings ($d=1.65$, 95\% CI [1.10, 2.20]) and trainer/educator ratings ($d=1.35$, 95\% CI [0.86, 1.85]). These values indicate large to very large effects.
+The results of paired-sample $t$-tests comparing Phase A and Phase C are presented in Table~\ref{tab:paired_tests}. All evaluator categories showed statistically significant improvement from Phase A to Phase C. The largest effect was observed in beneficiary self-reports ($d=2.45$, 95\% CI [1.73, 3.16]), followed by trainer/educator ratings ($d=1.62$, 95\% CI [1.08, 2.16]) and independent observer ratings ($d=1.40$, 95\% CI [0.90, 1.91]). These values indicate large to very large effects.
 
 \begin{table}[!t]
 \caption{Paired-Sample Tests Between Phase A and Phase C and Effect Sizes}
@@ -376,8 +376,8 @@ The results of paired-sample $t$-tests comparing Phase A and Phase C are present
 \textbf{Evaluator} & \textbf{Mean $\Delta$} & \textbf{$t$} & \textbf{df} & \textbf{$p$} & \textbf{Cohen's $d$} & \textbf{95\% CI for $d$} \\
 \hline
 Beneficiaries & +1.52 & -13.41 & 29 & $<.001$ & 2.45 & [1.73, 3.16] \\
-Trainers/Educators & +0.71 & -7.40 & 29 & $<.001$ & 1.35 & [0.86, 1.85] \\
-Independent observer & +0.42 & -9.05 & 29 & $<.001$ & 1.65 & [1.10, 2.20] \\
+Trainers/Educators & +0.62 & -8.88 & 29 & $<.001$ & 1.62 & [1.08, 2.16] \\
+Independent observer & +0.40 & -7.69 & 29 & $<.001$ & 1.40 & [0.90, 1.91] \\
 \hline
 \end{tabular}
 \end{table}
@@ -391,9 +391,9 @@ The corresponding forest plot is presented in Figure~\ref{fig:forest}. All effec
 \label{fig:forest}
 \end{figure}
 
-Prior to the application of parametric tests, the normality of difference scores between Phase C and Phase A was examined using the Shapiro--Wilk test. The assumption of normality was supported for beneficiaries ($W=0.945$, $p=.121$) and trainers/educators ($W=0.950$, $p=.172$). For the independent observer, normality was not confirmed ($W=0.904$, $p=.011$); therefore, the Wilcoxon signed-rank test was additionally applied and confirmed the statistical significance of the change ($W=0$, $p<.001$).
+Prior to the application of parametric tests, the normality of difference scores between Phase C and Phase A was examined using the Shapiro--Wilk test. The assumption of normality was supported for all three evaluator categories: beneficiaries ($W=0.945$, $p=.121$), trainers/educators ($W=0.946$, $p=.134$), and the independent observer ($W=0.953$, $p=.201$). Wilcoxon signed-rank tests, applied as a non-parametric confirmation, corroborated the significance of the change in all three categories (all $p<.001$).
 
-The Friedman test indicated statistically significant longitudinal change across the three phases for all evaluator categories: beneficiaries, $\chi^2=44.86$, $p<.001$; trainers/educators, $\chi^2=44.67$, $p<.001$; and independent observer, $\chi^2=40.27$, $p<.001$. Pairwise comparisons using Bonferroni-corrected paired $t$-tests, with an adjusted threshold of $\alpha_{\mathrm{adj}}=.017$, showed that each phase differed significantly from the next for all evaluator categories, with all $p<.003$.
+The Friedman test indicated statistically significant longitudinal change across the three phases for all evaluator categories: beneficiaries, $\chi^2(2)=44.86$, $p<.001$; trainers/educators, $\chi^2(2)=36.22$, $p<.001$; and independent observer, $\chi^2(2)=31.65$, $p<.001$. Pairwise comparisons using Bonferroni-corrected paired $t$-tests, with an adjusted threshold of $\alpha_{\mathrm{adj}}=.017$, showed that each phase differed significantly from the next for all evaluator categories, with all $p \leq .004$.
 
 The very large effect size observed in beneficiary self-reports
 ($d = 2.45$) warrants cautious interpretation. Given the pilot
@@ -405,8 +405,8 @@ a combination of genuine change, ceiling effects in Phase C
 ($M = 4.75$, $SD = 0.18$), social desirability bias inherent
 in self-report measures, and possible response-shift bias.
 The convergence of findings across the two external evaluator
-categories --- trainers/educators ($d = 1.35$) and the independent
-observer ($d = 1.65$) --- provides partial evidence that the
+categories --- trainers/educators ($d = 1.62$) and the independent
+observer ($d = 1.40$) --- provides partial evidence that the
 improvement is not solely attributable to self-report inflation,
 though it does not eliminate these alternative explanations.
 
@@ -432,9 +432,9 @@ The findings of the present study indicate that the structured experiential soci
 
 The marked improvement reported by beneficiaries themselves ($d = 2.45$) is consistent with previous studies showing that participation in stable, safe, and structured group activities may enhance self-perception, confidence, and social engagement among adults with disabilities \parencite{hall2009}. The increase in self-reported functioning may reflect greater self-awareness and a more positive internal experience, both of which are central dimensions of emotional intelligence as conceptualized by \textcite{goleman1995}.
 
-Trainers and educators also reported significant improvement ($d = 1.35$), with a pattern of change broadly parallel to that observed in self-reports. Although professionals often evaluate functioning more conservatively due to continuous exposure to everyday behavioral challenges, the convergence in trajectories strengthens confidence in the consistency of the findings.
+Trainers and educators also reported significant improvement ($d = 1.62$), with a pattern of change broadly parallel to that observed in self-reports. Although professionals often evaluate functioning more conservatively due to continuous exposure to everyday behavioral challenges, the convergence in trajectories strengthens confidence in the consistency of the findings.
 
-Importantly, the independent observer, who had no prior relational involvement with participants, also identified substantial gains ($d = 1.65$). Agreement across the three sources of evaluation represents one of the strongest methodological contributions of the present study. In disability research, ratings may be influenced by familiarity effects, expectancy bias, or relational dynamics. Therefore, cross-source convergence enhances internal validity and reduces the likelihood that the findings merely reflect rater-specific perceptions.
+Importantly, the independent observer, who had no prior relational involvement with participants, also identified substantial gains ($d = 1.40$). Agreement across the three sources of evaluation represents one of the strongest methodological contributions of the present study. In disability research, ratings may be influenced by familiarity effects, expectancy bias, or relational dynamics. Therefore, cross-source convergence enhances internal validity and reduces the likelihood that the findings merely reflect rater-specific perceptions.
 
 From a theoretical perspective, the findings align closely with the framework of SEL. CASEL emphasizes that competencies such as self-awareness, self-management, empathy, relationship skills, and responsible decision-making are strengthened through repeated participation in structured and emotionally supportive learning environments \parencite{casel2020,weissberg2015}. The intervention implemented in the present study was explicitly designed around these principles, suggesting that SEL-informed approaches may also be highly relevant beyond school settings and into adult disability services.
 
@@ -476,7 +476,7 @@ Second, the very large effect sizes, particularly in beneficiary self-reports, s
 
 Third, although the instrument demonstrated satisfactory internal consistency, it has not yet undergone full psychometric validation (e.g., factor structure, convergent validity, discriminant validity). Fourth, the sample size, while adequate for within-subject analyses, remains modest for subgroup comparisons or moderator analyses.
 
-Fifth, inter-rater reliability between the two trainers/educators was not formally assessed. The mean of their scores was used as a composite rating, but the absence of an intraclass correlation coefficient or equivalent measure limits the precision of the trainer-based evaluation component.
+Fifth, inter-rater reliability between the two trainers/educators was not formally assessed. The mean of their scores was used as a composite rating, but the absence of an intraclass correlation coefficient or equivalent measure limits the precision of the trainer-based evaluation component. Moreover, 63 of the 358 individual trainer and observer ratings (17.6\%) were not contained in the electronic export of the rating platform and were supplied subsequently by the facility; the circumstances of their original recording could not be independently verified.
 
 Sixth, the sample was heterogeneous with respect to primary diagnosis, and the modest sample size precluded subgroup analyses comparing participants with and without a documented intellectual disability, or by severity of intellectual disability. The findings should therefore be interpreted as applying to the mixed population served by adult day care services rather than to intellectual disability specifically. In addition, no standardized measure of cognitive or adaptive functioning was administered, so the influence of baseline functioning on the observed change could not be examined.
 

@@ -1,0 +1,311 @@
+{
+ "data_file": "action_responses_pseudonymized.xlsx",
+ "data_sha256": "cda9c5dc786fbf54f1c6676a1f178c6674a49797ea28afa4d08df3a23a2adec5",
+ "rows": 270,
+ "participants": 30,
+ "n_raters_per_source": {
+  "Ωφελούμενοι": {
+   "1": 90
+  },
+  "Εκπαιδευτές": {
+   "1": 2,
+   "2": 88
+  },
+  "Παρατηρητής": {
+   "1": 90
+  }
+ },
+ "sources": {
+  "Ωφελούμενοι": {
+   "alpha": {
+    "Α": {
+     "alpha": 0.898451,
+     "n": 30
+    },
+    "Β": {
+     "alpha": 0.945138,
+     "n": 30
+    },
+    "Γ": {
+     "alpha": 0.686969,
+     "n": 30
+    }
+   },
+   "alpha_mean_of_phases": 0.84352,
+   "n": 30,
+   "descriptives": {
+    "Α": {
+     "n": 30,
+     "mean": 3.239394,
+     "sd": 0.618183,
+     "ci_lo": 3.01818,
+     "ci_hi": 3.460608
+    },
+    "Β": {
+     "n": 30,
+     "mean": 3.709091,
+     "sd": 0.621364,
+     "ci_lo": 3.486739,
+     "ci_hi": 3.931443
+    },
+    "Γ": {
+     "n": 30,
+     "mean": 4.754545,
+     "sd": 0.178895,
+     "ci_lo": 4.690529,
+     "ci_hi": 4.818562
+    }
+   },
+   "shapiro": {
+    "W": 0.944642,
+    "p": 0.121331,
+    "normal_at_05": true
+   },
+   "paired_t_AC": {
+    "n": 30,
+    "df": 29,
+    "mean_diff": 1.515152,
+    "t": -13.406057,
+    "p": 0.0,
+    "d_z": 2.4476,
+    "d_ci_lo": 1.732323,
+    "d_ci_hi": 3.162877
+   },
+   "wilcoxon_AC": {
+    "W": 0.0,
+    "p": 2e-06
+   },
+   "friedman": {
+    "n": 30,
+    "chi2": 44.864407,
+    "df": 2,
+    "p": 0.0
+   },
+   "pairwise": {
+    "Α-Β": {
+     "mean_diff": 0.469697,
+     "t": -3.518312,
+     "df": 29,
+     "p": 0.001453,
+     "significant_bonferroni": true
+    },
+    "Β-Γ": {
+     "mean_diff": 1.045455,
+     "t": -8.909398,
+     "df": 29,
+     "p": 0.0,
+     "significant_bonferroni": true
+    },
+    "Α-Γ": {
+     "mean_diff": 1.515152,
+     "t": -13.406057,
+     "df": 29,
+     "p": 0.0,
+     "significant_bonferroni": true
+    }
+   },
+   "pairwise_max_p": 0.001453
+  },
+  "Εκπαιδευτές": {
+   "alpha": {
+    "Α": {
+     "alpha": 0.946797,
+     "n": 30
+    },
+    "Β": {
+     "alpha": 0.955643,
+     "n": 30
+    },
+    "Γ": {
+     "alpha": 0.952773,
+     "n": 30
+    }
+   },
+   "alpha_mean_of_phases": 0.951738,
+   "n": 30,
+   "descriptives": {
+    "Α": {
+     "n": 30,
+     "mean": 2.678788,
+     "sd": 0.555669,
+     "ci_lo": 2.479944,
+     "ci_hi": 2.877631
+    },
+    "Β": {
+     "n": 30,
+     "mean": 3.013636,
+     "sd": 0.54873,
+     "ci_lo": 2.817276,
+     "ci_hi": 3.209997
+    },
+    "Γ": {
+     "n": 30,
+     "mean": 3.298485,
+     "sd": 0.460878,
+     "ci_lo": 3.133562,
+     "ci_hi": 3.463408
+    }
+   },
+   "shapiro": {
+    "W": 0.946233,
+    "p": 0.133914,
+    "normal_at_05": true
+   },
+   "paired_t_AC": {
+    "n": 30,
+    "df": 29,
+    "mean_diff": 0.619697,
+    "t": -8.875048,
+    "p": 0.0,
+    "d_z": 1.620355,
+    "d_ci_lo": 1.07615,
+    "d_ci_hi": 2.164559
+   },
+   "wilcoxon_AC": {
+    "W": 7.0,
+    "p": 5e-06
+   },
+   "friedman": {
+    "n": 30,
+    "chi2": 36.222222,
+    "df": 2,
+    "p": 0.0
+   },
+   "pairwise": {
+    "Α-Β": {
+     "mean_diff": 0.334848,
+     "t": -4.807286,
+     "df": 29,
+     "p": 4.3e-05,
+     "significant_bonferroni": true
+    },
+    "Β-Γ": {
+     "mean_diff": 0.284848,
+     "t": -5.726512,
+     "df": 29,
+     "p": 3e-06,
+     "significant_bonferroni": true
+    },
+    "Α-Γ": {
+     "mean_diff": 0.619697,
+     "t": -8.875048,
+     "df": 29,
+     "p": 0.0,
+     "significant_bonferroni": true
+    }
+   },
+   "pairwise_max_p": 4.3e-05
+  },
+  "Παρατηρητής": {
+   "alpha": {
+    "Α": {
+     "alpha": 0.820182,
+     "n": 30
+    },
+    "Β": {
+     "alpha": 0.872445,
+     "n": 30
+    },
+    "Γ": {
+     "alpha": 0.793987,
+     "n": 30
+    }
+   },
+   "alpha_mean_of_phases": 0.828871,
+   "n": 30,
+   "descriptives": {
+    "Α": {
+     "n": 30,
+     "mean": 2.178788,
+     "sd": 0.325144,
+     "ci_lo": 2.062437,
+     "ci_hi": 2.295139
+    },
+    "Β": {
+     "n": 30,
+     "mean": 2.451515,
+     "sd": 0.322504,
+     "ci_lo": 2.336109,
+     "ci_hi": 2.566922
+    },
+    "Γ": {
+     "n": 30,
+     "mean": 2.581818,
+     "sd": 0.275948,
+     "ci_lo": 2.483072,
+     "ci_hi": 2.680565
+    }
+   },
+   "shapiro": {
+    "W": 0.952806,
+    "p": 0.200884,
+    "normal_at_05": true
+   },
+   "paired_t_AC": {
+    "n": 30,
+    "df": 29,
+    "mean_diff": 0.40303,
+    "t": -7.687157,
+    "p": 0.0,
+    "d_z": 1.403476,
+    "d_ci_lo": 0.899324,
+    "d_ci_hi": 1.907629
+   },
+   "wilcoxon_AC": {
+    "W": 3.5,
+    "p": 4e-06
+   },
+   "friedman": {
+    "n": 30,
+    "chi2": 31.654545,
+    "df": 2,
+    "p": 0.0
+   },
+   "pairwise": {
+    "Α-Β": {
+     "mean_diff": 0.272727,
+     "t": -4.380774,
+     "df": 29,
+     "p": 0.000141,
+     "significant_bonferroni": true
+    },
+    "Β-Γ": {
+     "mean_diff": 0.130303,
+     "t": -3.156719,
+     "df": 29,
+     "p": 0.003705,
+     "significant_bonferroni": true
+    },
+    "Α-Γ": {
+     "mean_diff": 0.40303,
+     "t": -7.687157,
+     "df": 29,
+     "p": 0.0,
+     "significant_bonferroni": true
+    }
+   },
+   "pairwise_max_p": 0.003705
+  }
+ },
+ "trainer_icc21": {
+  "overall": {
+   "icc": 0.382603,
+   "cells": 88
+  },
+  "by_phase": {
+   "Α": {
+    "icc": 0.390914,
+    "cells": 28
+   },
+   "Β": {
+    "icc": 0.320224,
+    "cells": 30
+   },
+   "Γ": {
+    "icc": 0.229407,
+    "cells": 30
+   }
+  },
+  "note": "T1/T2 of supplementary rows are not linked to the named trainers of the export"
+ }
+}

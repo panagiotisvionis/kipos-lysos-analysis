@@ -13,7 +13,9 @@ Thumbs.db
 
 # Allow data files
 !data/action_responses_pseudonymized.xlsx
+!data/ratings_pseudonymized.xlsx
 !data/legacy/action_responses_UNVERIFIED.xlsx
+!data/legacy/action_responses_imputed_2026-10-14.xlsx
 
 # Private: participant identity mapping
 *PRIVATE*

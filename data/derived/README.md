@@ -1,5 +1,7 @@
 # Rounded analysis dataset — derived copy
 
+> **SUPERSEDED (2026-10-26).** This file is a rounding of the *imputed* dataset that was replaced on 2026-10-26 by a complete, non-imputed dataset built from the export plus the supplementary ratings supplied by the author (see `../README.md`). It is kept only as a record of the comparison below and must not be used for analysis.
+
 `action_responses_rounded.xlsx` is the file supplied by the author on 25 October 2026, preserved byte-for-byte under a name identifying it as derived data.
 
 It is **not a raw questionnaire export and does not recover missing observer ratings**. Its content matches `floor(x + 0.5)` applied to every Q1–Q11 value in `../action_responses_pseudonymized.xlsx`: nearest-integer rounding, with .5 rounded upwards. All identifiers, source labels, phases, row order and originally integer item values are unchanged.
