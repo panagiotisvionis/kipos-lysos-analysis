@@ -679,3 +679,8 @@ Limitations «Fifth»: «63 of the 358 individual ratings (17.6\%; 23.5\% of the
 `manuscript/kipos_rdd.tex` (μόνο ο παρονομαστής), `scripts/statistical_analysis.py` (ενότητες agreement + sensitivity), `analysis/results.json`, `data/README.md`, `STATUS.md`. Branch `review/reanalysis-2026-10-26`, χωρίς merge, χωρίς υποβολή.
 
 **Για ChatGPT:** επαλήθευση `icc_twoway()` (McGraw & Wong 1996, Table 7 CI) στο export-only υποσύνολο· έλεγχος Β.2–Β.3 (υπογραφή αξιολογητών, υπόθεση συμπληρώματος)· γνώμη για Ε1–Ε4.
+
+## Απόφαση συγγραφέα — 2026-10-26
+Οι προτεινόμενες παράγραφοι **Ε1–Ε4 (συμφωνία εκπαιδευτών, sensitivity) ΔΕΝ μπαίνουν στο manuscript.** Οι υπολογισμοί παραμένουν στο `analysis/results.json` και στο `data/README.md` του repo. Μην τις ξαναπροτείνει κανείς.
+
+**Ανοιχτό σημείο συνέπειας:** το Limitations «Fifth» γράφει «inter-rater reliability between the two trainers/educators was not formally assessed», ενώ ο υπολογισμός υπάρχει δημόσια στο repo που παραπέμπει το Data Availability. Εκκρεμεί απόφαση συγγραφέα για ελάχιστη αναδιατύπωση.
