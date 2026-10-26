@@ -291,11 +291,288 @@
   }
  },
  "trainer_interrater_agreement": {
-  "model_primary": "one-way random effects (ICC(1,1) single rating; ICC(1,2) = reliability of the mean of the two trainer ratings actually analysed), per phase, exact F-based 95% CI (Shrout & Fleiss 1979)",
-  "unit": "composite score (mean of 11 items, 1–5) per participant; participants with both trainer ratings in that phase",
-  "why_not_pooled": "the 88 two-rater participant-phase cells are repeated measures of 30 participants; a pooled single-level ICC treats them as independent and its CI is invalid",
-  "why_not_two_way_primary": "T1/T2 labels are arbitrary in 18 cells where both ratings come from the supplementary file; two-way estimates are given only as a sensitivity analysis on the 70 cells with identified raters",
-  "by_phase": {
+  "design": "two specific educators rated all participants; the trainer score analysed is the mean of the two → two-way model, average of k = 2 (McGraw & Wong 1996). Absolute agreement ICC(A,2) and consistency ICC(C,2) both reported; consistency ICCs are identical under random and mixed models.",
+  "primary_subset": "export_only_confirmed_identity — the only cells where both ratings carry a named rater; computed per phase because the cells are repeated measures of the same participants",
+  "identity_caveats": {
+   "export_plus_optional": "the 15 Προαιρετικά ratings are assigned to the rater missing from the export cell; this is a build assumption, not documented in the source file",
+   "both_supplementary": "in the 18 cells supplied entirely by the supplementary file the labels \"Εκπαιδευτής 1/2\" are not linked to the named educators",
+   "one_way_model": "a one-way model (raters interchangeable) is NOT adopted: the two educators differ systematically (see rater_effect_p), so treating them as random raters per target misrepresents the design"
+  },
+  "cells": {
+   "export_only_confirmed_identity": 55,
+   "export_plus_optional_identity_assumed": 70,
+   "all_two_rater_cells_labels_partly_arbitrary": 88
+  },
+  "by_subset_and_phase": {
+   "export_only_confirmed_identity": {
+    "Α": {
+     "n": 16,
+     "k": 2,
+     "ICC_A1": 0.400974,
+     "ICC_A1_ci": [
+      -0.040122,
+      0.729441
+     ],
+     "ICC_Ak": 0.572422,
+     "ICC_Ak_ci": [
+      -0.083599,
+      0.843557
+     ],
+     "ICC_C1": 0.466747,
+     "ICC_C1_ci": [
+      -0.019871,
+      0.774581
+     ],
+     "ICC_Ck": 0.636438,
+     "ICC_Ck_ci": [
+      -0.040548,
+      0.872973
+     ],
+     "pearson_r": 0.590553,
+     "rater_mean_diff_T1_minus_T2": -0.397727,
+     "rater_diff_sd": 0.653766,
+     "rater_effect_paired_t": -2.433452,
+     "rater_effect_p": 0.027934
+    },
+    "Β": {
+     "n": 19,
+     "k": 2,
+     "ICC_A1": 0.26643,
+     "ICC_A1_ci": [
+      -0.108732,
+      0.634231
+     ],
+     "ICC_Ak": 0.420758,
+     "ICC_Ak_ci": [
+      -0.243994,
+      0.776183
+     ],
+     "ICC_C1": 0.538268,
+     "ICC_C1_ci": [
+      0.124162,
+      0.792687
+     ],
+     "ICC_Ck": 0.699836,
+     "ICC_Ck_ci": [
+      0.220897,
+      0.884356
+     ],
+     "pearson_r": 0.65499,
+     "rater_mean_diff_T1_minus_T2": -0.813397,
+     "rater_diff_sd": 0.540783,
+     "rater_effect_paired_t": -6.556267,
+     "rater_effect_p": 4e-06
+    },
+    "Γ": {
+     "n": 20,
+     "k": 2,
+     "ICC_A1": 0.072566,
+     "ICC_A1_ci": [
+      -0.091917,
+      0.329286
+     ],
+     "ICC_Ak": 0.135313,
+     "ICC_Ak_ci": [
+      -0.202443,
+      0.495432
+     ],
+     "ICC_C1": 0.193503,
+     "ICC_C1_ci": [
+      -0.261235,
+      0.577952
+     ],
+     "ICC_Ck": 0.324261,
+     "ICC_Ck_ci": [
+      -0.707221,
+      0.732534
+     ],
+     "pearson_r": 0.453522,
+     "rater_mean_diff_T1_minus_T2": -0.8,
+     "rater_diff_sd": 0.549902,
+     "rater_effect_paired_t": -6.506083,
+     "rater_effect_p": 3e-06
+    }
+   },
+   "export_plus_optional_identity_assumed": {
+    "Α": {
+     "n": 23,
+     "k": 2,
+     "ICC_A1": 0.329195,
+     "ICC_A1_ci": [
+      -0.040246,
+      0.635199
+     ],
+     "ICC_Ak": 0.49533,
+     "ICC_Ak_ci": [
+      -0.083868,
+      0.776907
+     ],
+     "ICC_C1": 0.400986,
+     "ICC_C1_ci": [
+      -0.004058,
+      0.693
+     ],
+     "ICC_Ck": 0.572434,
+     "ICC_Ck_ci": [
+      -0.00815,
+      0.818665
+     ],
+     "pearson_r": 0.432319,
+     "rater_mean_diff_T1_minus_T2": -0.438735,
+     "rater_diff_sd": 0.687252,
+     "rater_effect_paired_t": -3.061612,
+     "rater_effect_p": 0.005715
+    },
+    "Β": {
+     "n": 23,
+     "k": 2,
+     "ICC_A1": 0.223484,
+     "ICC_A1_ci": [
+      -0.104971,
+      0.564017
+     ],
+     "ICC_Ak": 0.365324,
+     "ICC_Ak_ci": [
+      -0.234564,
+      0.721241
+     ],
+     "ICC_C1": 0.460901,
+     "ICC_C1_ci": [
+      0.069461,
+      0.72935
+     ],
+     "ICC_Ck": 0.630982,
+     "ICC_Ck_ci": [
+      0.129899,
+      0.843496
+     ],
+     "pearson_r": 0.505439,
+     "rater_mean_diff_T1_minus_T2": -0.83004,
+     "rater_diff_sd": 0.584873,
+     "rater_effect_paired_t": -6.806139,
+     "rater_effect_p": 1e-06
+    },
+    "Γ": {
+     "n": 24,
+     "k": 2,
+     "ICC_A1": 0.064818,
+     "ICC_A1_ci": [
+      -0.07876,
+      0.286747
+     ],
+     "ICC_Ak": 0.121744,
+     "ICC_Ak_ci": [
+      -0.170988,
+      0.445693
+     ],
+     "ICC_C1": 0.192085,
+     "ICC_C1_ci": [
+      -0.220782,
+      0.546572
+     ],
+     "ICC_Ck": 0.322267,
+     "ICC_Ck_ci": [
+      -0.566675,
+      0.706817
+     ],
+     "pearson_r": 0.417161,
+     "rater_mean_diff_T1_minus_T2": -0.882576,
+     "rater_diff_sd": 0.561349,
+     "rater_effect_paired_t": -7.702376,
+     "rater_effect_p": 0.0
+    }
+   },
+   "all_two_rater_cells_labels_partly_arbitrary": {
+    "Α": {
+     "n": 28,
+     "k": 2,
+     "ICC_A1": 0.390914,
+     "ICC_A1_ci": [
+      0.037942,
+      0.660699
+     ],
+     "ICC_Ak": 0.562097,
+     "ICC_Ak_ci": [
+      0.07311,
+      0.795688
+     ],
+     "ICC_C1": 0.456953,
+     "ICC_C1_ci": [
+      0.107761,
+      0.70578
+     ],
+     "ICC_Ck": 0.627272,
+     "ICC_Ck_ci": [
+      0.194556,
+      0.827516
+     ],
+     "pearson_r": 0.467277,
+     "rater_mean_diff_T1_minus_T2": -0.383117,
+     "rater_diff_sd": 0.650566,
+     "rater_effect_paired_t": -3.116152,
+     "rater_effect_p": 0.004314
+    },
+    "Β": {
+     "n": 30,
+     "k": 2,
+     "ICC_A1": 0.320224,
+     "ICC_A1_ci": [
+      -0.062504,
+      0.621131
+     ],
+     "ICC_Ak": 0.485106,
+     "ICC_Ak_ci": [
+      -0.133342,
+      0.766294
+     ],
+     "ICC_C1": 0.464804,
+     "ICC_C1_ci": [
+      0.13145,
+      0.703717
+     ],
+     "ICC_Ck": 0.634629,
+     "ICC_Ck_ci": [
+      0.232357,
+      0.826096
+     ],
+     "pearson_r": 0.46613,
+     "rater_mean_diff_T1_minus_T2": -0.621212,
+     "rater_diff_sd": 0.663369,
+     "rater_effect_paired_t": -5.129147,
+     "rater_effect_p": 1.8e-05
+    },
+    "Γ": {
+     "n": 30,
+     "k": 2,
+     "ICC_A1": 0.229407,
+     "ICC_A1_ci": [
+      -0.100562,
+      0.547696
+     ],
+     "ICC_Ak": 0.3732,
+     "ICC_Ak_ci": [
+      -0.223611,
+      0.707757
+     ],
+     "ICC_C1": 0.443505,
+     "ICC_C1_ci": [
+      0.104991,
+      0.689914
+     ],
+     "ICC_Ck": 0.614483,
+     "ICC_Ck_ci": [
+      0.190031,
+      0.816508
+     ],
+     "pearson_r": 0.448226,
+     "rater_mean_diff_T1_minus_T2": -0.748485,
+     "rater_diff_sd": 0.572318,
+     "rater_effect_paired_t": -7.163183,
+     "rater_effect_p": 0.0
+    }
+   }
+  },
+  "reference_one_way_all_cells": {
    "Α": {
     "n": 28,
     "k": 2,
@@ -338,34 +615,65 @@
      0.506746
     ]
    }
+  }
+ },
+ "sensitivity_export_only": {
+  "note": "complete cases using export ratings only (supplementary file excluded); trainers = mean of available export ratings",
+  "Ωφελούμενοι": {
+   "n": 30,
+   "mean_A": 3.239394,
+   "mean_C": 4.754545,
+   "t": -13.406057,
+   "p": 0.0,
+   "d_z": 2.4476,
+   "d_ci": [
+    1.732323,
+    3.162877
+   ],
+   "friedman_chi2": 44.864407
   },
-  "sensitivity_two_way_identified_cells": {
-   "Α": {
-    "n": 23,
-    "icc_single": 0.329195,
-    "icc_single_ci": [
-     -0.040246,
-     0.635199
-    ],
-    "rater_mean_diff": -0.438735
+  "Εκπαιδευτές": {
+   "n": 23,
+   "mean_A": 2.956522,
+   "mean_C": 3.56917,
+   "t": -6.311255,
+   "p": 2e-06,
+   "d_z": 1.315988,
+   "d_ci": [
+    0.757726,
+    1.874249
+   ],
+   "friedman_chi2": 33.866667
+  },
+  "Παρατηρητής": {
+   "n": 26,
+   "mean_A": 2.174825,
+   "mean_C": 2.597902,
+   "t": -7.82553,
+   "p": 0.0,
+   "d_z": 1.534713,
+   "d_ci": [
+    0.967474,
+    2.101951
+   ],
+   "friedman_chi2": 32.556701
+  },
+  "level_by_origin": {
+   "Ανεξάρτητος παρατηρητής|export": {
+    "n": 78,
+    "mean": 2.415
    },
-   "Β": {
-    "n": 23,
-    "icc_single": 0.223484,
-    "icc_single_ci": [
-     -0.104971,
-     0.564017
-    ],
-    "rater_mean_diff": -0.83004
+   "Ανεξάρτητος παρατηρητής|supplementary": {
+    "n": 12,
+    "mean": 2.333
    },
-   "Γ": {
-    "n": 24,
-    "icc_single": 0.064818,
-    "icc_single_ci": [
-     -0.07876,
-     0.286747
-    ],
-    "rater_mean_diff": -0.882576
+   "Εκπαιδευτής/τρια|export": {
+    "n": 127,
+    "mean": 3.236
+   },
+   "Εκπαιδευτής/τρια|supplementary": {
+    "n": 51,
+    "mean": 2.385
    }
   }
  }

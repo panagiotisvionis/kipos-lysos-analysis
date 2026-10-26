@@ -121,23 +121,41 @@ def icc_oneway(x: np.ndarray, alpha: float = ALPHA) -> dict:
             'icc_average_ci': [1 - Fu / F, 1 - Fl / F]}
 
 
-def icc_twoway_agreement(x: np.ndarray, alpha: float = ALPHA) -> dict:
-    """ICC(2,1) = ICC(A,1): two-way random effects, absolute agreement, single rating,
-    με CI κατά McGraw & Wong (1996). Απαιτεί σταθερή ταυτότητα αξιολογητή ανά στήλη."""
+def icc_twoway(x: np.ndarray, alpha: float = ALPHA) -> dict:
+    """Two-way ICCs κατά McGraw & Wong (1996), πίνακας n targets × k raters με ΣΤΑΘΕΡΗ ταυτότητα
+    αξιολογητή ανά στήλη. Absolute agreement ICC(A,1)/ICC(A,k) και consistency ICC(C,1)/ICC(C,k)
+    (τα consistency ICC ταυτίζονται για random και mixed μοντέλο· τα A,k CI προκύπτουν με
+    Spearman–Brown μετασχηματισμό των ορίων του A,1, όπως στους McGraw & Wong)."""
     n, k = x.shape
     grand = x.mean()
     msr = k * ((x.mean(axis=1) - grand) ** 2).sum() / (n - 1)
     msc = n * ((x.mean(axis=0) - grand) ** 2).sum() / (k - 1)
     mse = (((x - grand) ** 2).sum() - msr * (n - 1) - msc * (k - 1)) / ((n - 1) * (k - 1))
-    icc = (msr - mse) / (msr + (k - 1) * mse + k * (msc - mse) / n)
-    a = k * icc / (n * (1 - icc)); b = 1 + k * icc * (n - 1) / (n * (1 - icc))
-    v = (a * msc + b * mse) ** 2 / ((a * msc) ** 2 / (k - 1) + (b * mse) ** 2 / ((n - 1) * (k - 1)))
+    # consistency
+    F  = msr / mse
+    FU = stats.f.ppf(1 - alpha / 2, n - 1, (n - 1) * (k - 1))
+    FL = stats.f.ppf(1 - alpha / 2, (n - 1) * (k - 1), n - 1)
+    c1 = ((msr - mse) / (msr + (k - 1) * mse), (F / FU - 1) / (F / FU + k - 1), (F * FL - 1) / (F * FL + k - 1))
+    ck = ((msr - mse) / msr, 1 - FU / F, 1 - 1 / (F * FL))
+    # absolute agreement
+    a1 = (msr - mse) / (msr + (k - 1) * mse + k * (msc - mse) / n)
+    A = k * a1 / (n * (1 - a1)); B = 1 + k * a1 * (n - 1) / (n * (1 - a1))
+    v = (A * msc + B * mse) ** 2 / ((A * msc) ** 2 / (k - 1) + (B * mse) ** 2 / ((n - 1) * (k - 1)))
     Fs  = stats.f.ppf(1 - alpha / 2, n - 1, v)
     Fss = stats.f.ppf(1 - alpha / 2, v, n - 1)
     lo = n * (msr - Fs * mse) / (Fs * (k * msc + (k * n - k - n) * mse) + n * msr)
     hi = n * (Fss * msr - mse) / (k * msc + (k * n - k - n) * mse + n * Fss * msr)
-    return {'n': int(n), 'icc_single': icc, 'icc_single_ci': [lo, hi],
-            'rater_mean_diff': float((x[:, 0] - x[:, 1]).mean())}
+    sb = lambda r: k * r / (1 + (k - 1) * r)
+    d = x[:, 0] - x[:, 1]
+    t_rater, p_rater = stats.ttest_rel(x[:, 0], x[:, 1])
+    return {'n': int(n), 'k': int(k),
+            'ICC_A1': a1, 'ICC_A1_ci': [lo, hi],
+            'ICC_Ak': (msr - mse) / (msr + (msc - mse) / n), 'ICC_Ak_ci': [sb(lo), sb(hi)],
+            'ICC_C1': c1[0], 'ICC_C1_ci': [c1[1], c1[2]],
+            'ICC_Ck': ck[0], 'ICC_Ck_ci': [ck[1], ck[2]],
+            'pearson_r': float(np.corrcoef(x[:, 0], x[:, 1])[0, 1]),
+            'rater_mean_diff_T1_minus_T2': float(d.mean()), 'rater_diff_sd': float(d.std(ddof=1)),
+            'rater_effect_paired_t': t_rater, 'rater_effect_p': p_rater}
 
 
 def pfmt(p: float) -> str:
@@ -219,30 +237,69 @@ if os.path.exists(RATINGS_FILE):
     r['phase'] = r['Φάση'].map(PHASE_MAP)
     both = r.pivot_table(index=['Ωφελούμενος', 'phase'], columns='rater', values='score').dropna()
     origin = r.pivot_table(index=['Ωφελούμενος', 'phase'], columns='rater', values='origin', aggfunc='first').loc[both.index]
-    # Σε κελιά όπου ΚΑΙ οι δύο αξιολογήσεις προέρχονται από το συμπληρωματικό αρχείο, οι ετικέτες T1/T2
-    # είναι αυθαίρετες (δεν συνδέονται με τους ονομαστικούς εκπαιδευτές του export). Γι' αυτό το κύριο
-    # μοντέλο είναι one-way (αξιολογητές μη ταυτοποιήσιμοι) και υπολογίζεται ΑΝΑ ΦΑΣΗ (ανεξάρτητα άτομα).
-    identified = ~((origin['T1'] == 'supplementary') & (origin['T2'] == 'supplementary'))
-    icc = {'model_primary': 'one-way random effects (ICC(1,1) single rating; ICC(1,2) = reliability of the mean of the two '
-                            'trainer ratings actually analysed), per phase, exact F-based 95% CI (Shrout & Fleiss 1979)',
-           'unit': 'composite score (mean of 11 items, 1–5) per participant; participants with both trainer ratings in that phase',
-           'why_not_pooled': 'the 88 two-rater participant-phase cells are repeated measures of 30 participants; a pooled '
-                             'single-level ICC treats them as independent and its CI is invalid',
-           'why_not_two_way_primary': f'T1/T2 labels are arbitrary in {int((~identified).sum())} cells where both ratings come '
-                                      f'from the supplementary file; two-way estimates are given only as a sensitivity '
-                                      f'analysis on the {int(identified.sum())} cells with identified raters',
-           'by_phase': {}, 'sensitivity_two_way_identified_cells': {}}
-    print(f"\n{sep}\nΣΥΜΦΩΝΙΑ ΤΩΝ ΔΥΟ ΕΚΠΑΙΔΕΥΤΩΝ (composite score· κελιά με 2 αξιολογήσεις: {len(both)}, "
-          f"με ταυτοποιημένους αξιολογητές: {int(identified.sum())})\n{sep}")
-    for ph in PHASES:
-        x = both.xs(ph, level='phase')[['T1', 'T2']].values
-        ow = icc_oneway(x); icc['by_phase'][ph] = ow
-        xi = both.xs(ph, level='phase')[identified.xs(ph, level='phase')][['T1', 'T2']].values
-        tw = icc_twoway_agreement(xi); icc['sensitivity_two_way_identified_cells'][ph] = tw
-        print(f"  Φάση {ph} (n = {ow['n']}): ICC(1,1) = {ow['icc_single']:.2f} [{ow['icc_single_ci'][0]:.2f}, {ow['icc_single_ci'][1]:.2f}]"
-              f"   ICC(1,2) = {ow['icc_average']:.2f} [{ow['icc_average_ci'][0]:.2f}, {ow['icc_average_ci'][1]:.2f}]"
-              f"   | two-way ICC(2,1) σε {tw['n']} ταυτοποιημένα κελιά = {tw['icc_single']:.2f} [{tw['icc_single_ci'][0]:.2f}, {tw['icc_single_ci'][1]:.2f}], T1−T2 = {tw['rater_mean_diff']:+.2f}")
+    # Ταυτότητα αξιολογητών ανά κελί:
+    #  - export-only: και οι δύο αξιολογήσεις από το export → ονομαστικοί T1/T2, ΕΠΙΒΕΒΑΙΩΜΕΝΗ ταυτότητα
+    #  - export+Προαιρετικά: ο ένας ονομαστικός, ο άλλος συμπληρωματικός με ανάθεση ως «ο άλλος» → ΥΠΟΘΕΣΗ
+    #  - both-supplementary: ετικέτες «Εκπαιδευτής 1/2» χωρίς σύνδεση με πρόσωπα → ΑΥΘΑΙΡΕΤΗ ανάθεση
+    # Οι δύο εκπαιδευτές είναι συγκεκριμένα πρόσωπα που βαθμολόγησαν όλους → two-way μοντέλο· αξιόπιστα
+    # εκτιμάται ΜΟΝΟ στο export-only υποσύνολο, ΑΝΑ ΦΑΣΗ (ανεξάρτητα άτομα). Η αξιοπιστία του μέσου των
+    # δύο (ICC(·,2)) είναι το μέγεθος που αφορά την ανάλυση. Δίνονται absolute agreement ΚΑΙ consistency.
+    export_only = (origin['T1'] == 'export') & (origin['T2'] == 'export')
+    with_opt    = export_only | ((origin['T1'] == 'export') ^ (origin['T2'] == 'export'))
+    subsets = {'export_only_confirmed_identity': export_only,
+               'export_plus_optional_identity_assumed': with_opt,
+               'all_two_rater_cells_labels_partly_arbitrary': pd.Series(True, index=both.index)}
+    icc = {'design': 'two specific educators rated all participants; the trainer score analysed is the mean of the two → '
+                     'two-way model, average of k = 2 (McGraw & Wong 1996). Absolute agreement ICC(A,2) and consistency '
+                     'ICC(C,2) both reported; consistency ICCs are identical under random and mixed models.',
+           'primary_subset': 'export_only_confirmed_identity — the only cells where both ratings carry a named rater; '
+                             'computed per phase because the cells are repeated measures of the same participants',
+           'identity_caveats': {'export_plus_optional': 'the 15 Προαιρετικά ratings are assigned to the rater missing from the '
+                                                        'export cell; this is a build assumption, not documented in the source file',
+                                'both_supplementary': 'in the 18 cells supplied entirely by the supplementary file the labels '
+                                                      '"Εκπαιδευτής 1/2" are not linked to the named educators',
+                                'one_way_model': 'a one-way model (raters interchangeable) is NOT adopted: the two educators '
+                                                 'differ systematically (see rater_effect_p), so treating them as random '
+                                                 'raters per target misrepresents the design'},
+           'cells': {k: int(v.sum()) for k, v in subsets.items()},
+           'by_subset_and_phase': {}}
+    print(f"\n{sep}\nΣΥΜΦΩΝΙΑ ΤΩΝ ΔΥΟ ΕΚΠΑΙΔΕΥΤΩΝ (two-way, ανά φάση· composite score)\n{sep}")
+    for name, mask in subsets.items():
+        icc['by_subset_and_phase'][name] = {}
+        print(f"  [{name}] κελιά: {int(mask.sum())}")
+        for ph in PHASES:
+            x = both[mask].xs(ph, level='phase')[['T1', 'T2']].values
+            tw = icc_twoway(x); icc['by_subset_and_phase'][name][ph] = tw
+            print(f"    Φάση {ph} n={tw['n']:2d}  ICC(A,1)={tw['ICC_A1']:.2f} [{tw['ICC_A1_ci'][0]:.2f},{tw['ICC_A1_ci'][1]:.2f}]"
+                  f"  ICC(A,2)={tw['ICC_Ak']:.2f} [{tw['ICC_Ak_ci'][0]:.2f},{tw['ICC_Ak_ci'][1]:.2f}]"
+                  f"  ICC(C,1)={tw['ICC_C1']:.2f} [{tw['ICC_C1_ci'][0]:.2f},{tw['ICC_C1_ci'][1]:.2f}]"
+                  f"  ICC(C,2)={tw['ICC_Ck']:.2f} [{tw['ICC_Ck_ci'][0]:.2f},{tw['ICC_Ck_ci'][1]:.2f}]"
+                  f"  r={tw['pearson_r']:.2f}  T1−T2={tw['rater_mean_diff_T1_minus_T2']:+.2f} (p={tw['rater_effect_p']:.4f})")
+    # αναφορά: one-way εκτιμήσεις σε όλα τα κελιά (δεν υιοθετούνται — βλ. identity_caveats.one_way_model)
+    icc['reference_one_way_all_cells'] = {ph: icc_oneway(both.xs(ph, level='phase')[['T1', 'T2']].values) for ph in PHASES}
     results['trainer_interrater_agreement'] = icc
+
+    # ─── SENSITIVITY: μόνο εγγραφές του export (χωρίς τις 63 συμπληρωματικές) ───────────────────
+    # Δεν αλλάζει την κύρια ανάλυση· δείχνει πόσο τα συμπληρωματικά ratings επηρεάζουν t/d_z.
+    rr = pd.read_excel(RATINGS_FILE)
+    rr = rr[rr['origin'] == 'export'].copy()
+    rr['score'] = rr[Q_COLS].mean(axis=1) + 1
+    rr['phase'] = rr['Φάση'].map(PHASE_MAP); rr['rater'] = rr['Τύπος'].map(TYPE_MAP)
+    cell = rr.groupby(['Ωφελούμενος', 'rater', 'phase'])['score'].mean().reset_index()
+    sens = {'note': 'complete cases using export ratings only (supplementary file excluded); trainers = mean of available export ratings'}
+    print(f"\n{sep}\nSENSITIVITY — ΜΟΝΟ EXPORT (χωρίς συμπληρωματικές εγγραφές), complete cases\n{sep}")
+    for rater in RATERS:
+        w = cell[cell['rater'] == rater].pivot(index='Ωφελούμενος', columns='phase', values='score').dropna()
+        a, g = w['Α'].values, w['Γ'].values
+        t, p = stats.ttest_rel(a, g); d, dlo, dhi = cohens_d_paired(a, g); chi2, pf = stats.friedmanchisquare(w['Α'], w['Β'], w['Γ'])
+        sens[rater] = {'n': int(len(w)), 'mean_A': a.mean(), 'mean_C': g.mean(), 't': t, 'p': p, 'd_z': d, 'd_ci': [dlo, dhi], 'friedman_chi2': chi2}
+        print(f"  {rater:<12} n={len(w):2d}  M_A={a.mean():.2f} M_Γ={g.mean():.2f}  t({len(w)-1})={t:.2f} p {pfmt(p)}  d_z={d:.2f} [{dlo:.2f}, {dhi:.2f}]  Friedman χ²={chi2:.2f}")
+    # επίπεδο των συμπληρωματικών vs export βαθμολογιών (0–4 κλίμακα +1), ανά πηγή
+    full = pd.read_excel(RATINGS_FILE); full['score'] = full[Q_COLS].mean(axis=1) + 1
+    lvl = full[full['Τύπος'] != 'Ωφελούμενος/η'].groupby(['Τύπος', 'origin'])['score'].agg(['count', 'mean']).round(3)
+    sens['level_by_origin'] = {f'{t}|{o}': {'n': int(c), 'mean': m} for (t, o), (c, m) in lvl.iterrows()}
+    print("  Μέσο score ανά πηγή × προέλευση:", {f'{t[:4]}|{o}': round(m, 2) for (t, o), (c, m) in lvl.iterrows()})
+    results['sensitivity_export_only'] = sens
 
 # ─── KEY NUMBERS + JSON ─────────────────────────────────────────────────────────
 print(f"\n{sep}\nKEY NUMBERS FOR TEXT\n{sep}")

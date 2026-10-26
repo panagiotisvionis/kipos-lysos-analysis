@@ -46,7 +46,17 @@ Individual ratings: 295 from the export (300 minus 5 duplicate rows) + 63 supple
 
 All paired t, Wilcoxon and Friedman tests p < .001; all Bonferroni pairwise comparisons significant (max p = .004). Shapiro–Wilk values refer to the Phase C − Phase A difference scores; a non-significant result does not establish normality. Beneficiary results are identical to the previous dataset because self-report data were never affected.
 
-**Inter-rater agreement of the two trainers** (composite score, cells with both ratings; `results.json → trainer_interrater_agreement`). Because the T1/T2 labels are arbitrary in the 18 cells where both ratings come from the supplementary file, and because the 88 cells are repeated measures of 30 participants, the primary estimate is a **one-way random-effects ICC computed per phase** with exact F-based 95% CIs (Shrout & Fleiss 1979): ICC(1,2) (reliability of the mean of two ratings, which is what the analysis uses) = .51 [−.05, .77] (A, n = 28), .33 [−.40, .68] (B, n = 30), −.03 [−1.15, .51] (C, n = 30); single-rating ICC(1,1) = .34, .20, −.02. Two-way ICC(2,1) on the 70 cells with identified raters gives .33 / .22 / .06 (sensitivity). One trainer rated systematically higher than the other (mean difference 0.4–0.9 points). A pooled ICC over all 88 cells (earlier reported as .38) is not a valid estimate and is not used. Not yet reported in the manuscript — author decision pending (see STATUS.md).
+**Inter-rater agreement of the two trainers** (`results.json → trainer_interrater_agreement`; composite score 1–5). The two educators are specific persons who rated everyone and the analysed trainer score is their mean, so a **two-way model for the average of k = 2** (McGraw & Wong 1996) is used, with absolute agreement ICC(A,2) and consistency ICC(C,2) reported side by side. Rater identity is confirmed only where both ratings come from the export (55 cells: 16/19/20 per phase); the 15 `Προαιρετικά` ratings are assigned to the missing rater by assumption, and in the 18 cells supplied entirely by the supplementary file the labels are arbitrary. The primary estimates are therefore computed **per phase on the export-only subset**:
+
+| Phase | n | ICC(A,2) [95% CI] | ICC(C,2) [95% CI] | T1 − T2 (paired t p) |
+|---|---|---|---|---|
+| A | 16 | .57 [−.08, .84] | .64 [−.04, .87] | −0.40 (.028) |
+| B | 19 | .42 [−.24, .78] | .70 [.22, .88] | −0.81 (<.001) |
+| C | 20 | .14 [−.20, .50] | .32 [−.71, .73] | −0.80 (<.001) |
+
+Single-rating coefficients, the 70-cell (identity-assumed) and 88-cell (labels partly arbitrary) subsets, and one-way reference values are all in the JSON. A one-way model is not adopted because the two educators differ systematically. Earlier figures (pooled ICC(2,1) = .38; one-way per-phase .51/.33/−.03) are superseded. Not yet in the manuscript — proposed wording in STATUS.md, author decision pending.
+
+**Sensitivity — export ratings only** (`results.json → sensitivity_export_only`, complete cases without the 63 supplementary ratings): trainers n = 23, d_z = 1.32 [0.76, 1.87]; observer n = 26, d_z = 1.53 [0.97, 2.10]; beneficiaries unchanged. Supplementary trainer ratings are on average lower than export trainer ratings (2.38 vs 3.24 on the 1–5 scale); supplementary observer ratings are close to the export level (2.33 vs 2.42).
 
 ## Privacy
 Names, the pseudonym mapping and the supplementary workbook are stored only on the first author's machine. `.gitignore` excludes `*PRIVATE*` and `*_mapping*.csv`; the raw export is never committed.

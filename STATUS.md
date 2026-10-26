@@ -1,5 +1,5 @@
 # STATUS — Kipos SEL paper
-*Last updated: 2026-10-26 (Claude, VS Code)*
+*Last updated: 2026-10-26 (Claude, VS Code — rater identity check)*
 
 > Κανόνας συντονισμού: όποιος AI/άνθρωπος δουλέψει πάνω στο paper, ενημερώνει ΑΥΤΟ το αρχείο στο τέλος.
 > Νέα συζήτηση με οποιονδήποτε ξεκινά με: «Διάβασε το STATUS.md από το repo».
@@ -551,7 +551,7 @@ Wilcoxon W: 0 / 7 / 3.5, όλα p<.001. Bonferroni pairwise: όλα σημαντ
 
 ## Review της επανάλυσης — Claude (VS Code), 2026-10-26, branch `review/reanalysis-2026-10-26`
 
-### 1. Έλεγχος ICC — το .38 ΔΕΝ είναι έγκυρο τελικό εύρημα
+### 1. Έλεγχος ICC — το .38 ΔΕΝ είναι έγκυρο τελικό εύρημα *(η one-way πρόταση αυτής της ενότητας ΑΠΟΣΥΡΘΗΚΕ μετά τον έλεγχο του ChatGPT — βλ. ενότητα «Έλεγχος ταυτότητας αξιολογητών» παρακάτω)*
 Τι είχε υπολογιστεί: ICC(2,1) Shrout & Fleiss (two-way random, absolute agreement, **single rating**), τύπος (MSR−MSE)/(MSR+(k−1)MSE+k(MSC−MSE)/n), στο composite score (μέσος 11 items, 1–5), **συγκεντρωτικά σε 88 κελιά** ωφελούμενος×φάση με 2 αξιολογήσεις, **χωρίς CI**. Τέσσερα προβλήματα:
 1. **Ταυτότητα αξιολογητών.** Στο export οι T1/T2 είναι ονομαστικά πρόσωπα. Στο `PRIVATE.xlsx` οι ετικέτες είναι «Εκπαιδευτής 1/2» χωρίς σύνδεση με τα πρόσωπα → σε **18 κελιά** (και οι δύο αξιολογήσεις συμπληρωματικές) η ανάθεση T1/T2 είναι αυθαίρετη. Στα 15 «Προαιρετικά» η ταυτότητα προκύπτει ως συμπλήρωμα του υπάρχοντος αξιολογητή (ταυτοποιημένη). Άρα two-way μοντέλο (που εκτιμά σταθερό rater effect) δεν είναι υπερασπίσιμο σε όλα τα κελιά → **one-way μοντέλο** (αξιολογητές μη ταυτοποιήσιμοι).
 2. **Επαναλαμβανόμενες μετρήσεις.** Τα 88 κελιά είναι 30 άτομα × 3 φάσεις· pooled ICC τα αντιμετωπίζει ως ανεξάρτητα → άκυρο CI. Υπολογίζεται **ανά φάση** (n = 28/30/30 ανεξάρτητα άτομα).
@@ -625,3 +625,57 @@ Commits `cb73d20`, `5d0c672` (+ το παρόν): κανένα αρχείο `*PR
 - Liljequist et al. (2019), one-way ICC και συστηματικές διαφορές αξιολογητών: https://doi.org/10.1371/journal.pone.0219854
 
 Η προτεινόμενη ένταξη του ICC στο paper παραμένει προς έγκριση μετά την οριστικοποίηση του μοντέλου. Τα παραπάνω δεν αλλάζουν τα επαληθευμένα βασικά t/d_z. **Σε αυτή την ενημέρωση άλλαξε μόνο το STATUS.md· κανένα manuscript, δεδομένο, script ή figure. Δεν έγινε merge ή υποβολή.**
+
+## Έλεγχος ταυτότητας αξιολογητών & two-way συμφωνία — Claude (VS Code), 2026-10-26 (βάση `01d2fa3`)
+
+Απάντηση στα δύο σημεία του ελέγχου ChatGPT. Δεδομένα και κύρια ανάλυση **αμετάβλητα** (t/d_z/α/Friedman ίδια με `5d0c672`).
+
+### Α. Παρονομαστής — διορθώθηκε
+Limitations «Fifth»: «63 of the 358 individual ratings (17.6\%; 23.5\% of the 268 trainer and observer ratings)». Compile καθαρό (33 σελ., 0 errors/undefined/biber warnings, ανωνυμία OK).
+
+### Β. Μπορεί να τεκμηριωθεί η πραγματική αντιστοίχιση των εκπαιδευτών; — ΟΧΙ
+Εξετάστηκαν, χωρίς αυθαίρετη ανάθεση:
+1. **Metadata του `PRIVATE.xlsx`**: δημιουργήθηκε από openpyxl (πρότυπο), creator/lastModifiedBy χωρίς πληροφορία, 0 σχόλια κελιών, 0 κρυφές στήλες. Οι ετικέτες «Εκπαιδευτής 1 / Εκπαιδευτής 2 / Εκπαιδευτής 2 (λείπει ο δεύτερος)» είναι του προτύπου, όχι του συμπληρωτή. Καμία σύνδεση με πρόσωπα.
+2. **«Υπογραφή» αξιολογητών.** Στο export (55 ζεύγη με ονόματα) ο T1 βαθμολογεί συστηματικά χαμηλότερα: T1−T2 = −0.69 (SD 0.60), T1<T2 στο 89% των ζευγών. Στα 18 συμπληρωματικά ζεύγη («Εκπαιδευτής 1» − «Εκπαιδευτής 2») η διαφορά είναι −0.08 (SD 0.34), «1»<«2» στο 61% → οι ετικέτες **δεν φέρουν** την υπογραφή των δύο προσώπων· δεν μπορούν να αντιστοιχιστούν.
+3. **Υπόθεση συμπληρώματος στα 15 «Προαιρετικά».** Σε 12 κελιά υπάρχει ο T2 στο export και η συμπληρωματική τιμή θεωρήθηκε T1: συμπληρωματικός μέσος 1.33 vs T2 2.43 (0–4), συμβατό με «χαμηλότερος T1» αλλά με απόκλιση (−1.10) μεγαλύτερη από τη συνήθη (−0.69). Στα 3 κελιά όπου υπάρχει ο T1 και η συμπληρωματική θεωρήθηκε T2: συμπληρωματικός μέσος 1.24 vs T1 1.46 — δηλ. **χαμηλότερη** από τον T1, ενώ ο T2 είναι συστηματικά **υψηλότερος**. Η υπόθεση δεν επιβεβαιώνεται· παραμένει **παραδοχή του build**, όχι τεκμηριωμένη ταυτότητα. Τα 15 αυτά κελιά **εξαιρούνται** από την κύρια εκτίμηση συμφωνίας.
+4. **Παρατήρηση που δεν αποκρύπτεται:** όλες οι συμπληρωματικές βαθμολογίες εκπαιδευτών είναι αισθητά χαμηλότερες από του export (μέσος 1–5: 2.38 vs 3.24)· του παρατηρητή όχι (2.33 vs 2.42). Το ChatGPT σημείωσε ήδη ότι ο αρχικός χρόνος/τρόπος συλλογής τους δεν είναι επαληθεύσιμος. Αυτό αποτυπώνεται στο limitation και στη sensitivity (Δ).
+
+### Γ. Συμφωνία στο επιβεβαιωμένα ταυτοποιημένο υποσύνολο — two-way, ανά φάση
+Μοντέλο: οι δύο εκπαιδευτές είναι **συγκεκριμένα πρόσωπα** που βαθμολόγησαν όλους και η ανάλυση χρησιμοποιεί τον **μέσο τους** → two-way, average of k=2 (McGraw & Wong 1996). Αναφέρονται **και τα δύο**: absolute agreement ICC(A,2) (συμφωνία στο απόλυτο επίπεδο — αφορά τα M) και consistency ICC(C,2) (συμφωνία στην κατάταξη — αφορά κυρίως τη μεταβολή Α→Γ, όπου η σταθερή μετατόπιση αναιρείται). Τα consistency ICC ταυτίζονται για random/mixed μοντέλο. CI: McGraw–Wong· για A,k μετασχηματισμός Spearman–Brown των ορίων του A,1. Υπολογισμός **ανά φάση** (ανεξάρτητα άτομα) στα κελιά όπου **και οι δύο** αξιολογήσεις προέρχονται από το export (ονομαστικοί T1/T2). **Το one-way μοντέλο δεν υιοθετείται**: οι δύο εκπαιδευτές διαφέρουν συστηματικά (paired t, p=.028 / <.001 / <.001), άρα δεν είναι εναλλάξιμοι τυχαίοι αξιολογητές. Script: `statistical_analysis.py → icc_twoway()`, JSON: `trainer_interrater_agreement.by_subset_and_phase.export_only_confirmed_identity`.
+
+| Φάση | n | ICC(A,1) | **ICC(A,2)** [95% CI] | ICC(C,1) | **ICC(C,2)** [95% CI] | r | T1−T2 (p) |
+|---|---|---|---|---|---|---|---|
+| Α | 16 | .40 [−.04, .73] | **.57 [−.08, .84]** | .47 [−.02, .77] | **.64 [−.04, .87]** | .59 | −0.40 (.028) |
+| Β | 19 | .27 [−.11, .63] | **.42 [−.24, .78]** | .54 [.12, .79] | **.70 [.22, .88]** | .65 | −0.81 (<.001) |
+| Γ | 20 | .07 [−.09, .33] | **.14 [−.20, .50]** | .19 [−.26, .58] | **.32 [−.71, .73]** | .45 | −0.80 (<.001) |
+
+Για σύγκριση (όχι κύρια): 70 κελιά με την υπόθεση συμπληρώματος → A,2 = .50/.37/.12, C,2 = .57/.63/.32· 88 κελιά (ετικέτες εν μέρει αυθαίρετες) → A,2 = .56/.49/.37, C,2 = .63/.63/.61. Τα 88-κελιά νούμερα είναι **ευνοϊκότερα** αλλά **δεν** επιλέγονται, γιατί προϋποθέτουν ταυτότητα που δεν υπάρχει. Το αποδεκτό εύρημα είναι το χειρότερο: στη φάση Γ οι δύο εκπαιδευτές σχεδόν δεν συμφωνούν.
+
+### Δ. Sensitivity χωρίς τις 63 συμπληρωματικές εγγραφές (`sensitivity_export_only`, complete cases)
+| Πηγή | n | M_A → M_Γ | t | d_z [95% CI] | Friedman χ² |
+|---|---|---|---|---|---|
+| Ωφελούμενοι | 30 | 3.24 → 4.75 | −13.41 | 2.45 [1.73, 3.16] | 44.86 |
+| Εκπαιδευτές | 23 | 2.96 → 3.57 | −6.31 | **1.32** [0.76, 1.87] (κύρια: 1.62) | 33.87 |
+| Παρατηρητής | 26 | 2.17 → 2.60 | −7.83 | **1.53** [0.97, 2.10] (κύρια: 1.40) | 32.56 |
+
+Τα συμπεράσματα (μεγάλα, σημαντικά effects σε όλες τις πηγές) δεν αλλάζουν· το μέγεθος για εκπαιδευτές/παρατηρητή μετακινείται ±0.2–0.3. Δεν μπήκε στο manuscript — προτείνεται ως προαιρετική πρόταση (βλ. Ε3).
+
+### Ε. Προτεινόμενες παράγραφοι — ΓΙΑ ΕΓΚΡΙΣΗ (τίποτα δεν εφαρμόστηκε στο manuscript)
+
+**Ε1. Methods, §3.5 Statistical Analysis — νέα παράγραφος μετά την παράγραφο για Friedman/Bonferroni:**
+> Agreement between the two educators was examined with two-way intraclass correlation coefficients \parencite{mcgraw1996} for the mean of the two ratings, which is the trainer score used in all analyses. Both absolute agreement, ICC(A,2), and consistency, ICC(C,2), are reported with 95\% confidence intervals. Because the two educators are identified only in the ratings contained in the electronic export, these coefficients were computed per phase on the participants for whom both educators' ratings were present in the export ($n = 16$, 19, and 20 in Phases A, B, and C, respectively).
+
+(Απαιτεί νέα αναφορά `mcgraw1996`: McGraw, K. O., & Wong, S. P. (1996). Forming inferences about some intraclass correlation coefficients. *Psychological Methods, 1*(1), 30–46. https://doi.org/10.1037/1082-989X.1.1.30)
+
+**Ε2. Results, §4.2 — νέα παράγραφος πριν από την παράγραφο «The very large effect size…»:**
+> Agreement between the two educators was modest and declined across phases. ICC(A,2) was .57 (95\% CI [$-$.08, .84]) in Phase A, .42 [$-$.24, .78] in Phase B, and .14 [$-$.20, .50] in Phase C; the corresponding consistency coefficients, ICC(C,2), were .64 [$-$.04, .87], .70 [.22, .88], and .32 [$-$.71, .73]. One educator rated participants systematically lower than the other (mean difference 0.40, 0.81, and 0.80 scale points; paired $t$-tests, $p = .028$, $< .001$, and $< .001$), which accounts for much of the gap between the absolute-agreement and consistency coefficients. In Phase C the two educators' ratings were only weakly related.
+
+**Ε3. Limitations — αντικατάσταση ολόκληρου του «Fifth»:**
+> Fifth, the reliability of the trainer-based composite is limited. The two educators rated participants with a systematic offset and only modest consistency, and in Phase C their ratings were only weakly related (ICC(C,2) $= .32$, ICC(A,2) $= .14$, both confidence intervals including zero); the trainer effect size should therefore be interpreted with particular caution. Agreement could be estimated only for the records in which both educators are identified in the electronic export ($n = 16$--20 per phase); in the remaining records the two educators cannot be distinguished. Moreover, 63 of the 358 individual ratings (17.6\%; 23.5\% of the 268 trainer and observer ratings) were not contained in the electronic export and were supplied subsequently by the facility; the circumstances of their original recording could not be independently verified. *[Προαιρετικά:]* When the analysis was restricted to the ratings contained in the export (complete cases; trainers $n = 23$, observer $n = 26$), the trainer effect was smaller ($d_z = 1.32$, 95\% CI [0.76, 1.87]) and the observer effect larger ($d_z = 1.53$, 95\% CI [0.97, 2.10]); both remained large and statistically significant.
+
+**Ε4. §3.2 Researcher Positionality** (μία φράση, αν εγκριθούν τα παραπάνω): «trainer scores were averaged across both raters» → «trainer scores were averaged across both raters (although their agreement proved modest; see Section 4.2)».
+
+### Αρχεία που άλλαξαν σε αυτό το βήμα
+`manuscript/kipos_rdd.tex` (μόνο ο παρονομαστής), `scripts/statistical_analysis.py` (ενότητες agreement + sensitivity), `analysis/results.json`, `data/README.md`, `STATUS.md`. Branch `review/reanalysis-2026-10-26`, χωρίς merge, χωρίς υποβολή.
+
+**Για ChatGPT:** επαλήθευση `icc_twoway()` (McGraw & Wong 1996, Table 7 CI) στο export-only υποσύνολο· έλεγχος Β.2–Β.3 (υπογραφή αξιολογητών, υπόθεση συμπληρώματος)· γνώμη για Ε1–Ε4.
